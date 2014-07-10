@@ -2,7 +2,7 @@
 **/target/*
 **/bin/*
 **/gen/*
-**/TrivialDiceLite/bin/*
+
 
 # Windows image file caches
 Thumbs.db
