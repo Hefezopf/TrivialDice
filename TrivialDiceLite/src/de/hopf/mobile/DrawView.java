@@ -124,7 +124,7 @@ public class DrawView extends View implements OnTouchListener, Serializable
 		canvas.drawLine(linkerRand, obererRand+KANTEN_LAENGE, linkerRand+KANTEN_LAENGE, obererRand+KANTEN_LAENGE, paint);
 
 		// Play sound
-		if(((Data)this.getContext()).getbRoll().equals(Boolean.TRUE))
+		if(((Data)this.getContext()).hasRolled().equals(Boolean.TRUE))
 		{			
 //			MediaPlayer mp = MediaPlayer.create(this.getContext(), R.raw.dice_sound);
 			if(mp == null){
@@ -135,7 +135,7 @@ public class DrawView extends View implements OnTouchListener, Serializable
 				mp.start();
 			}
 		    
-			((Data)this.getContext()).setbRoll(Boolean.FALSE);
+			((Data)this.getContext()).setRolled(Boolean.FALSE);
 			invalidate();
 	
 			return;
@@ -153,7 +153,7 @@ public class DrawView extends View implements OnTouchListener, Serializable
 		}
 		
 		// Rechnen!
-		if(!((Data)this.getContext()).getbInterrupted().booleanValue()){
+		if(!((Data)this.getContext()).hasInterrupted().booleanValue()){
 			((Data)this.getContext()).setNumber(new Integer((int) (Math.random()*6)));
 		}
 		
@@ -189,8 +189,8 @@ public class DrawView extends View implements OnTouchListener, Serializable
 			return false;
 		}
 		
-		((Data)this.getContext()).setbRoll(Boolean.TRUE);
-		((Data)this.getContext()).setbInterrupted(Boolean.FALSE);
+		((Data)this.getContext()).setRolled(Boolean.TRUE);
+		((Data)this.getContext()).setInterrupted(Boolean.FALSE);
 		invalidate();
 
 		return true;

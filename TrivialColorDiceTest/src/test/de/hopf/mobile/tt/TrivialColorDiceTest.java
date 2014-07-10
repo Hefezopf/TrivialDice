@@ -5,8 +5,8 @@ import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
-import de.hopf.android.trivialdice.color.lite.DrawView;
 import de.hopf.android.trivialdice.color.StartDice;
+import de.hopf.android.trivialdice.color.lite.DrawView;
 
 public class TrivialColorDiceTest extends ActivityInstrumentationTestCase2<StartDice>
 { 
@@ -24,6 +24,7 @@ public class TrivialColorDiceTest extends ActivityInstrumentationTestCase2<Start
         mButton = (Button) getActivity().findViewById(de.hopf.android.trivialdice.color.lite.R.id.start); 
     }
 
+    @Override
     protected void tearDown() throws Exception { 
         super.tearDown();
     }
@@ -37,7 +38,7 @@ public class TrivialColorDiceTest extends ActivityInstrumentationTestCase2<Start
         TouchUtils.tapView(this, dv);
         
         assertNotNull(startDice.getNumber());
-        assertFalse(startDice.getbInterrupted());
+        assertFalse(startDice.hasInterrupted());
 
         assertNotNull(dv);
         assertTrue(startDice.getCurrentFocus() instanceof DrawView);
@@ -69,7 +70,7 @@ public class TrivialColorDiceTest extends ActivityInstrumentationTestCase2<Start
         TouchUtils.tapView(this, dv);
         
         assertNotNull(startDice.getNumber());
-        assertFalse(startDice.getbInterrupted());
+        assertFalse(startDice.hasInterrupted());
 
         assertNotNull(dv);
         assertTrue(startDice.getCurrentFocus() instanceof DrawView);

@@ -65,7 +65,7 @@ public class StartDiceTest extends ActivityInstrumentationTestCase2<StartDice> {
         TouchUtils.tapView(this, mButton);
         
         assertNotNull(startDice.getNumber());
-        assertFalse(startDice.getbInterrupted());
+        assertFalse(startDice.hasInterrupted());
 
         DrawView dv = (DrawView) startDice.getCurrentFocus();
         assertNotNull(dv);
@@ -108,7 +108,7 @@ public class StartDiceTest extends ActivityInstrumentationTestCase2<StartDice> {
         TouchUtils.tapView(this, mButton);
         
         assertNotNull(startDice.getNumber());
-        assertFalse(startDice.getbInterrupted());
+        assertFalse(startDice.hasInterrupted());
 
         DrawView dv = (DrawView) startDice.getCurrentFocus();
         assertNotNull(dv);

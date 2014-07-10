@@ -142,19 +142,19 @@ public class StartDice extends Activity implements Data
 		}		
 	}
 
-	public Boolean getbInterrupted() {
+	public Boolean hasInterrupted() {
 		return bInterrupted;
 	}
 
-	public void setbInterrupted(Boolean bInterrupted) {
+	public void setInterrupted(Boolean bInterrupted) {
 		this.bInterrupted = bInterrupted;
 	}
 
-	public Boolean getbRoll() {
+	public Boolean hasRolled() {
 		return bRoll;
 	}
 
-	public void setbRoll(Boolean bRoll) {
+	public void setRolled(Boolean bRoll) {
 		this.bRoll = bRoll;
 	} 
 	

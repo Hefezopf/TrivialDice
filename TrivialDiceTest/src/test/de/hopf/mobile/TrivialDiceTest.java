@@ -39,7 +39,7 @@ public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
 //        TouchUtils.clickView(this, dv);
         
         assertNotNull(startDice.getNumber());
-        assertFalse(startDice.getbInterrupted());
+        assertFalse(startDice.hasInterrupted());
 
         assertNotNull(dv);
         assertTrue(startDice.getCurrentFocus() instanceof DrawView);
@@ -71,7 +71,7 @@ public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
         TouchUtils.tapView(this, dv);
         
         assertNotNull(startDice.getNumber());
-        assertFalse(startDice.getbInterrupted());
+        assertFalse(startDice.hasInterrupted());
 
         assertNotNull(dv);
         assertTrue(startDice.getCurrentFocus() instanceof DrawView);

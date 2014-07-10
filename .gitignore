@@ -2,6 +2,7 @@
 **/target/*
 **/bin/*
 **/gen/*
+Trivial*/bin/*
 
 
 # Windows image file caches

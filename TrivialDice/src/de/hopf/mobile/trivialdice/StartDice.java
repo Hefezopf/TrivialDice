@@ -73,22 +73,22 @@ public class StartDice extends Activity implements Data
 	}
 
     @Override
-	public Boolean getbInterrupted() {
+	public Boolean hasInterrupted() {
 		return bInterrupted;
 	}
 
     @Override
-	public void setbInterrupted(Boolean bInterrupted) {
+	public void setInterrupted(Boolean bInterrupted) {
 		this.bInterrupted = bInterrupted;
 	}
 
     @Override
-	public Boolean getbRoll() {
+	public Boolean hasRolled() {
 		return bRoll;
 	}
 
     @Override
-	public void setbRoll(Boolean bRoll) {
+	public void setRolled(Boolean bRoll) {
 		this.bRoll = bRoll;
 	}   
 	
