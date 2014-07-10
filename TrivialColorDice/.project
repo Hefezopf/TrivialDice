@@ -34,12 +34,12 @@
 		<link>
 			<name>gen_lite</name>
 			<type>2</type>
-			<location>D:/workspace/TrivialColorDiceLite/gen</location>
+			<location>D:/max/ProgramCode/Java/Android/TrivialDice/TrivialColorDiceLite/gen</location>
 		</link>
 		<link>
 			<name>src_lite</name>
 			<type>2</type>
-			<location>D:/workspace/TrivialColorDiceLite/src</location>
+			<location>D:/max/ProgramCode/Java/Android/TrivialDice/TrivialColorDiceLite/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>

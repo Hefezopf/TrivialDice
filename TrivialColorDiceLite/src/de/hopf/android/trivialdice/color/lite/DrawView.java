@@ -15,7 +15,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 public class DrawView extends View implements OnTouchListener, Serializable
 {

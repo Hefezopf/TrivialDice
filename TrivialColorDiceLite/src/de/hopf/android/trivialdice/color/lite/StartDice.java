@@ -74,7 +74,8 @@ public class StartDice extends Activity implements Data
 		}
 	}
 
-	private void ping(){
+	@SuppressWarnings("unused")
+    private void ping(){
 		try {
 //System.out.println("ping");
 			// Linkverkürzer auf hopf-it.de
@@ -104,7 +105,7 @@ public class StartDice extends Activity implements Data
 		}
 	}
 
-	private OnClickListener mGetListener = new OnClickListener() {
+	private final OnClickListener mGetListener = new OnClickListener() {
         public void onClick(View v) {
             setContentView(drawView);
             drawView.requestFocus();
