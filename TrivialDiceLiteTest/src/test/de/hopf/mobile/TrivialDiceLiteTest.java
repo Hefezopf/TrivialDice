@@ -4,7 +4,6 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.test.ViewAsserts;
 import android.test.suitebuilder.annotation.MediumTest;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import android.widget.TextView;
 import de.hopf.mobile.DrawView;
@@ -28,6 +27,7 @@ public class TrivialDiceLiteTest extends ActivityInstrumentationTestCase2<StartD
         mLink = (TextView) getActivity().findViewById(de.hopf.mobile.R.id.link_text);         
     }
 
+    @Override
     protected void tearDown() throws Exception { 
         super.tearDown();
     }

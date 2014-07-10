@@ -1,16 +1,13 @@
 package test.de.hopf.mobile;
 
 import android.content.Context;
-import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.test.ViewAsserts;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.view.MotionEvent;
 import android.widget.Button;
 import de.hopf.mobile.DrawView;
-import de.hopf.mobile.R;
 import de.hopf.mobile.StartDice;
 
 /**
@@ -50,6 +47,7 @@ public class StartDiceTest extends ActivityInstrumentationTestCase2<StartDice> {
         mButton = (Button) getActivity().findViewById(de.hopf.mobile.R.id.start); 
     }
 
+    @Override
     protected void tearDown() throws Exception { 
         super.tearDown();
     }
