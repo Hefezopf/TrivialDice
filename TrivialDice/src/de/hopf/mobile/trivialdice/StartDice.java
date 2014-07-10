@@ -40,7 +40,9 @@ public class StartDice extends Activity implements Data
 		drawView.requestFocus();
 	}
 
-	private OnClickListener mGetListener = new OnClickListener() {
+	@SuppressWarnings("unused")
+    private final OnClickListener mGetListener = new OnClickListener() {
+        @Override
         public void onClick(View v) {
         	setContentView(drawView);
     		drawView.requestFocus();

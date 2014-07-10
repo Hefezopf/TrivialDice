@@ -30,7 +30,9 @@ import de.hopf.mobile.StartDice;
  */
 public class StartDice2Test extends ActivityInstrumentationTestCase2<StartDice> {
 
+    @SuppressWarnings("unused")
     private Intent mStartIntent;
+    
     private Button mButton;
 
     public StartDice2Test() {

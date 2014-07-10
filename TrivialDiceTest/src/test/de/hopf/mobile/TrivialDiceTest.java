@@ -21,9 +21,10 @@ public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
     protected void setUp() throws Exception {
         super.setUp();
         startDice = getActivity();
-        mButton = (Button) getActivity().findViewById(de.hopf.mobile.R.id.start); 
+        mButton = (Button) getActivity().findViewById(de.hopf.mobile.R.id.start);
     }
 
+    @Override
     protected void tearDown() throws Exception { 
         super.tearDown();
     }
@@ -35,6 +36,7 @@ public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
 
         DrawView dv = (DrawView) startDice.getCurrentFocus();        
         TouchUtils.tapView(this, dv);
+//        TouchUtils.clickView(this, dv);
         
         assertNotNull(startDice.getNumber());
         assertFalse(startDice.getbInterrupted());
