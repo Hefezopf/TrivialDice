@@ -25,6 +25,7 @@ public class StartDiceDelegate implements Data {
     private final int titleMsgKey;
     private final int startMsgKey;
     private final boolean bLite;
+    private final DiceType diceType;
 
     private DrawView drawView;
     private Integer number;
@@ -36,9 +37,8 @@ public class StartDiceDelegate implements Data {
     private int KANTEN_LAENGE;
     DisplayMetrics metrics;
 
-    public StartDiceDelegate(Activity activity, int diceSoundKey,
-            int hitMsgKey, int mainMsgKey, int linkMsgKey, int titleMsgKey,
-            int startMsgKey, boolean bLite) {
+    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
+            int titleMsgKey, int startMsgKey, boolean bLite, DiceType diceType) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -47,11 +47,11 @@ public class StartDiceDelegate implements Data {
         this.titleMsgKey = titleMsgKey;
         this.startMsgKey = startMsgKey;
         this.bLite = bLite;
+        this.diceType = diceType;
     }
 
     public void onCreate(Bundle savedInstanceState) {
-        activity.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -59,12 +59,11 @@ public class StartDiceDelegate implements Data {
             number = null;
         } else {
             number = (Integer) savedInstanceState.getSerializable(COUNT_KEY);
-            bInterrupted = (Boolean) savedInstanceState
-                    .getSerializable(INTERRUPTED_KEY);
+            bInterrupted = (Boolean) savedInstanceState.getSerializable(INTERRUPTED_KEY);
         }
 
-        drawView = new DrawView(this.activity, activity.getWindowManager(),
-                this.diceSoundKey, this.hitMsgKey);
+        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey,
+                this.diceType);
         activity.setContentView(drawView);
         drawView.requestFocus();
 
@@ -81,13 +80,11 @@ public class StartDiceDelegate implements Data {
             TextView title = (TextView) activity.findViewById(this.titleMsgKey);
             title.setTextSize(KANTEN_LAENGE / 5);
 
-            TextView link_text = (TextView) activity
-                    .findViewById(this.linkMsgKey);
+            TextView link_text = (TextView) activity.findViewById(this.linkMsgKey);
             link_text.setTextSize(KANTEN_LAENGE / 9);
             link_text.setMovementMethod(LinkMovementMethod.getInstance());
 
-            Button startButton = (Button) activity
-                    .findViewById(this.startMsgKey);
+            Button startButton = (Button) activity.findViewById(this.startMsgKey);
             startButton.setOnClickListener(mGetListener);
             startButton.setTextSize(KANTEN_LAENGE / 7);
         }
@@ -104,8 +101,7 @@ public class StartDiceDelegate implements Data {
             URL url = new URL("hopf-it.de/download/TrivialDiceLite.apk");
 
             HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
-            urlc.setRequestProperty("User-Agent",
-                    "Android Application:Trivial Dice Lite");
+            urlc.setRequestProperty("User-Agent", "Android Application:Trivial Dice Lite");
             urlc.setRequestProperty("Connection", "close");
             urlc.setConnectTimeout(1000 * 30); // mTimeout is in seconds
             urlc.connect();
@@ -148,8 +144,7 @@ public class StartDiceDelegate implements Data {
             if ((counter > 10) && number != null && number.intValue() == 5) {
                 counter = 0;
                 activity.setContentView(this.mainMsgKey);
-                Button startButton = (Button) activity
-                        .findViewById(this.startMsgKey);
+                Button startButton = (Button) activity.findViewById(this.startMsgKey);
                 startButton.setOnClickListener(mGetListener);
                 startButton.setTextSize(KANTEN_LAENGE / 7);
                 startButton.requestFocus();

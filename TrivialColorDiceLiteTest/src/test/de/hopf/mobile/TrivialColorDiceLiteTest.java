@@ -6,8 +6,8 @@ import android.test.ViewAsserts;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
 import android.widget.TextView;
-import de.hopf.android.trivialdice.color.lite.DrawView;
 import de.hopf.android.trivialdice.color.lite.StartDice;
+import de.hopf.mobile.DrawView;
 
 public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<StartDice>
 { 

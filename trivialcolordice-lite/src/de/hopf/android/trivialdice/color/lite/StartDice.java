@@ -1,7 +1,10 @@
-package de.hopf.mobile;
+package de.hopf.android.trivialdice.color.lite;
 
 import android.app.Activity;
 import android.os.Bundle;
+import de.hopf.mobile.Data;
+import de.hopf.mobile.DiceType;
+import de.hopf.mobile.StartDiceDelegate;
 
 public class StartDice extends Activity implements Data
 {
@@ -10,7 +13,7 @@ public class StartDice extends Activity implements Data
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.startDiceDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, R.id.link_text, R.id.title, R.id.start, true, DiceType.DICE_NORMAL);
+		this.startDiceDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, R.id.link_text, R.id.title, R.id.start, true, DiceType.DICE_COLOR);
 		startDiceDelegate.onCreate(savedInstanceState);
 	}
     

@@ -1,4 +1,4 @@
-package de.hopf.mobile.trivialdice;
+package de.hopf.android.trivialdice.color;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,23 +6,23 @@ import de.hopf.mobile.Data;
 import de.hopf.mobile.DiceType;
 import de.hopf.mobile.StartDiceDelegate;
 
-public class StartDice extends Activity implements Data
-{
+public class StartDice extends Activity implements Data {
     private StartDiceDelegate startDiceDelegate;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.startDiceDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, 0, 0, 0, false, DiceType.DICE_NORMAL);
+        this.startDiceDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, 0, 0, 0,
+                false, DiceType.DICE_COLOR);
         startDiceDelegate.onCreate(savedInstanceState);
     }
-    
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);       
+        super.onSaveInstanceState(outState);
         startDiceDelegate.onSaveInstanceState(outState);
-    }   
-    
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -33,7 +33,7 @@ public class StartDice extends Activity implements Data
     }
 
     public void setNumber(Integer number) {
-        startDiceDelegate.setNumber(number);    
+        startDiceDelegate.setNumber(number);
     }
 
     public Boolean hasInterrupted() {
@@ -50,8 +50,8 @@ public class StartDice extends Activity implements Data
 
     public void setRolled(Boolean bRoll) {
         startDiceDelegate.setRolled(bRoll);
-    } 
-    
+    }
+
     public int getCounter() {
         return startDiceDelegate.getCounter();
     }

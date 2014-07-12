@@ -12,6 +12,8 @@
     <module>trivialdice-common</module>
     <module>trivialdice-lite</module>
     <module>trivialdice-premium</module>
+    <module>trivialcolordice-lite</module> 
+	<module>trivialcolordice-premium</module>
   </modules>
   
   <url>https://github.com/Hefezopf/TrivialDice.git</url>

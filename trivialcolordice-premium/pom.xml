@@ -9,9 +9,9 @@
     <version>1.0</version>
   </parent>
 
-  <artifactId>trivialdice-lite</artifactId>
-  <name>trivialdice-lite</name>
-  <url>https://github.com/Hefezopf/TrivialDice.git</url>
+  <artifactId>trivialcolordice-premium</artifactId>
+  <name>trivialcolordice-premium</name>
+  <url>https://github.com/Hefezopf/TrivialColorDice.git</url>
   <packaging>apk</packaging>
  
   <organization>
@@ -49,8 +49,8 @@
   <scm>
     <connection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
     </connection>
-    <url>git@github.com:Hefezopf/TrivialDiceLite.git</url>
-    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
+    <url>git@github.com:Hefezopf/TrivialColorDiceLite.git</url>
+    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialColorDiceLite.git
     </developerConnection>
     <tag>Andriod</tag>
   </scm>
