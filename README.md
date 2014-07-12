@@ -25,7 +25,7 @@ Run Emulator:
 -------------
 Aus Eclipse heraus oben im Menu das entsprechende Icon klicken
 'Wipe user data' anchecken!
-oder::
+oder:
 Auf der Console 'android' eingeben.
 Dann im Menu den AVD Manager starten.
 AVD A8 mit Android 2.2 starten
