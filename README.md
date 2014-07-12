@@ -8,9 +8,10 @@ git clone https://github.com/Hefezopf/TrivialDice.git
 Build:
 ------
 vom Parent Dir:
-mvn clean install
+mvn clean install -> /target/<trivialdice-xxx>.apk
+mvn install -Psign -> /target/<trivialdice-xxx>-zipaligned.apk
 
-oder auch jedes Artifakt einzeln:
+Oder auch jedes Artifakt einzeln:
 Change Dir:
 cd TrivialDiceLite
 mvn install -Psign
