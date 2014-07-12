@@ -3,6 +3,6 @@
     <string name="app_name">Trivial Dice Lite</string>
     <string name="title">\nTrivial Dice Lite\n</string>
     <string name="link_text">Obtener la <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.color">versión completa</a></b> aquí!\n</string>
-    <string name="start">Más</string>
+    <string name="start">Más&#8230;</string>
     <string name="hit">Toque para lanzar los dados</string>    
 </resources>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Trivial Dice</string>
-    <string name="title">\nTrivial Dice\n</string>
-    <string name="link_text">Obtener la <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.color">versión completa</a></b> aquí!\n</string>
-    <string name="start">Más</string>
-    <string name="hit">Toque para lanzar los dados</string>    
-</resources>

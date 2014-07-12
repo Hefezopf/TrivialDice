@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Trivial Dice Lite</string>
-    <string name="title">\nTrivial Dice Lite\n</string>
-    <string name="link_text">Get <b><a href="http://market.android.com/details?id=de.hopf.mobile.trivialdice">full version</a></b> here!\n</string>
-    <string name="start">Continue playing</string>
-    <string name="hit">Hit screen to roll</string>    
-</resources>

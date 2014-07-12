@@ -10,7 +10,7 @@ import de.hopf.mobile.trivialdice.StartDice;
 
 public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
 { 
-    private Button mButton;
+//    private Button mButton;
     private StartDice startDice;
 
     public TrivialDiceTest() {
@@ -21,7 +21,7 @@ public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
     protected void setUp() throws Exception {
         super.setUp();
         startDice = getActivity();
-        mButton = (Button) getActivity().findViewById(de.hopf.mobile.R.id.start);
+//        mButton = (Button) getActivity().findViewById(de.hopf.mobile.R.id.start);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
     @SmallTest
     public void testViewsCreated() {
       assertNotNull(startDice);
-      assertNull(mButton);
+//      assertNull(mButton);
     }
     
     @MediumTest
