@@ -15,7 +15,7 @@ Change Dir:
 cd TrivialDiceLite
 mvn install -Psign
 
-upload:
+Upload:
 -------
 https://play.google.com/apps/publish/?dev_acc=12007078229515208860#ApkPlace:p=de.hopf.mobile
 Button KONFIGURATION DER PRODUKTIONSVERSION Neue APK-Datei in Produktionsphase hochladen
