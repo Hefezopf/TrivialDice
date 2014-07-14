@@ -28,8 +28,8 @@
   <modules>
     <module>trivialdice-common</module>
     <module>trivialdice-lite</module>
-    <module>trivialdice-lite-test</module>
     <module>trivialdice-premium</module>
+    <module>trivialdice-lite-test</module>
     <module>trivialcolordice-lite</module>
     <module>trivialcolordice-premium</module>
   </modules>

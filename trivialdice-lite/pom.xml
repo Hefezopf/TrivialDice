@@ -28,13 +28,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.google.android</groupId>
-      <artifactId>android-test</artifactId>
-      <version>${android-test.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
       <groupId>de.hopf.mobile</groupId>
       <artifactId>trivialdice-common</artifactId>
       <version>1.0</version>

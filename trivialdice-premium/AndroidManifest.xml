@@ -20,4 +20,6 @@
         </activity>
     </application> 
 
+    <instrumentation android:targetPackage="de.hopf.mobile" android:name="android.test.InstrumentationTestRunner" />
+    
 </manifest> 

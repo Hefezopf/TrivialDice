@@ -11,6 +11,7 @@
 
   <artifactId>trivialdice-premium</artifactId>
   <name>trivialdice-premium</name>
+  <url>https://github.com/Hefezopf/TrivialDice.git</url>
   <packaging>apk</packaging>
  
   <organization>
@@ -51,7 +52,7 @@
   </scm>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
+     <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
