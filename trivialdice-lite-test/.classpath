@@ -6,16 +6,12 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/trivialdice-lite"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/trivialdice-lite"/>
 	<classpathentry kind="con" path="me.gladwell.eclipse.m2e.android.classpath.NONRUNTIME_DEPENDENCIES">
 		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="bin/classes" path="src">
-		<attributes>
-			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -29,5 +25,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/max/ProgramCode/Java/Android/TrivialDice/trivialdice-common"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK/trivialdice-lite"/>
+	<classpathentry kind="lib" path="/trivialdice-lite/target/trivialdice-lite.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -1,4 +1,4 @@
-package test.de.hopf.mobile;
+package de.hopf.mobile;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;

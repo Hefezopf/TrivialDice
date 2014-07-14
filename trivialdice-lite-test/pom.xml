@@ -53,27 +53,26 @@
     <connection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
     </connection>
     <url>git@github.com:Hefezopf/TrivialDiceLite.git</url>
-    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
-    </developerConnection>
+    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git</developerConnection>
     <tag>Android</tag>
   </scm>
 
   <build>
-    <sourceDirectory>src</sourceDirectory> 
+    <sourceDirectory>src</sourceDirectory>
     <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
         <artifactId>android-maven-plugin</artifactId>
         <extensions>true</extensions>
-<!--           <configuration> -->
-<!--             <release>true</release> -->
-<!--             <sdk> -->
-<!--               <platform>5</platform> -->
-<!--             </sdk> -->
-<!--             <undeployBeforeDeploy>false</undeployBeforeDeploy> -->
-<!--           </configuration> -->
-        
+        <!-- <configuration> -->
+        <!-- <release>true</release> -->
+        <!-- <sdk> -->
+        <!-- <platform>5</platform> -->
+        <!-- </sdk> -->
+        <!-- <undeployBeforeDeploy>false</undeployBeforeDeploy> -->
+        <!-- </configuration> -->
+
       </plugin>
     </plugins>
   </build>

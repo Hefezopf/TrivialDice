@@ -1,4 +1,4 @@
-package test.de.hopf.mobile;
+package de.hopf.mobile;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
