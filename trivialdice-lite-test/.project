@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>trivialdicelite</name>
-	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+	<name>TrivialDiceLiteTest</name>
+	<comment></comment>
 	<projects>
+		<project>Dice</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -32,19 +33,8 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<filteredResources>
-		<filter>
-			<id>1405345848505</id>
-			<name>target</name>
-			<type>9</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-target</arguments>
-			</matcher>
-		</filter>
-	</filteredResources>
 </projectDescription>

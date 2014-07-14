@@ -23,6 +23,8 @@ Button KONFIGURATION DER PRODUKTIONSVERSION Neue APK-Datei in Produktionsphase h
  
 Run Emulator:
 -------------
+emulator -avd <avd_name> -gpu on -wipe-data  -> also: emulator -avd A8 -gpu on -wipe-data
+oder:
 Aus Eclipse heraus oben im Menu das entsprechende Icon klicken
 'Wipe user data' anchecken!
 oder:

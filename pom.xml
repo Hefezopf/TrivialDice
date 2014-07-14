@@ -11,11 +11,15 @@
 
   <properties>
     <jdk.version>1.6</jdk.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<!--     <android.device>A8</android.device> -->
+    <android.device>emulator-5554</android.device>
   </properties>
 
   <modules>
     <module>trivialdice-common</module>
     <module>trivialdice-lite</module>
+    <module>trivialdice-lite-test</module>
     <module>trivialdice-premium</module>
     <module>trivialcolordice-lite</module>
     <module>trivialcolordice-premium</module>

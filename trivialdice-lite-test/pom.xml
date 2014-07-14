@@ -9,11 +9,11 @@
     <version>1.0</version>
   </parent>
 
-  <artifactId>trivialcolordice-premium</artifactId>
-  <name>trivialcolordice-premium</name>
-  <url>https://github.com/Hefezopf/TrivialColorDice.git</url>
+  <artifactId>trivialdice-lite-test</artifactId>
+  <name>trivialdice-lite-test</name>
+  <url>https://github.com/Hefezopf/TrivialDice.git</url>
   <packaging>apk</packaging>
- 
+
   <organization>
     <name>Markus Hopf</name>
     <url>http://www.hopf-it.de</url>
@@ -28,8 +28,15 @@
     </dependency>
 
     <dependency>
+      <groupId>com.google.android</groupId>
+      <artifactId>android-test</artifactId>
+      <version>2.3.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
       <groupId>de.hopf.mobile</groupId>
-      <artifactId>trivialdice-common</artifactId>
+      <artifactId>trivialdice-lite</artifactId>
       <version>1.0</version>
       <type>jar</type>
     </dependency>
@@ -45,8 +52,8 @@
   <scm>
     <connection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
     </connection>
-    <url>git@github.com:Hefezopf/TrivialColorDiceLite.git</url>
-    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialColorDiceLite.git
+    <url>git@github.com:Hefezopf/TrivialDiceLite.git</url>
+    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
     </developerConnection>
     <tag>Andriod</tag>
   </scm>
@@ -73,7 +80,7 @@
         <configuration>
           <release>true</release>
           <sdk>
-<!--             platform as api level (api level 16 = platform 4.1) -->
+            <!-- platform as api level (api level 16 = platform 4.1) -->
             <platform>5</platform>
           </sdk>
         </configuration>
@@ -135,6 +142,11 @@
               <sign>
                 <debug>false</debug>
               </sign>
+<!--               <emulator> -->
+<!--                 <avd>8</avd> -->
+<!--                 <wait>180000</wait> -->
+<!--                 <options>-no-skin</options> -->
+<!--               </emulator> -->
             </configuration>
           </plugin>
 
