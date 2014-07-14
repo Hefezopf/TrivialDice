@@ -11,6 +11,10 @@
 
   <properties>
     <jdk.version>1.6</jdk.version>
+    <android.version>4.1.1.4</android.version>
+    <android-test.version>2.3.1</android-test.version>
+    <android-maven-plugin.version>3.9.0-rc.1</android-maven-plugin.version>
+    <junit.version>4.8.1</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 <!--     <android.device>A8</android.device> -->
     <android.device>emulator-5554</android.device>

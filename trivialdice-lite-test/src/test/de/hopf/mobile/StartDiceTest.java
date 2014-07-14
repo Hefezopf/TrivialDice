@@ -119,34 +119,5 @@ public class StartDiceTest extends ActivityInstrumentationTestCase2<StartDice> {
         assertNotNull(startDice.getNumber());
         
         startDice.finish();
-    }
-    
-    /**
-     * This test demonstrates ways to exercise the Activity's life cycle.
-     */
-    @MediumTest
-    public void testLifeCycleCreate() {
-        // At this point, onCreate() has been called, but nothing else
-        // Complete the startup of the activity
-        getInstrumentation().callActivityOnStart(startDice);
-        getInstrumentation().callActivityOnResume(startDice);
-        
-        // At this point you could test for various configuration aspects, or you could 
-        // use a Mock Context to confirm that your activity has made certain calls to the system
-        // and set itself up properly.
-        
-        getInstrumentation().callActivityOnPause(startDice);
-        
-        // At this point you could confirm that the activity has paused properly, as if it is
-        // no longer the topmost activity on screen.
-        
-        getInstrumentation().callActivityOnStop(startDice);
-        
-        // At this point, you could confirm that the activity has shut itself down appropriately,
-        // or you could use a Mock Context to confirm that your activity has released any system
-        // resources it should no longer be holding.
-
-        // ActivityUnitTestCase.tearDown(), which is always automatically called, will take care
-        // of calling onDestroy().
-    }
+    }    
 }

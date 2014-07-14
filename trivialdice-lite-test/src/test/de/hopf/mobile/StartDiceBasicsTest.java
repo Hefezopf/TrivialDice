@@ -28,14 +28,14 @@ import de.hopf.mobile.StartDice;
  * <p>See {@link com.example.android.apis.AllTests} for documentation on running
  * all tests and individual tests in this application.
  */
-public class StartDice2Test extends ActivityInstrumentationTestCase2<StartDice> {
+public class StartDiceBasicsTest extends ActivityInstrumentationTestCase2<StartDice> {
 
     @SuppressWarnings("unused")
     private Intent mStartIntent;
     
     private Button mButton;
 
-    public StartDice2Test() {
+    public StartDiceBasicsTest() {
         super("de.hopf.mobile", StartDice.class);
       }
 
@@ -68,57 +68,6 @@ public class StartDice2Test extends ActivityInstrumentationTestCase2<StartDice> 
      */
     @MediumTest
     public void testSubLaunch() {
-//    	StartDice activity = startActivity(mStartIntent, null, null);
         mButton = (Button) getActivity().findViewById(R.id.start);
-//        getActivity().startActivity(mStartIntent);
-//        getActivity().getCurrentFocus();
-//        assertFalse(getActivity().getCurrentFocus() instanceof DrawView);
-
-        // This test confirms that when you click the button, the activity attempts to open
-        // another activity (by calling startActivity) and close itself (by calling finish()).
-//        mButton.performClick();
-//        
-//        assertNull(getActivity().getNumber());
-//        assertFalse(getActivity().getbInterrupted());
-//
-//        DrawView dv = (DrawView) getActivity().getCurrentFocus();
-//        assertNotNull(dv);
-//        assertTrue(getActivity().getCurrentFocus() instanceof DrawView);
-//        
-//        assertNotNull(getActivity().getNumber());
-//        
-//        getActivity().finish();
-//        assertNull(getActivity().getCurrentFocus());
-    }
-    
-    /**
-     * This test demonstrates ways to exercise the Activity's life cycle.
-     */
-    @MediumTest
-    public void testLifeCycleCreate() {
-    	StartDice activity = getActivity();
-        
-        // At this point, onCreate() has been called, but nothing else
-        // Complete the startup of the activity
-        getInstrumentation().callActivityOnStart(activity);
-        getInstrumentation().callActivityOnResume(activity);
-        
-        // At this point you could test for various configuration aspects, or you could 
-        // use a Mock Context to confirm that your activity has made certain calls to the system
-        // and set itself up properly.
-        
-        getInstrumentation().callActivityOnPause(activity);
-        
-        // At this point you could confirm that the activity has paused properly, as if it is
-        // no longer the topmost activity on screen.
-        
-        getInstrumentation().callActivityOnStop(activity);
-        
-        // At this point, you could confirm that the activity has shut itself down appropriately,
-        // or you could use a Mock Context to confirm that your activity has released any system
-        // resources it should no longer be holding.
-
-        // ActivityUnitTestCase.tearDown(), which is always automatically called, will take care
-        // of calling onDestroy().
-    }
+    }    
 }
