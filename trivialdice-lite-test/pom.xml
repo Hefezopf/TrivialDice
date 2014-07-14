@@ -98,7 +98,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jarsigner-plugin</artifactId>
-            <version>1.2</version>
+            <version>${maven-jarsigner-plugin.version}</version>
             <executions>
               <execution>
                 <id>signing</id>
@@ -153,7 +153,7 @@
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
-            <version>1.1.1</version>
+            <version>${exec-maven-plugin.version}</version>
             <executions>
               <execution>
                 <id>zipalign</id>
