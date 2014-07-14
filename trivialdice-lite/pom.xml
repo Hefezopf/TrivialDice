@@ -59,34 +59,45 @@
   </scm>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
     <finalName>${project.artifactId}</finalName>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-          <artifactId>android-maven-plugin</artifactId>
-          <version>${android-maven-plugin.version}</version>
-          <extensions>true</extensions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
     <plugins>
       <plugin>
         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
         <artifactId>android-maven-plugin</artifactId>
-        <configuration>
-          <release>true</release>
-          <sdk>
-            <platform>5</platform>
-          </sdk>
-          <undeployBeforeDeploy>true</undeployBeforeDeploy>
-        </configuration>
+        <extensions>true</extensions>
       </plugin>
-
     </plugins>
   </build>
+
+<!--   <build> -->
+<!--     <sourceDirectory>src</sourceDirectory> -->
+<!--     <finalName>${project.artifactId}</finalName> -->
+<!--     <pluginManagement> -->
+<!--       <plugins> -->
+<!--         <plugin> -->
+<!--           <groupId>com.jayway.maven.plugins.android.generation2</groupId> -->
+<!--           <artifactId>android-maven-plugin</artifactId> -->
+<!--           <version>${android-maven-plugin.version}</version> -->
+<!--           <extensions>true</extensions> -->
+<!--         </plugin> -->
+<!--       </plugins> -->
+<!--     </pluginManagement> -->
+
+<!--     <plugins> -->
+<!--       <plugin> -->
+<!--         <groupId>com.jayway.maven.plugins.android.generation2</groupId> -->
+<!--         <artifactId>android-maven-plugin</artifactId> -->
+<!--         <configuration> -->
+<!--           <release>true</release> -->
+<!--           <sdk> -->
+<!--             <platform>5</platform> -->
+<!--           </sdk> -->
+<!--           <undeployBeforeDeploy>true</undeployBeforeDeploy> -->
+<!--         </configuration> -->
+<!--       </plugin> -->
+
+<!--     </plugins> -->
+<!--   </build> -->
 
   <profiles>
     <profile>
