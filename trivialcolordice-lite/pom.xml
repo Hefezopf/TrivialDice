@@ -48,7 +48,7 @@
     <url>git@github.com:Hefezopf/TrivialColorDiceLite.git</url>
     <developerConnection>scm:git:git@github.com:Hefezopf/TrivialColorDiceLite.git
     </developerConnection>
-    <tag>Andriod</tag>
+    <tag>Android</tag>
   </scm>
 
   <build>

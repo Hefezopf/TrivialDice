@@ -9,6 +9,7 @@ Build:
 ------
 vom Parent Dir:
 mvn clean install -> /target/<trivialdice-xxx>.apk
+mvn clean install android:delpoy -> mit Tests auf dem Emulator!
 mvn install -Psign -> /target/<trivialdice-xxx>-zipaligned.apk
 
 Oder auch jedes Artifakt einzeln:

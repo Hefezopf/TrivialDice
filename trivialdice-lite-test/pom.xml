@@ -35,16 +35,16 @@
     </dependency>
 
     <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>de.hopf.mobile</groupId>
       <artifactId>trivialdice-lite</artifactId>
       <version>1.0</version>
       <type>jar</type>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
     </dependency>
 
   </dependencies>
@@ -55,128 +55,27 @@
     <url>git@github.com:Hefezopf/TrivialDiceLite.git</url>
     <developerConnection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
     </developerConnection>
-    <tag>Andriod</tag>
+    <tag>Android</tag>
   </scm>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src</sourceDirectory> 
     <finalName>${project.artifactId}</finalName>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-          <artifactId>android-maven-plugin</artifactId>
-          <version>${android-maven-plugin.version}</version>
-          <extensions>true</extensions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
     <plugins>
       <plugin>
         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
         <artifactId>android-maven-plugin</artifactId>
-        <configuration>
-          <release>true</release>
-          <sdk>
-            <platform>5</platform>
-          </sdk>
-<!--           <sign> -->
-<!--           <debug>false</debug> -->
-<!--           </sign> -->
-<!--           <emulator> -->
-<!--           <avd>${android.device}</avd> -->
-<!--           <wait>180000</wait> -->
-<!--           <options>-no-skin</options> -->
-<!--           </emulator> -->
-        </configuration>
+        <extensions>true</extensions>
+<!--           <configuration> -->
+<!--             <release>true</release> -->
+<!--             <sdk> -->
+<!--               <platform>5</platform> -->
+<!--             </sdk> -->
+<!--             <undeployBeforeDeploy>false</undeployBeforeDeploy> -->
+<!--           </configuration> -->
+        
       </plugin>
-
-<!--       <plugin> -->
-<!--         <groupId>org.apache.maven.plugins</groupId> -->
-<!--         <artifactId>maven-jarsigner-plugin</artifactId> -->
-<!--         <version>${maven-jarsigner-plugin.version}</version> -->
-<!--         <executions> -->
-<!--           <execution> -->
-<!--             <id>signing</id> -->
-<!--             <goals> -->
-<!--               <goal>sign</goal> -->
-<!--               <goal>verify</goal> -->
-<!--             </goals> -->
-<!--             <phase>package</phase> -->
-<!--             <inherited>true</inherited> -->
-<!--             <configuration> -->
-<!--               <archiveDirectory></archiveDirectory> -->
-<!--               <sign> -->
-<!--                 <debug>false</debug> -->
-<!--               </sign> -->
-<!--               <includes> -->
-<!--                 <include>target/*.apk</include> -->
-<!--               </includes> -->
-<!--               <keystore>../keystore</keystore> -->
-<!--               <storepass>markus</storepass> -->
-<!--               <keypass>markus</keypass> -->
-<!--               <alias>dice</alias> -->
-<!--               <arguments> -->
-<!--                 <argument>-sigalg</argument> -->
-<!--                 <argument>MD5withRSA</argument> -->
-<!--                 <argument>-digestalg</argument> -->
-<!--                 <argument>SHA1</argument> -->
-<!--               </arguments> -->
-<!--               <verbose>false</verbose> -->
-<!--             </configuration> -->
-<!--           </execution> -->
-<!--         </executions> -->
-<!--       </plugin> -->
-
-<!--       <plugin> -->
-<!--         <groupId>org.codehaus.mojo</groupId> -->
-<!--         <artifactId>exec-maven-plugin</artifactId> -->
-<!--         <version>${exec-maven-plugin.version}</version> -->
-<!--         <executions> -->
-<!--           <execution> -->
-<!--             <id>zipalign</id> -->
-<!--             <goals> -->
-<!--               <goal>exec</goal> -->
-<!--             </goals> -->
-<!--             <phase>package</phase> -->
-<!--             <configuration> -->
-<!--               <executable>${ANDROID_HOME}/build-tools/android-4.4W/zipalign -->
-<!--               </executable> -->
-<!--               <arguments> -->
-<!--                 <argument>-f</argument> -->
-<!--                 <argument>4</argument> -->
-<!--                 <argument>target/${project.build.finalName}.apk -->
-<!--                 </argument> -->
-<!--                 <argument>target/${project.build.finalName}-zipaligned.apk -->
-<!--                 </argument> -->
-<!--               </arguments> -->
-<!--             </configuration> -->
-<!--           </execution> -->
-<!--         </executions> -->
-<!--       </plugin> -->
-
-<!--       <plugin> -->
-<!--         <groupId>com.jayway.maven.plugins.android.generation2 -->
-<!--             </groupId> -->
-<!--         <artifactId>android-maven-plugin</artifactId> -->
-<!--         <inherited>true</inherited> -->
-<!--         <configuration> -->
-<!--           <release>true</release> -->
-<!--           <sign> -->
-<!--             <debug>false</debug> -->
-<!--           </sign> -->
-<!--           <emulator> -->
-<!--             <avd>${android.device}</avd> -->
-<!--             <wait>180000</wait> -->
-<!--             <options>-no-skin</options> -->
-<!--           </emulator> -->
-<!--         </configuration> -->
-<!--       </plugin> -->
-
     </plugins>
-
-
   </build>
 
   <profiles>
