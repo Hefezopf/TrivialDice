@@ -18,8 +18,11 @@
     <maven-jarsigner-plugin.version>1.2</maven-jarsigner-plugin.version>
     <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
     <junit.version>4.8.1</junit.version>
+    
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <android.device>emulator-5554</android.device>
+<!--     <android.device>emulator-5554_A8_unknown_sdk</android.device> -->
+<!--     <android.device>emulator</android.device> -->
   </properties>
 
   <modules>

@@ -142,11 +142,12 @@
               <sign>
                 <debug>false</debug>
               </sign>
-<!--               <emulator> -->
-<!--                 <avd>8</avd> -->
-<!--                 <wait>180000</wait> -->
-<!--                 <options>-no-skin</options> -->
-<!--               </emulator> -->
+              <emulator>
+                <avd>ttttttttttt</avd>
+<!--                 <avd>${android.device}</avd> -->
+                <wait>180000</wait>
+                <options>-no-skin</options>
+              </emulator>
             </configuration>
           </plugin>
 
