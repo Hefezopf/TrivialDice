@@ -94,8 +94,8 @@ public class StartDiceTest extends ActivityInstrumentationTestCase2<StartDice> {
       assertNotNull(startDice);
       assertNotNull(mButton);
       ViewAsserts.assertOnScreen(mButton.getRootView(), mButton);
-    }
-    
+    }    
+
     /**
      * This test demonstrates examining the way that activity calls startActivity() to launch 
      * other activities.

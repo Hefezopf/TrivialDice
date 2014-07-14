@@ -28,14 +28,14 @@ import de.hopf.mobile.StartDice;
  * <p>See {@link com.example.android.apis.AllTests} for documentation on running
  * all tests and individual tests in this application.
  */
-public class StartDiceBasicsTest extends ActivityInstrumentationTestCase2<StartDice> {
+public class StartDiceBasicTest extends ActivityInstrumentationTestCase2<StartDice> {
 
     @SuppressWarnings("unused")
     private Intent mStartIntent;
     
     private Button mButton;
 
-    public StartDiceBasicsTest() {
+    public StartDiceBasicTest() {
         super("de.hopf.mobile", StartDice.class);
       }
 
