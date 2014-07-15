@@ -9,9 +9,9 @@
     <version>1.0</version>
   </parent>
 
-  <artifactId>trivialdice-lite-test</artifactId>
-  <name>trivialdice-lite-test</name>
-  <url>https://github.com/Hefezopf/TrivialDice.git</url>
+  <artifactId>trivialcolordice-premium-test</artifactId>
+  <name>trivialcolordice-premium-test</name>
+  <url>https://github.com/Hefezopf/TrivialColorDice.git</url>
   <packaging>apk</packaging>
 
   <organization>
@@ -42,7 +42,7 @@
 
     <dependency>
       <groupId>de.hopf.mobile</groupId>
-      <artifactId>trivialdice-lite</artifactId>
+      <artifactId>trivialcolordice-premium</artifactId>
       <version>1.0</version>
       <type>jar</type>
     </dependency>
@@ -58,19 +58,20 @@
   </scm>
 
   <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
     <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
         <artifactId>android-maven-plugin</artifactId>
         <extensions>true</extensions>
-        <configuration>
-        <release>true</release>
-        <sdk>
-        <platform>5</platform>
-        </sdk>
-        <undeployBeforeDeploy>false</undeployBeforeDeploy>
-        </configuration>
+        <!-- <configuration> -->
+        <!-- <release>true</release> -->
+        <!-- <sdk> -->
+        <!-- <platform>5</platform> -->
+        <!-- </sdk> -->
+        <!-- <undeployBeforeDeploy>false</undeployBeforeDeploy> -->
+        <!-- </configuration> -->
 
       </plugin>
     </plugins>

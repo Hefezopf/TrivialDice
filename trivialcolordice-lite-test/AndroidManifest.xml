@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="test.de.hopf.android.trivialdice.color.lite"
+      android:versionCode="1"
+      android:versionName="1.0">
+      
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="20" />  
+                 
+    <application android:allowBackup="true">
+    	<uses-library android:name="android.test.runner" />
+    </application>
+
+    <instrumentation android:targetPackage="de.hopf.android.trivialdice.color.lite" android:name="android.test.InstrumentationTestRunner" />
+</manifest> 
+

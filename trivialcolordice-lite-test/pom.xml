@@ -9,9 +9,9 @@
     <version>1.0</version>
   </parent>
 
-  <artifactId>trivialdice-lite-test</artifactId>
-  <name>trivialdice-lite-test</name>
-  <url>https://github.com/Hefezopf/TrivialDice.git</url>
+  <artifactId>trivialcolordice-lite-test</artifactId>
+  <name>trivialcolordice-lite-test</name>
+  <url>https://github.com/Hefezopf/TrivialColorDice.git</url>
   <packaging>apk</packaging>
 
   <organization>
@@ -42,7 +42,7 @@
 
     <dependency>
       <groupId>de.hopf.mobile</groupId>
-      <artifactId>trivialdice-lite</artifactId>
+      <artifactId>trivialcolordice-lite</artifactId>
       <version>1.0</version>
       <type>jar</type>
     </dependency>
