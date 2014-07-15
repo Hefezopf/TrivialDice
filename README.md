@@ -18,6 +18,13 @@ Change Dir:
 cd TrivialDiceLite
 mvn install -Psign
 
+Version increment:
+------------------
+mvn versions:set -DnewVersion=1.0 
+mvn clean install
+mvn versions:set -DnewVersion=1.1-SNAPSHOT 
+mvn clean install
+
 Upload:
 -------
 https://play.google.com/apps/publish/?dev_acc=12007078229515208860#ApkPlace:p=de.hopf.mobile
