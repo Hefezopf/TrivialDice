@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="test.de.hopf.mobile"
+      package="test.de.hopf.mobile.trivialdice"
       android:versionCode="1"
       android:versionName="1.0">
       
@@ -9,9 +9,8 @@
         android:targetSdkVersion="20" />  
                 
     <application android:allowBackup="true">
-    	<uses-library android:name="android.test.runner" />
+        <uses-library android:name="android.test.runner" />
     </application>
 
-    <instrumentation android:targetPackage="de.hopf.mobile" android:name="android.test.InstrumentationTestRunner" />
+    <instrumentation android:targetPackage="de.hopf.mobile.trivialdice" android:name="android.test.InstrumentationTestRunner" />
 </manifest> 
-

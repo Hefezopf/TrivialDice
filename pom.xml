@@ -33,6 +33,7 @@
     <module>trivialcolordice-premium</module>
 
     <module>trivialdice-lite-test</module>
+    <module>trivialdice-premium-test</module>
   </modules>
 
   <url>https://github.com/Hefezopf/TrivialDice.git</url>

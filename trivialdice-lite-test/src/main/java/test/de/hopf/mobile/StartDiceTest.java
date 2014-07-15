@@ -1,4 +1,4 @@
-package de.hopf.mobile;
+package test.de.hopf.mobile;
 
 import android.content.Context;
 import android.test.ActivityInstrumentationTestCase2;
