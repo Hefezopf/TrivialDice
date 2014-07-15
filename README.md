@@ -8,10 +8,10 @@ git clone https://github.com/Hefezopf/TrivialDice.git
 Build:
 ------
 vom Parent Dir:
-mvn clean install -> /target/<trivialdice-xxx>.apk
-mvn android:delpoy
-mvn clean install android:delpoy -> mit Tests auf dem Emulator!
+mvn clean install android:delpoy -> /target/<trivialdice-xxx>.apk  -> mit Tests auf dem Emulator!
 mvn install -Psign -> /target/<trivialdice-xxx>-zipaligned.apk
+mvn android:undelpoy
+mvn android:delpoy
 
 Oder auch jedes Artifakt einzeln:
 Change Dir:

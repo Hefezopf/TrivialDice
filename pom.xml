@@ -21,8 +21,6 @@
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <android.device>emulator-5554</android.device>
-    <!-- <android.device>emulator-5554_A8_unknown_sdk</android.device> -->
-    <!-- <android.device>emulator</android.device> -->
   </properties>
 
   <modules>

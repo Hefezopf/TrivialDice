@@ -20,6 +20,6 @@
         </activity>
     </application> 
 
-    <instrumentation android:targetPackage="de.hopf.mobile" android:name="android.test.InstrumentationTestRunner" />
+    <instrumentation android:targetPackage="de.hopf.mobile.trivialdice" android:name="android.test.InstrumentationTestRunner" />
     
 </manifest> 
