@@ -18,9 +18,12 @@ Change Dir:
 cd TrivialDiceLite
 mvn install -Psign
 
-Version increment:
-------------------
-mvn android:manifest-update
+Manifest versions increment:
+----------------------------
+mvn android:manifest-update -Dandroid.manifest.versionName=2.0 -Dandroid.manifest.versionCode=33
+
+Artifact versions increment:
+-----------------------------
 mvn versions:set -DnewVersion=1.0 
 mvn clean install
 mvn versions:set -DnewVersion=1.1-SNAPSHOT 
