@@ -6,7 +6,6 @@ import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import de.hopf.mobile.DrawView;
-import de.hopf.mobile.trivialdice.StartDice;
 
 public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
 { 
@@ -34,7 +33,6 @@ public class TrivialDiceTest extends ActivityInstrumentationTestCase2<StartDice>
 
         DrawView dv = (DrawView) startDice.getCurrentFocus();        
         TouchUtils.tapView(this, dv);
-//        TouchUtils.clickView(this, dv);
         
         assertNotNull(startDice.getNumber());
         assertFalse(startDice.hasInterrupted());

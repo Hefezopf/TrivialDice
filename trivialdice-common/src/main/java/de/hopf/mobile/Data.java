@@ -8,4 +8,6 @@ public interface Data
 	void setInterrupted(Boolean b);
 	Boolean hasRolled();
 	void setRolled(Boolean b);
+	
+	int getCounter();
 }

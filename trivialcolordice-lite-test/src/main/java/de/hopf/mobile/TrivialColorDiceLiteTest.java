@@ -1,4 +1,4 @@
-package test.de.hopf.mobile;
+package de.hopf.mobile;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
@@ -6,17 +6,17 @@ import android.test.ViewAsserts;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
 import android.widget.TextView;
+import de.hopf.android.trivialdice.color.lite.R;
+import de.hopf.android.trivialdice.color.lite.StartDice;
 import de.hopf.mobile.DrawView;
-import de.hopf.mobile.R;
-import de.hopf.mobile.StartDice;
 
-public class TrivialDiceLiteTest extends ActivityInstrumentationTestCase2<StartDice>
+public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<StartDice>
 { 
     private Button mButton;
-    private StartDice startDice;
     private TextView mLink;
+    private StartDice startDice;
 
-    public TrivialDiceLiteTest() {
+    public TrivialColorDiceLiteTest() {
         super(StartDice.class);
     }    
 
@@ -24,8 +24,8 @@ public class TrivialDiceLiteTest extends ActivityInstrumentationTestCase2<StartD
     protected void setUp() throws Exception {
         super.setUp();
         startDice = getActivity();
-        mButton = (Button) getActivity().findViewById(R.id.start);
-        mLink = (TextView) getActivity().findViewById(R.id.link_text);         
+        mButton = (Button) getActivity().findViewById(R.id.start); 
+        mLink = (TextView) getActivity().findViewById(R.id.link_text); 
     }
 
     @Override
@@ -60,19 +60,7 @@ public class TrivialDiceLiteTest extends ActivityInstrumentationTestCase2<StartD
         assertTrue(startDice.getCounter() == 0);
         startDice.finish();
     }
-     
-    @MediumTest
-    public void testPurchaseLink() {        
-        assertFalse(startDice.getCurrentFocus() instanceof DrawView);
-        assertTrue(startDice.getCurrentFocus() instanceof Button);
-
-        TouchUtils.tapView(this, mLink);
-        
-        assertFalse(startDice.getCurrentFocus() instanceof Button);
-                
-        startDice.finish();
-    }
-        
+    
     @MediumTest
     public void testViewsCreated() {
       assertNotNull(startDice);
@@ -100,6 +88,18 @@ public class TrivialDiceLiteTest extends ActivityInstrumentationTestCase2<StartD
         
         startDice.finish();
     }
+     
+    @MediumTest
+    public void testPurchaseLink() {        
+        assertFalse(startDice.getCurrentFocus() instanceof DrawView);
+        assertTrue(startDice.getCurrentFocus() instanceof Button);
+
+        TouchUtils.tapView(this, mLink);
+        
+        assertFalse(startDice.getCurrentFocus() instanceof Button);
+                
+        startDice.finish();
+    }
     
     @MediumTest
     public void testLifeCycleCreate() {
@@ -111,17 +111,12 @@ public class TrivialDiceLiteTest extends ActivityInstrumentationTestCase2<StartD
         // At this point you could test for various configuration aspects, or you could 
         // use a Mock Context to confirm that your activity has made certain calls to the system
         // and set itself up properly.
+        
         getInstrumentation().callActivityOnPause(startDice);
         
         // At this point you could confirm that the activity has paused properly, as if it is
         // no longer the topmost activity on screen.
-        getInstrumentation().callActivityOnStop(startDice);
         
-        // At this point, you could confirm that the activity has shut itself down appropriately,
-        // or you could use a Mock Context to confirm that your activity has released any system
-        // resources it should no longer be holding.
-
-        // ActivityUnitTestCase.tearDown(), which is always automatically called, will take care
-        // of calling onDestroy().
+        getInstrumentation().callActivityOnStop(startDice);
     }
 }

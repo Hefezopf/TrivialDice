@@ -190,6 +190,7 @@ public class StartDiceDelegate implements Data {
         this.bRoll = bRoll;
     }
 
+    @Override
     public int getCounter() {
         return counter;
     }

@@ -57,6 +57,7 @@ public abstract class StartDiceBase extends Activity implements Data {
         startDiceDelegate.setRolled(bRoll);
     }
 
+    @Override
     public int getCounter() {
         return startDiceDelegate.getCounter();
     }

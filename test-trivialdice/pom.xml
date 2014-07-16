@@ -2,23 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
+  
   <parent>
     <groupId>de.hopf.mobile</groupId>
     <artifactId>trivialdice-parent</artifactId>
     <version>1.27</version>
   </parent>
 
-  <artifactId>trivialdice-lite-test</artifactId>
-  <name>trivialdice-lite-test</name>
+  <artifactId>test-trivialdice</artifactId>
+  <name>test-trivialdice</name>
   <url>https://github.com/Hefezopf/TrivialDice.git</url>
-  <packaging>apk</packaging>
-
-  <organization>
-    <name>Markus Hopf</name>
-    <url>http://www.hopf-it.de</url>
-  </organization>
-
+  <packaging>jar</packaging>
+   
   <dependencies>
     <dependency>
       <groupId>com.google.android</groupId>
@@ -26,53 +21,28 @@
       <version>${android.version}</version>
       <scope>provided</scope>
     </dependency>
-
+ 
     <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>android-test</artifactId>
       <version>${android-test.version}</version>
       <scope>provided</scope>
     </dependency>
-
+      
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
+<!--       <scope>test</scope> -->
     </dependency>
-
+    
     <dependency>
       <groupId>de.hopf.mobile</groupId>
-      <artifactId>trivialdice-lite</artifactId>
+      <artifactId>trivialdice-common</artifactId>
       <version>1.27</version>
       <type>jar</type>
     </dependency>
-
-    <dependency>
-      <groupId>de.hopf.mobile</groupId>
-      <artifactId>test-trivialdice</artifactId>
-      <version>1.27</version>
-      <type>jar</type>
-    </dependency>
-
+    
   </dependencies>
-
-  <scm>
-    <connection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
-    </connection>
-    <url>git@github.com:Hefezopf/TrivialDiceLite.git</url>
-    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git</developerConnection>
-    <tag>Android</tag>
-  </scm>
-
-  <build>
-    <finalName>${project.artifactId}</finalName>
-    <plugins>
-      <plugin>
-        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-        <artifactId>android-maven-plugin</artifactId>
-        <extensions>true</extensions>
-      </plugin>
-    </plugins>
-  </build>
-
+    
 </project>

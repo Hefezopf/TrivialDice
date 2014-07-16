@@ -28,6 +28,9 @@
 
   <modules>
     <module>trivialdice-common</module>
+	  
+    <module>test-trivialdice</module>	
+
     <module>trivialdice-lite</module>
     <module>trivialdice-premium</module>
     <module>trivialcolordice-lite</module>

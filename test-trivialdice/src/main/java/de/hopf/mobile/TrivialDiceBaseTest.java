@@ -1,31 +1,35 @@
-package test.de.hopf.mobile;
+package de.hopf.mobile;
 
+import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.test.ViewAsserts;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
 import android.widget.TextView;
-import de.hopf.android.trivialdice.color.lite.R;
-import de.hopf.android.trivialdice.color.lite.StartDice;
-import de.hopf.mobile.DrawView;
 
-public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<StartDice>
+public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCase2<Activity>
 { 
     private Button mButton;
     private TextView mLink;
-    private StartDice startDice;
-
-    public TrivialColorDiceLiteTest() {
-        super(StartDice.class);
+    private Activity startDice;
+    
+    private final int keyStartBtn; 
+    private final int keyLinkTextView;
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public TrivialDiceBaseTest(Class clazz, int keyStartBtn, int keyLinkTextView) {
+        super(clazz);
+        this.keyStartBtn = keyStartBtn;
+        this.keyLinkTextView = keyLinkTextView;
     }    
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         startDice = getActivity();
-        mButton = (Button) getActivity().findViewById(R.id.start); 
-        mLink = (TextView) getActivity().findViewById(R.id.link_text); 
+        mButton = (Button) getActivity().findViewById(keyStartBtn); 
+        mLink = (TextView) getActivity().findViewById(keyLinkTextView); 
     }
 
     @Override
@@ -34,14 +38,14 @@ public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<S
     }
     
     @MediumTest
-    public void testSplashScreen() {        
+    public void testSplashScreen() {    
         assertFalse(startDice.getCurrentFocus() instanceof DrawView);
         assertTrue(startDice.getCurrentFocus() instanceof Button);
 
         TouchUtils.tapView(this, mButton);
         
-        assertNotNull(startDice.getNumber());
-        assertFalse(startDice.hasInterrupted());
+        assertNotNull(((Data)startDice).getNumber());
+        assertFalse(((Data)startDice).hasInterrupted());
 
         DrawView dv = (DrawView) startDice.getCurrentFocus();
         assertNotNull(dv);
@@ -51,13 +55,13 @@ public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<S
         
         for (int i = 0; i < 100; i++) {
         	TouchUtils.tapView(this, dv);
-        	assertNotNull(startDice.getNumber());
-        	if(startDice.getCounter() == 0){
+        	assertNotNull(((Data)startDice).getNumber());
+        	if(((Data)startDice).getCounter() == 0){
         		break;
         	}
 		}
-        assertNotNull(startDice.getNumber());
-        assertTrue(startDice.getCounter() == 0);
+        assertNotNull(((Data)startDice).getNumber());
+        assertTrue(((Data)startDice).getCounter() == 0);
         startDice.finish();
     }
     
@@ -75,8 +79,8 @@ public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<S
 
         TouchUtils.tapView(this, mButton);
         
-        assertNotNull(startDice.getNumber());
-        assertFalse(startDice.hasInterrupted());
+        assertNotNull(((Data)startDice).getNumber());
+        assertFalse(((Data)startDice).hasInterrupted());
 
         DrawView dv = (DrawView) startDice.getCurrentFocus();
         assertNotNull(dv);
@@ -84,7 +88,7 @@ public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<S
         
         TouchUtils.tapView(this, dv);
         
-        assertNotNull(startDice.getNumber());
+        assertNotNull(((Data)startDice).getNumber());
         
         startDice.finish();
     }
@@ -110,20 +114,11 @@ public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<S
         
         // At this point you could test for various configuration aspects, or you could 
         // use a Mock Context to confirm that your activity has made certain calls to the system
-        // and set itself up properly.
-        
+        // and set itself up properly.     
         getInstrumentation().callActivityOnPause(startDice);
         
         // At this point you could confirm that the activity has paused properly, as if it is
         // no longer the topmost activity on screen.
-        
         getInstrumentation().callActivityOnStop(startDice);
-        
-        // At this point, you could confirm that the activity has shut itself down appropriately,
-        // or you could use a Mock Context to confirm that your activity has released any system
-        // resources it should no longer be holding.
-
-        // ActivityUnitTestCase.tearDown(), which is always automatically called, will take care
-        // of calling onDestroy().
     }
 }
