@@ -10,13 +10,20 @@ import android.widget.TextView;
 
 public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCase2<Activity>
 { 
-    private Button mButton;
+    private Button startButton;
     private TextView mLink;
     private Activity startDice;
     
-    private final int keyStartBtn; 
-    private final int keyLinkTextView;
+    private int keyStartBtn; 
+    private int keyLinkTextView;
     
+    // Premium
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public TrivialDiceBaseTest(Class clazz) {
+        super(clazz);
+    }    
+    
+    // Lite
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public TrivialDiceBaseTest(Class clazz, int keyStartBtn, int keyLinkTextView) {
         super(clazz);
@@ -28,7 +35,7 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
     protected void setUp() throws Exception {
         super.setUp();
         startDice = getActivity();
-        mButton = (Button) getActivity().findViewById(keyStartBtn); 
+        startButton = (Button) getActivity().findViewById(keyStartBtn); 
         mLink = (TextView) getActivity().findViewById(keyLinkTextView); 
     }
 
@@ -55,19 +62,28 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
     }
     
     @MediumTest
-    public void testViewsCreated() {
+    public void testStartDiceViewCreated() {
       assertNotNull(startDice);
-      assertNotNull(mButton);
-      ViewAsserts.assertOnScreen(mButton.getRootView(), mButton);
     }
     
     @MediumTest
-    public void testSubLaunch() {        
-        assertFalse(startDice.getCurrentFocus() instanceof DrawView);
-        assertTrue(startDice.getCurrentFocus() instanceof Button);
+    public void testStartButtonViewCreated() {
+      assertNotNull(startButton);
+      ViewAsserts.assertOnScreen(startButton.getRootView(), startButton);
+    }
+    
+    @MediumTest
+    public void testSubLaunch() { 
+        if(keyStartBtn == 0){ // Premium
+            assertTrue(startDice.getCurrentFocus() instanceof DrawView);
+        }
+        else{ // Lite
+            assertFalse(startDice.getCurrentFocus() instanceof DrawView);
+            assertTrue(startDice.getCurrentFocus() instanceof Button);
 
-        TouchUtils.tapView(this, mButton);
-        
+            TouchUtils.tapView(this, startButton);                    
+        }
+    
         assertNotNull(((Data)startDice).getNumber());
         assertFalse(((Data)startDice).hasInterrupted());
 
@@ -99,7 +115,7 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
         assertFalse(startDice.getCurrentFocus() instanceof DrawView);
         assertTrue(startDice.getCurrentFocus() instanceof Button);
 
-        TouchUtils.tapView(this, mButton);
+        TouchUtils.tapView(this, startButton);
         
         assertNotNull(((Data)startDice).getNumber());
         assertFalse(((Data)startDice).hasInterrupted());

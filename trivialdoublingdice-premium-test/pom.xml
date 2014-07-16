@@ -42,6 +42,13 @@
 
     <dependency>
       <groupId>de.hopf.mobile</groupId>
+      <artifactId>test-trivialdice</artifactId>
+      <version>1.27</version>
+      <type>jar</type>
+    </dependency>
+
+    <dependency>
+      <groupId>de.hopf.mobile</groupId>
       <artifactId>trivialdoublingdice-premium</artifactId>
       <version>1.27</version>
       <type>jar</type>
