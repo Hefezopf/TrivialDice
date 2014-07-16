@@ -10,6 +10,9 @@
   <name>trivialdice-parent</name>
 
   <properties>
+    <android.manifest.versionName>1.26</android.manifest.versionName>
+    <android.manifest.versionCode>26</android.manifest.versionCode>
+
     <jdk.version>1.6</jdk.version>
     <android.version>4.1.1.4</android.version>
     <android-test.version>2.3.1</android-test.version>
@@ -17,8 +20,6 @@
     <exec-maven-plugin.version>1.1.1</exec-maven-plugin.version>
     <maven-jarsigner-plugin.version>1.2</maven-jarsigner-plugin.version>
     <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-    <!-- <maven-release-plugin.version>2.5</maven-release-plugin.version> -->
-
     <junit.version>4.8.1</junit.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,7 +54,6 @@
   </developers>
 
   <build>
-    <!-- To define the plugin version in your parent POM -->
     <pluginManagement>
       <plugins>
 
@@ -61,68 +61,14 @@
           <groupId>com.jayway.maven.plugins.android.generation2</groupId>
           <artifactId>android-maven-plugin</artifactId>
           <version>${android-maven-plugin.version}</version>
-<!--           <executions> -->
-                    
-<!--             <execution> -->
-<!--               <id>update-manifest</id> -->
-<!--               <goals> -->
-<!--                 <goal>manifest-update</goal> -->
-<!--               </goals> -->
-<!--               <configuration> -->
-<!--                 <manifest> -->
-<!--                   <versionCodeUpdateFromVersion>true</versionCodeUpdateFromVersion> -->
-
-<!--                   <supports-screens> -->
-<!--                     <anyDensity>true</anyDensity> -->
-<!--                     <xlargeScreens>false</xlargeScreens> -->
-<!--                   </supports-screens> -->
-
-<!--                   <compatible-screens> -->
-<!--                     <compatible-screen> -->
-<!--                       <screenSize>small</screenSize> -->
-<!--                       <screenDensity>ldpi</screenDensity> -->
-<!--                     </compatible-screen> -->
-<!--                   </compatible-screens> -->
-<!--                 </manifest> -->
-<!--               </configuration> -->
-<!--             </execution> -->
-            
-<!--             <execution> -->
-<!--               <id>default</id> -->
-<!--               <goals> -->
-<!--                 <goal>deploy</goal> -->
-<!--               </goals>           -->
-        <configuration>
-        <release>true</release>
-        <sdk>
-        <platform>5</platform>
-        </sdk>
-        <undeployBeforeDeploy>true</undeployBeforeDeploy>
-        </configuration>
-<!-- </execution> -->
-            
-<!--           </executions> -->
+          <configuration>
+            <release>true</release>
+            <sdk>
+              <platform>5</platform>
+            </sdk>
+            <undeployBeforeDeploy>true</undeployBeforeDeploy>
+          </configuration>
         </plugin>
-
-<!--         <plugin> -->
-<!--         <groupId>com.jayway.maven.plugins.android.generation2</groupId> -->
-<!--         <artifactId>android-maven-plugin</artifactId> -->
-<!--         <configuration> -->
-<!--         <release>true</release> -->
-<!--         <sdk> -->
-<!--         <platform>5</platform> -->
-<!--         </sdk> -->
-<!--         <undeployBeforeDeploy>true</undeployBeforeDeploy> -->
-<!--         </configuration> -->
-<!--         </plugin> -->
-
-        <!-- <plugin> -->
-        <!-- <artifactId>maven-release-plugin</artifactId> -->
-        <!-- <version>${maven-release-plugin.version}</version> -->
-        <!-- <configuration> -->
-        <!-- <tagNameFormat>v@{project.version}</tagNameFormat> -->
-        <!-- </configuration> -->
-        <!-- </plugin> -->
 
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

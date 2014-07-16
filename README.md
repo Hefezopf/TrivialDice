@@ -20,13 +20,14 @@ mvn install -Psign
 
 Manifest versions increment:
 ----------------------------
-mvn android:manifest-update -Dandroid.manifest.versionName=2.0 -Dandroid.manifest.versionCode=33
+mvn android:manifest-update (vorher Properties in der Parent POM einstellen)
+mvn android:manifest-update -Dandroid.manifest.versionName=1.13 -Dandroid.manifest.versionCode=13
 
 Artifact versions increment:
 -----------------------------
 mvn versions:set -DnewVersion=1.0 
 mvn clean install
-mvn versions:set -DnewVersion=1.1-SNAPSHOT 
+mvn versions:set -DnewVersion=1.1-SNAPSHOT
 mvn clean install
 
 Upload:

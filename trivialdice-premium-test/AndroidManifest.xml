@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="test.de.hopf.mobile.trivialdice"
-      android:versionCode="1"
-      android:versionName="1.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="16" android:versionName="1.6" package="test.de.hopf.mobile.trivialdice">
       
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="20" />  
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="20"/>  
                 
     <application android:allowBackup="true">
-        <uses-library android:name="android.test.runner" />
+        <uses-library android:name="android.test.runner"/>
     </application>
 
-    <instrumentation android:targetPackage="de.hopf.mobile.trivialdice" android:name="android.test.InstrumentationTestRunner" />
-</manifest> 
+    <instrumentation android:name="android.test.InstrumentationTestRunner" android:targetPackage="de.hopf.mobile.trivialdice"/>
+</manifest>
