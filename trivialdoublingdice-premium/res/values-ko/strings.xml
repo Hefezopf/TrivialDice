@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">사소한 배로 주사위</string>
+    <string name="title">\n사소한 배로 주사위\n</string>
+    <string name="hit">롤 스크린을 명중</string>    
+</resources>

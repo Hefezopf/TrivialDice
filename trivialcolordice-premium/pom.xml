@@ -45,8 +45,8 @@
   <scm>
     <connection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
     </connection>
-    <url>git@github.com:Hefezopf/TrivialColorDiceLite.git</url>
-    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialColorDiceLite.git
+    <url>git@github.com:Hefezopf/TrivialDiceLite.git</url>
+    <developerConnection>scm:git:git@github.com:Hefezopf/TrivialDiceLite.git
     </developerConnection>
     <tag>Android</tag>
   </scm>
