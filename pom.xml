@@ -10,8 +10,8 @@
   <name>trivialdice-parent</name>
 
   <properties>
-    <android.manifest.versionCode>27</android.manifest.versionCode>
-    <android.manifest.versionName>1.27</android.manifest.versionName>
+    <android.manifest.versionCode>28</android.manifest.versionCode>
+    <android.manifest.versionName>1.28</android.manifest.versionName>
 
     <jdk.version>1.6</jdk.version>
     <android.version>4.1.1.4</android.version>
