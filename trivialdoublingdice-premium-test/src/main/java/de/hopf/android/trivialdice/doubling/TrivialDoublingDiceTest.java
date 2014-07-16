@@ -7,11 +7,11 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import de.hopf.mobile.DrawView;
 
-public class TrivialColorDiceTest extends ActivityInstrumentationTestCase2<StartDice>
+public class TrivialDoublingDiceTest extends ActivityInstrumentationTestCase2<StartDice>
 { 
     private StartDice startDice;
 
-    public TrivialColorDiceTest() {
+    public TrivialDoublingDiceTest() {
         super(StartDice.class);
     }    
 
