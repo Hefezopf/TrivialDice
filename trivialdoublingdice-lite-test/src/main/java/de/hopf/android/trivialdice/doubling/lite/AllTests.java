@@ -1,4 +1,4 @@
-package test.de.hopf.android.trivialdice.doubling.lite;
+package de.hopf.android.trivialdice.doubling.lite;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

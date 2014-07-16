@@ -38,31 +38,20 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
     }
     
     @MediumTest
-    public void testSplashScreen() {    
-        assertFalse(startDice.getCurrentFocus() instanceof DrawView);
-        assertTrue(startDice.getCurrentFocus() instanceof Button);
-
-        TouchUtils.tapView(this, mButton);
+    public void testLifeCycleCreate() {
+        // At this point, onCreate() has been called, but nothing else
+        // Complete the startup of the activity
+        getInstrumentation().callActivityOnStart(startDice);
+        getInstrumentation().callActivityOnResume(startDice);
         
-        assertNotNull(((Data)startDice).getNumber());
-        assertFalse(((Data)startDice).hasInterrupted());
-
-        DrawView dv = (DrawView) startDice.getCurrentFocus();
-        assertNotNull(dv);
-        assertTrue(startDice.getCurrentFocus() instanceof DrawView);
-    
-        TouchUtils.tapView(this, dv);
+        // At this point you could test for various configuration aspects, or you could 
+        // use a Mock Context to confirm that your activity has made certain calls to the system
+        // and set itself up properly.     
+        getInstrumentation().callActivityOnPause(startDice);
         
-        for (int i = 0; i < 100; i++) {
-        	TouchUtils.tapView(this, dv);
-        	assertNotNull(((Data)startDice).getNumber());
-        	if(((Data)startDice).getCounter() == 0){
-        		break;
-        	}
-		}
-        assertNotNull(((Data)startDice).getNumber());
-        assertTrue(((Data)startDice).getCounter() == 0);
-        startDice.finish();
+        // At this point you could confirm that the activity has paused properly, as if it is
+        // no longer the topmost activity on screen.
+        getInstrumentation().callActivityOnStop(startDice);
     }
     
     @MediumTest
@@ -92,7 +81,7 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
         
         startDice.finish();
     }
-     
+       
     @MediumTest
     public void testPurchaseLink() {        
         assertFalse(startDice.getCurrentFocus() instanceof DrawView);
@@ -103,22 +92,33 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
         assertFalse(startDice.getCurrentFocus() instanceof Button);
                 
         startDice.finish();
-    }
+    }    
     
     @MediumTest
-    public void testLifeCycleCreate() {
-        // At this point, onCreate() has been called, but nothing else
-        // Complete the startup of the activity
-        getInstrumentation().callActivityOnStart(startDice);
-        getInstrumentation().callActivityOnResume(startDice);
+    public void testSplashScreen() {    
+        assertFalse(startDice.getCurrentFocus() instanceof DrawView);
+        assertTrue(startDice.getCurrentFocus() instanceof Button);
+
+        TouchUtils.tapView(this, mButton);
         
-        // At this point you could test for various configuration aspects, or you could 
-        // use a Mock Context to confirm that your activity has made certain calls to the system
-        // and set itself up properly.     
-        getInstrumentation().callActivityOnPause(startDice);
+        assertNotNull(((Data)startDice).getNumber());
+        assertFalse(((Data)startDice).hasInterrupted());
+
+        DrawView dv = (DrawView) startDice.getCurrentFocus();
+        assertNotNull(dv);
+        assertTrue(startDice.getCurrentFocus() instanceof DrawView);
+    
+        TouchUtils.tapView(this, dv);
         
-        // At this point you could confirm that the activity has paused properly, as if it is
-        // no longer the topmost activity on screen.
-        getInstrumentation().callActivityOnStop(startDice);
-    }
+        for (int i = 0; i < 100; i++) {
+            TouchUtils.tapView(this, dv);
+            assertNotNull(((Data)startDice).getNumber());
+            if(((Data)startDice).getCounter() == 0){
+                break;
+            }
+        }
+        assertNotNull(((Data)startDice).getNumber());
+        assertTrue(((Data)startDice).getCounter() == 0);
+        startDice.finish();
+    }    
 }
