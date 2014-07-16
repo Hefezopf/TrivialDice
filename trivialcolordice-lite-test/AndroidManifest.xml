@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="26" android:versionName="1.26" package="test.de.hopf.android.trivialdice.color.lite">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="27" android:versionName="1.27" package="test.de.hopf.android.trivialdice.color.lite">
       
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="20"/>  
                  
