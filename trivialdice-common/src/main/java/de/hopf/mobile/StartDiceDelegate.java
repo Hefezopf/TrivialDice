@@ -35,10 +35,25 @@ public class StartDiceDelegate implements Data {
     private static final String COUNT_KEY = "COUNT_KEY";
     private static final String INTERRUPTED_KEY = "INTERRUPTED_KEY";
     private int KANTEN_LAENGE;
-    DisplayMetrics metrics;
+    private DisplayMetrics metrics;
 
+    // Premium
+    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, DiceType diceType) {
+        this.activity = activity;
+        this.diceSoundKey = diceSoundKey;
+        this.hitMsgKey = hitMsgKey;
+        this.mainMsgKey = mainMsgKey;
+        this.diceType = diceType;
+        
+        this.linkMsgKey = 0;
+        this.titleMsgKey = 0;
+        this.startMsgKey = 0;
+        this.bLite = false;
+    }
+
+    // Lite
     public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
-            int titleMsgKey, int startMsgKey, boolean bLite, DiceType diceType) {
+            int titleMsgKey, int startMsgKey, DiceType diceType) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -46,8 +61,9 @@ public class StartDiceDelegate implements Data {
         this.linkMsgKey = linkMsgKey;
         this.titleMsgKey = titleMsgKey;
         this.startMsgKey = startMsgKey;
-        this.bLite = bLite;
         this.diceType = diceType;
+        
+        this.bLite = true;
     }
 
     public void onCreate(Bundle savedInstanceState) {
