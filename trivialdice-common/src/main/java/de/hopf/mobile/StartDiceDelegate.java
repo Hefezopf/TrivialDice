@@ -122,6 +122,7 @@ public class StartDiceDelegate implements Data {
     }
 
     private final OnClickListener mGetListener = new OnClickListener() {
+        @Override
         public void onClick(View v) {
             activity.setContentView(drawView);
             drawView.requestFocus();
@@ -133,10 +134,12 @@ public class StartDiceDelegate implements Data {
         outState.putSerializable(INTERRUPTED_KEY, Boolean.TRUE);
     }
 
+    @Override
     public Integer getNumber() {
         return number;
     }
 
+    @Override
     public void setNumber(Integer number) {
         this.number = number;
         counter++;
@@ -152,18 +155,22 @@ public class StartDiceDelegate implements Data {
         }
     }
 
+    @Override
     public Boolean hasInterrupted() {
         return bInterrupted;
     }
 
+    @Override
     public void setInterrupted(Boolean bInterrupted) {
         this.bInterrupted = bInterrupted;
     }
 
+    @Override
     public Boolean hasRolled() {
         return bRoll;
     }
 
+    @Override
     public void setRolled(Boolean bRoll) {
         this.bRoll = bRoll;
     }
