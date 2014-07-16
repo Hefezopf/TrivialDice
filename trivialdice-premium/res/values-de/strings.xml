@@ -2,7 +2,5 @@
 <resources>
     <string name="app_name">Trivial Dice</string>
     <string name="title">\nTrivial Dice\n</string>
-    <string name="link_text">Hole <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.color">voll Version</a></b> hier!\n</string>
-    <string name="start">Weiter&#8230;</string>
     <string name="hit">Berühren um zu würfeln</string>    
 </resources>
