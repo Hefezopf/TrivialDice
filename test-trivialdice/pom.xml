@@ -33,12 +33,11 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
-<!--       <scope>test</scope> -->
     </dependency>
     
     <dependency>
       <groupId>de.hopf.mobile</groupId>
-      <artifactId>trivialdice-common</artifactId>
+      <artifactId>common-trivialdice</artifactId>
       <version>1.27</version>
       <type>jar</type>
     </dependency>

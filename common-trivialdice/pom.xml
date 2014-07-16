@@ -9,8 +9,8 @@
     <version>1.27</version>
   </parent>
 
-  <artifactId>trivialdice-common</artifactId>
-  <name>trivialdice-common</name>
+  <artifactId>common-trivialdice</artifactId>
+  <name>common-trivialdice</name>
   <url>https://github.com/Hefezopf/TrivialDice.git</url>
   <packaging>jar</packaging>
    

@@ -27,7 +27,7 @@
   </properties>
 
   <modules>
-    <module>trivialdice-common</module>
+    <module>common-trivialdice</module>
 	  
     <module>test-trivialdice</module>	
 

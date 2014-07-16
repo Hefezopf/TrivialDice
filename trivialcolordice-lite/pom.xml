@@ -35,7 +35,7 @@
 
     <dependency>
       <groupId>de.hopf.mobile</groupId>
-      <artifactId>trivialdice-common</artifactId>
+      <artifactId>common-trivialdice</artifactId>
       <version>1.27</version>
       <type>jar</type>
     </dependency>
