@@ -13,8 +13,6 @@
 
     </application>
      
-<!--	<uses-permission android:name="android.permission.INTERNET"></uses-permission>-->
-
     <instrumentation android:name="android.test.InstrumentationTestRunner" android:targetPackage="de.hopf.mobile"/>
 
 </manifest>

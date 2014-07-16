@@ -6,6 +6,7 @@ import android.test.ViewAsserts;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
 import android.widget.TextView;
+import de.hopf.android.trivialdice.color.lite.R;
 import de.hopf.android.trivialdice.color.lite.StartDice;
 import de.hopf.mobile.DrawView;
 
@@ -23,8 +24,8 @@ public class TrivialColorDiceLiteTest extends ActivityInstrumentationTestCase2<S
     protected void setUp() throws Exception {
         super.setUp();
         startDice = getActivity();
-        mButton = (Button) getActivity().findViewById(de.hopf.android.trivialdice.color.lite.R.id.start); 
-        mLink = (TextView) getActivity().findViewById(de.hopf.android.trivialdice.color.lite.R.id.link_text); 
+        mButton = (Button) getActivity().findViewById(R.id.start); 
+        mLink = (TextView) getActivity().findViewById(R.id.link_text); 
     }
 
     @Override

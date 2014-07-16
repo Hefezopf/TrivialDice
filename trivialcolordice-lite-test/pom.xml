@@ -11,7 +11,7 @@
 
   <artifactId>trivialcolordice-lite-test</artifactId>
   <name>trivialcolordice-lite-test</name>
-  <url>https://github.com/Hefezopf/TrivialColorDice.git</url>
+  <url>https://github.com/Hefezopf/TrivialDice.git</url>
   <packaging>apk</packaging>
 
   <organization>
@@ -64,14 +64,6 @@
         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
         <artifactId>android-maven-plugin</artifactId>
         <extensions>true</extensions>
-        <configuration>
-        <release>true</release>
-        <sdk>
-        <platform>5</platform>
-        </sdk>
-        <undeployBeforeDeploy>false</undeployBeforeDeploy>
-        </configuration>
-
       </plugin>
     </plugins>
   </build>

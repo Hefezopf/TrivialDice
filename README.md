@@ -16,6 +16,7 @@ APK's (xxx-zipaligned.apk) von Hand in der Webseite hochladen: https://play.goog
 Build:
 ------
 vom Parent Dir:
+mvn clean package android:delpoy -> /target/<trivialdice-xxx>.apk  -> mit Tests auf dem Emulator!
 mvn clean install android:delpoy -> /target/<trivialdice-xxx>.apk  -> mit Tests auf dem Emulator!
 mvn install -Psign -> /target/<trivialdice-xxx>-zipaligned.apk
 mvn android:undelpoy

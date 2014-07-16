@@ -7,6 +7,7 @@ import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
 import android.widget.TextView;
 import de.hopf.mobile.DrawView;
+import de.hopf.mobile.R;
 import de.hopf.mobile.StartDice;
 
 public class TrivialDiceLiteTest extends ActivityInstrumentationTestCase2<StartDice>
@@ -23,8 +24,8 @@ public class TrivialDiceLiteTest extends ActivityInstrumentationTestCase2<StartD
     protected void setUp() throws Exception {
         super.setUp();
         startDice = getActivity();
-        mButton = (Button) getActivity().findViewById(de.hopf.mobile.R.id.start);
-        mLink = (TextView) getActivity().findViewById(de.hopf.mobile.R.id.link_text);         
+        mButton = (Button) getActivity().findViewById(R.id.start);
+        mLink = (TextView) getActivity().findViewById(R.id.link_text);         
     }
 
     @Override

@@ -18,20 +18,20 @@ import android.view.WindowManager;
 
 public class DrawView extends View implements OnTouchListener, Serializable {
     private static final long serialVersionUID = 1L;
-    List<Point> pointsONE = new ArrayList<Point>();
-    List<Point> pointsTWO = new ArrayList<Point>();
-    List<Point> pointsTHREE = new ArrayList<Point>();
-    List<Point> pointsFOUR = new ArrayList<Point>();
-    List<Point> pointsFIVE = new ArrayList<Point>();
-    List<Point> pointsSIX = new ArrayList<Point>();
-    WindowManager wm;
-    Paint paint;
-    MediaPlayer mp;
-    DisplayMetrics metrics;
+    private final List<Point> pointsONE = new ArrayList<Point>();
+    private final List<Point> pointsTWO = new ArrayList<Point>();
+    private final List<Point> pointsTHREE = new ArrayList<Point>();
+    private final List<Point> pointsFOUR = new ArrayList<Point>();
+    private final List<Point> pointsFIVE = new ArrayList<Point>();
+    private final List<Point> pointsSIX = new ArrayList<Point>();
+    private final WindowManager wm;
+    private Paint paint;
+    private MediaPlayer mp;
+    private DisplayMetrics metrics;
 
-    int diceSoundKey;
-    int hitMsgKey;
-    DiceType diceType;
+    private final int diceSoundKey;
+    private final int hitMsgKey;
+    private final DiceType diceType;
 
     public DrawView(Context context, WindowManager wm, int diceSoundKey, int hitMsgKey, DiceType diceType) {
         super(context);
@@ -74,8 +74,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         case DICE_COLOR:
             setupDiceColor(KANTEN_LAENGE, linkerRand, obererRand);
             break;
-        default:
+        case DICE_DOUBLING:
+            setupDiceDoubling(KANTEN_LAENGE, linkerRand, obererRand);
             break;
+        default:
+            throw new IllegalArgumentException("Unbekannter Enum DiceType!");
         }
     }
 
@@ -112,6 +115,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         addPoint(linkerRand + (KANTEN_LAENGE / 2), obererRand + (KANTEN_LAENGE / 2), pointsONE);
     }
 
+    private void setupDiceDoubling(final int KANTEN_LAENGE, int linkerRand, int obererRand) {
+        addPoint(linkerRand + (KANTEN_LAENGE / 2), obererRand + (KANTEN_LAENGE / 2), pointsONE);
+    }
+    
     private void addPoint(int x, int y, List<Point> points) {
         Point point = new Point();
         point.x = x;
@@ -192,8 +199,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         case DICE_COLOR:
             drawDiceColor(canvas, KANTEN_LAENGE, points);
             break;
-        default:
+        case DICE_DOUBLING:
+            drawDiceDoubling(canvas, KANTEN_LAENGE, points);
             break;
+        default:
+            throw new IllegalArgumentException("Unbekannter Enum DiceType!");
         }
     }
 
@@ -253,6 +263,40 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         paint.setColor(Color.WHITE);
     }
 
+    private void drawDiceDoubling(Canvas canvas, final int KANTEN_LAENGE, List<Point> points) {
+        points = pointsONE;
+        paint.setColor(Color.WHITE);
+        String text = "";
+        switch (((Data) this.getContext()).getNumber().intValue()) {
+        case 0:
+            text = "2";
+            break;
+        case 1:
+            text = "4";
+            break;
+        case 2:
+            text = "8";
+            break;
+        case 3:
+            text = "16";
+            break;
+        case 4:
+            text = "32";
+            break;
+        case 5:
+            text = "64";
+            break;
+        default:
+        }
+        
+        paint.setTextSize(KANTEN_LAENGE/2); 
+        for (Point point : points) {
+            canvas.drawText(text, point.x, point.y + (paint.getTextSize()/3), paint);
+        }
+        paint.setTextSize(KANTEN_LAENGE / 10);        
+    }
+
+    @Override
     public boolean onTouch(View view, MotionEvent event) {
         if (event.getAction() != MotionEvent.ACTION_DOWN) {
             return false;

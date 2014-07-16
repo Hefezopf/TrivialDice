@@ -11,7 +11,7 @@
 
   <artifactId>trivialcolordice-lite</artifactId>
   <name>trivialcolordice-lite</name>
-  <url>https://github.com/Hefezopf/TrivialColorDice.git</url>
+  <url>https://github.com/Hefezopf/TrivialDice.git</url>
   <packaging>apk</packaging>
  
   <organization>

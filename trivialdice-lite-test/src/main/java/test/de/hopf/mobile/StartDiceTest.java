@@ -8,6 +8,7 @@ import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import de.hopf.mobile.DrawView;
+import de.hopf.mobile.R;
 import de.hopf.mobile.StartDice;
 
 /**
@@ -44,7 +45,7 @@ public class StartDiceTest extends ActivityInstrumentationTestCase2<StartDice> {
     protected void setUp() throws Exception {
         super.setUp();
         startDice = getActivity();
-        mButton = (Button) getActivity().findViewById(de.hopf.mobile.R.id.start); 
+        mButton = (Button) getActivity().findViewById(R.id.start); 
     }
 
     @Override

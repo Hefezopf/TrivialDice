@@ -78,8 +78,7 @@ public class StartDiceDelegate implements Data {
             bInterrupted = (Boolean) savedInstanceState.getSerializable(INTERRUPTED_KEY);
         }
 
-        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey,
-                this.diceType);
+        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey, this.diceType);
         activity.setContentView(drawView);
         drawView.requestFocus();
 
