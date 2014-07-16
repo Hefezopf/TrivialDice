@@ -17,7 +17,7 @@ Build:
 ------
 vom Parent Dir:
 mvn clean package android:delpoy -> /target/<trivialdice-xxx>.apk  -> mit Tests auf dem Emulator!
-mvn clean install android:delpoy -> /target/<trivialdice-xxx>.apk  -> mit Tests auf dem Emulator!
+mvn clean install -DskipTests android:delpoy -> /target/<trivialdice-xxx>.apk  -> mit Tests auf dem Emulator!
 mvn install -Psign -> /target/<trivialdice-xxx>-zipaligned.apk
 mvn android:undelpoy
 mvn android:delpoy
@@ -34,10 +34,11 @@ mvn android:manifest-update -Dandroid.manifest.versionName=1.13 -Dandroid.manife
 
 Artifact versions increment:
 -----------------------------
-mvn versions:set -DnewVersion=1.0 
-mvn clean install
-mvn versions:set -DnewVersion=1.1-SNAPSHOT
-mvn clean install
+mvn versions:set -DnewVersion=1.17 
+mvn clean install -DskipTests
+mvn versions:commit (löscht pom.xml.versionsBackup Files)
+mvn versions:set -DnewVersion=1.8-SNAPSHOT
+mvn clean install -DskipTests
 
 Upload:
 -------
