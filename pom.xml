@@ -13,7 +13,7 @@
     <jdk.version>1.6</jdk.version>
     <android.version>4.1.1.4</android.version>
     <android-test.version>2.3.1</android-test.version>
-    <android-maven-plugin.version>3.9.0-rc.1</android-maven-plugin.version>
+    <android-maven-plugin.version>3.9.0-rc.2</android-maven-plugin.version>
     <exec-maven-plugin.version>1.1.1</exec-maven-plugin.version>
     <maven-jarsigner-plugin.version>1.2</maven-jarsigner-plugin.version>
     <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>

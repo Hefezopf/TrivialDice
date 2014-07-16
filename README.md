@@ -20,6 +20,7 @@ mvn install -Psign
 
 Version increment:
 ------------------
+mvn android:manifest-update
 mvn versions:set -DnewVersion=1.0 
 mvn clean install
 mvn versions:set -DnewVersion=1.1-SNAPSHOT 
