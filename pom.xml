@@ -5,13 +5,13 @@
 
   <groupId>de.hopf.mobile</groupId>
   <artifactId>trivialdice-parent</artifactId>
-  <version>1.27</version>
+  <version>1.29</version>
   <packaging>pom</packaging>
   <name>trivialdice-parent</name>
 
   <properties>
-    <android.manifest.versionCode>28</android.manifest.versionCode>
-    <android.manifest.versionName>1.28</android.manifest.versionName>
+    <android.manifest.versionCode>29</android.manifest.versionCode>
+    <android.manifest.versionName>1.29</android.manifest.versionName>
 
     <jdk.version>1.6</jdk.version>
     <android.version>4.1.1.4</android.version>

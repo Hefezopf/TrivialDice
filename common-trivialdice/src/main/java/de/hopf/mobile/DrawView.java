@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -32,6 +35,9 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private final int diceSoundKey;
     private final int hitMsgKey;
     private final DiceType diceType;
+
+    private boolean bSoundOn = true;
+    private Bitmap soundbitmap;
 
     public DrawView(Context context, WindowManager wm, int diceSoundKey, int hitMsgKey, DiceType diceType) {
         super(context);
@@ -118,7 +124,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private void setupDiceDoubling(final int KANTEN_LAENGE, int linkerRand, int obererRand) {
         addPoint(linkerRand + (KANTEN_LAENGE / 2), obererRand + (KANTEN_LAENGE / 2), pointsONE);
     }
-    
+
     private void addPoint(int x, int y, List<Point> points) {
         Point point = new Point();
         point.x = x;
@@ -132,52 +138,13 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             metrics = new DisplayMetrics();
         }
         this.wm.getDefaultDisplay().getMetrics(metrics);
-        int width = metrics.widthPixels;
-        int height = metrics.heightPixels;
-        final int KANTEN_LAENGE = width / 2;
+        final int KANTEN_LAENGE = metrics.widthPixels / 2;
 
-        int linkerRand = (width - KANTEN_LAENGE) / 2;
-        int obererRand = (height - KANTEN_LAENGE) / 2;
-
-        paint.setTextAlign(Align.LEFT);
-        canvas.drawText("\u00A9" + " hopf-it.de", 10, KANTEN_LAENGE / 10, paint);
-        paint.setTextAlign(Align.CENTER);
-
-        String hit_text = this.getContext().getString(hitMsgKey);
-        canvas.drawText(hit_text, linkerRand + (KANTEN_LAENGE / 2), obererRand + KANTEN_LAENGE + (KANTEN_LAENGE / 10),
-                paint);
-
-        canvas.drawLine(linkerRand, obererRand, linkerRand + KANTEN_LAENGE, obererRand, paint);
-        canvas.drawLine(linkerRand, obererRand, linkerRand, obererRand + KANTEN_LAENGE, paint);
-        canvas.drawLine(linkerRand + KANTEN_LAENGE, obererRand, linkerRand + KANTEN_LAENGE, obererRand + KANTEN_LAENGE,
-                paint);
-        canvas.drawLine(linkerRand, obererRand + KANTEN_LAENGE, linkerRand + KANTEN_LAENGE, obererRand + KANTEN_LAENGE,
-                paint);
-
-        // Play sound
-        if (((Data) this.getContext()).hasRolled().equals(Boolean.TRUE)) {
-            if (mp == null) {
-                mp = MediaPlayer.create(this.getContext(), diceSoundKey);
-            } else if (mp != null) { // Reported Bug v1.5 Dec 23, 2010 2:59:25
-                                     // PM
-                mp.setVolume(2f, 2f);
-                mp.start();
-            }
-
-            ((Data) this.getContext()).setRolled(Boolean.FALSE);
-            invalidate();
-
-            return;
-        } else {
-            // Nicht beim Ersten mal!
-            if (((Data) this.getContext()).getNumber() != null) {
-                try {
-                    Thread.sleep(400);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        drawCopyright(canvas, KANTEN_LAENGE);
+        drawHitMessage(canvas, KANTEN_LAENGE);
+        drawDiceBorder(canvas, KANTEN_LAENGE);
+        drawSpeakerBitmap(canvas);
+        playSound();
 
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
@@ -191,7 +158,66 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             ((Data) this.getContext()).setNumber(0);
         }
 
-        // Normaler Würfel
+        drawDice(canvas, KANTEN_LAENGE, points);
+    }
+
+    private void drawCopyright(Canvas canvas, final int KANTEN_LAENGE) {
+        paint.setTextAlign(Align.LEFT);
+        canvas.drawText("\u00A9" + " hopf-it.de", 10, KANTEN_LAENGE / 10, paint);
+    }
+
+    private void drawDiceBorder(Canvas canvas, final int KANTEN_LAENGE) {
+        int linkesEck = (metrics.widthPixels - KANTEN_LAENGE) / 2;
+        int oberesEck = (metrics.heightPixels - KANTEN_LAENGE) / 2;
+        
+        canvas.drawLine(linkesEck, oberesEck, linkesEck + KANTEN_LAENGE, oberesEck, paint);
+        canvas.drawLine(linkesEck, oberesEck, linkesEck, oberesEck + KANTEN_LAENGE, paint);
+        canvas.drawLine(linkesEck + KANTEN_LAENGE, oberesEck, linkesEck + KANTEN_LAENGE, oberesEck + KANTEN_LAENGE,
+                paint);
+        canvas.drawLine(linkesEck, oberesEck + KANTEN_LAENGE, linkesEck + KANTEN_LAENGE, oberesEck + KANTEN_LAENGE,
+                paint);
+    }
+
+    private void drawHitMessage(Canvas canvas, final int KANTEN_LAENGE) {
+        int linkesEck = (metrics.widthPixels - KANTEN_LAENGE) / 2;
+        int oberesEck = (metrics.heightPixels - KANTEN_LAENGE) / 2;
+        
+        String hit_text = this.getContext().getString(hitMsgKey);
+        paint.setTextAlign(Align.CENTER);
+        canvas.drawText(hit_text, linkesEck + (KANTEN_LAENGE / 2), oberesEck + KANTEN_LAENGE + (KANTEN_LAENGE / 10),
+                paint);
+    }
+
+    private void playSound() {
+        if (bSoundOn && ((Data) this.getContext()).hasRolled().equals(Boolean.TRUE)) {
+            if (mp == null) {
+                mp = MediaPlayer.create(this.getContext(), diceSoundKey);
+            } else if (mp != null) { // Reported Bug v1.5 Dec 23, 2010 2:59:25
+                                     // PM
+                mp.setVolume(2f, 2f);
+                mp.start();
+            }
+
+            ((Data) this.getContext()).setRolled(Boolean.FALSE);
+
+            // Rausgenommen V1.28 am 17.7.2ß14
+            // invalidate();
+            // return;
+            // Rausgenommen V1.28 am 17.7.2ß14
+
+        } else {
+            // Nicht beim Ersten mal!
+            if (((Data) this.getContext()).getNumber() != null) {
+                try {
+                    Thread.sleep(400);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void drawDice(Canvas canvas, final int KANTEN_LAENGE, List<Point> points) {
         switch (diceType) {
         case DICE_NORMAL:
             drawDiceNormal(canvas, KANTEN_LAENGE, points);
@@ -205,6 +231,23 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         default:
             throw new IllegalArgumentException("Unbekannter Enum DiceType!");
         }
+    }
+
+    private void drawSpeakerBitmap(Canvas canvas) {
+        if (bSoundOn) {
+            soundbitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
+        } else {
+            soundbitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode);
+        }
+        canvas.drawBitmap(soundbitmap, getLeftBitmapPos(metrics.widthPixels), getTopBitmapPos(metrics.heightPixels), paint);
+    }
+
+    private int getTopBitmapPos(int height) {
+        return height - soundbitmap.getHeight() * 2;
+    }
+
+    private int getLeftBitmapPos(int width) {
+        return width / 2 - soundbitmap.getWidth() / 2;
     }
 
     private void drawDiceNormal(Canvas canvas, final int KANTEN_LAENGE, List<Point> points) {
@@ -287,13 +330,14 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             text = "64";
             break;
         default:
+            throw new IllegalArgumentException("Nummer nicht gültig!");
         }
-        
-        paint.setTextSize(KANTEN_LAENGE/2); 
+
+        paint.setTextSize(KANTEN_LAENGE / 2);
         for (Point point : points) {
-            canvas.drawText(text, point.x, point.y + (paint.getTextSize()/3), paint);
+            canvas.drawText(text, point.x, point.y + (paint.getTextSize() / 3), paint);
         }
-        paint.setTextSize(KANTEN_LAENGE / 10);        
+        paint.setTextSize(KANTEN_LAENGE / 10);
     }
 
     @Override
@@ -302,10 +346,30 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             return false;
         }
 
+        // Toggle sound
+        if(isSoundOnBitmapTouched(event)){
+            bSoundOn = !bSoundOn;
+            ((Data) this.getContext()).setRolled(Boolean.FALSE);
+            ((Data) this.getContext()).setInterrupted(Boolean.TRUE);
+            invalidate();
+            return true;
+        }
+
         ((Data) this.getContext()).setRolled(Boolean.TRUE);
         ((Data) this.getContext()).setInterrupted(Boolean.FALSE);
         invalidate();
 
         return true;
+    }
+
+    private boolean isSoundOnBitmapTouched(MotionEvent event) {
+        // if this is true, you've started your click inside your bitmap
+        if (event.getRawX() >= getLeftBitmapPos(metrics.widthPixels)
+                && event.getRawX() < (getLeftBitmapPos(metrics.widthPixels) + soundbitmap.getWidth())
+                && event.getRawY() >= getTopBitmapPos(metrics.heightPixels)
+                && event.getRawY() < (getTopBitmapPos(metrics.heightPixels) + soundbitmap.getHeight())) {
+            return true;
+        }
+        return false;
     }
 }

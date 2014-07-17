@@ -16,6 +16,7 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
     
     private int keyStartBtn; 
     private int keyLinkTextView;
+    private String purchaseURL; 
     
     // Premium
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -25,10 +26,11 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
     
     // Lite
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public TrivialDiceBaseTest(Class clazz, int keyStartBtn, int keyLinkTextView) {
+    public TrivialDiceBaseTest(Class clazz, int keyStartBtn, int keyLinkTextView, String purchaseURL) {
         super(clazz);
         this.keyStartBtn = keyStartBtn;
         this.keyLinkTextView = keyLinkTextView;
+        this.purchaseURL = purchaseURL;
     }    
 
     @Override
@@ -104,6 +106,8 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
         assertTrue(startDice.getCurrentFocus() instanceof Button);
 
         TouchUtils.tapView(this, mLink);
+        assertTrue(mLink.getText().toString().startsWith("Get full version here!"));
+        assertEquals(purchaseURL, mLink.getUrls()[0].getURL());
         
         assertFalse(startDice.getCurrentFocus() instanceof Button);
                 
@@ -126,7 +130,7 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
     
         TouchUtils.tapView(this, dv);
         
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             TouchUtils.tapView(this, dv);
             assertNotNull(((Data)startDice).getNumber());
             if(((Data)startDice).getCounter() == 0){
