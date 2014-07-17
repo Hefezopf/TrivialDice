@@ -6,9 +6,9 @@ A trivial dice app for android
 git clone https://github.com/Hefezopf/TrivialDice.git
 
 Komplette Schritte zum bauen und ausliefern:
--------------------------------------------
+--------------------------------------------
 start emulator -avd A8 -gpu on -wipe-data -scale 96dpi -dpi-device 160
-Evtl: mvn android:manifest-update (vorher Properties in der Parent POM einstellen). Nur wenn Verion im Apstore hochgezählt werden soll!
+Evtl: mvn android:manifest-update (vorher Properties in der Parent POM einstellen). Nur wenn Verion im Apstore hochgezï¿½hlt werden soll!
 mvn clean install -DskipTests
 mvn android:deploy 
 mvn integration-test
@@ -39,7 +39,7 @@ Artifact versions increment:
 -----------------------------
 mvn versions:set -DnewVersion=1.17 
 mvn clean install -DskipTests
-mvn versions:commit (löscht pom.xml.versionsBackup Files)
+mvn versions:commit (lï¿½scht pom.xml.versionsBackup Files)
 mvn versions:set -DnewVersion=1.8-SNAPSHOT
 mvn clean install -DskipTests
 
