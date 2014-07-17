@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">라이트를 두배로 사소한 주사위</string>
-    <string name="title">\n라이트를 두배로 사소한 주사위\n</string>
     <string name="hit">롤 스크린을 명중</string>    
     
     <string name="link_text">구멍 <b><a href="http://market.android.com/details?id=de.hopf.mobile.trivialdice">정식 버전</a></b> 여기에!\n</string>

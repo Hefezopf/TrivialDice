@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Trivial Doubling Dice</string>
-    <string name="title">\nTrivial Doubling Dice\n</string>
+    <string name="app_name">Trivial Cubo Duplicar</string>
     <string name="hit">Toque para lanzar los dados</string>    
 </resources>

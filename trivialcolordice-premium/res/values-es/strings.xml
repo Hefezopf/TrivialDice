@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Trivial Color Dice</string>
-    <string name="title">\nTrivial Color Dice\n</string>
+    <string name="app_name">Cubo de color simple</string>
     <string name="hit">Toque para lanzar los dados</string>    
 </resources>

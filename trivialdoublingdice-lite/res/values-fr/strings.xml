@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Trivial Doubling Dice Lite</string>
-    <string name="title">\nTrivial Doubling Dice Lite\n</string>
+    <string name="app_name">Trivial Dice Doubler Lite</string>
     <string name="hit">Toucher</string>    
     
     <string name="link_text">Chercher <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.doubling">comble version</a></b> ici!\n</string>
