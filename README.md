@@ -8,11 +8,12 @@ git clone https://github.com/Hefezopf/TrivialDice.git
 Komplette Schritte zum bauen und ausliefern:
 -------------------------------------------
 start emulator -avd A8 -gpu on -wipe-data -scale 96dpi -dpi-device 160
-mvn android:manifest-update (vorher Properties in der Parent POM einstellen). Nur wenn Verion im Apstore hochgezählt werden soll!
-mvn clean install package -Psign -DskipTests
-mvn android:deploy
+Evtl: mvn android:manifest-update (vorher Properties in der Parent POM einstellen). Nur wenn Verion im Apstore hochgezählt werden soll!
+mvn clean install -DskipTests
+mvn android:deploy 
 mvn integration-test
-[mvn package -Psign (-> target/xxx-zipaligned.apk)]
+Erst zum Schluss signen!
+mvn package -Psign (-> target/xxx-zipaligned.apk)
 APK's (xxx-zipaligned.apk) von Hand in der Webseite hochladen: https://play.google.com/apps/publish/?dev_acc=12007078229515208860#ApkPlace:p=de.hopf.mobile -> Button KONFIGURATION DER PRODUKTIONSVERSION Neue APK-Datei in Produktionsphase hochladen
 
 Build:
