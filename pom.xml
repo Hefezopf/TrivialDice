@@ -9,6 +9,7 @@
   <packaging>pom</packaging>
   <name>trivialdice-parent</name>
 
+
   <properties>
     <android.manifest.versionCode>29</android.manifest.versionCode>
     <android.manifest.versionName>1.29</android.manifest.versionName>
