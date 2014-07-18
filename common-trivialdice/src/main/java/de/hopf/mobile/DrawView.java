@@ -36,7 +36,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private final int hitMsgKey;
     private final DiceType diceType;
 
-    private boolean bSoundOn = true;
+    private boolean soundOn = true;
     private Bitmap soundbitmap;
 
     public DrawView(Context context, WindowManager wm, int diceSoundKey, int hitMsgKey, DiceType diceType) {
@@ -189,7 +189,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }
 
     private void playSound() {
-        if (bSoundOn && ((Data) this.getContext()).hasRolled().equals(Boolean.TRUE)) {
+        if (soundOn && ((Data) this.getContext()).hasRolled().equals(Boolean.TRUE)) {
             if (mp == null) {
                 mp = MediaPlayer.create(this.getContext(), diceSoundKey);
             } else if (mp != null) { // Reported Bug v1.5 Dec 23, 2010 2:59:25
@@ -234,7 +234,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }
 
     private void drawSpeakerBitmap(Canvas canvas) {
-        if (bSoundOn) {
+        if (soundOn) {
             soundbitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
         } else {
             soundbitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode);
@@ -348,7 +348,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
         // Toggle sound
         if(isSoundOnBitmapTouched(event)){
-            bSoundOn = !bSoundOn;
+            soundOn = !soundOn;
             ((Data) this.getContext()).setRolled(Boolean.FALSE);
             ((Data) this.getContext()).setInterrupted(Boolean.TRUE);
             invalidate();
@@ -372,4 +372,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
         return false;
     }
+
+//    public void setSoundOn(boolean soundOn) {
+//        this.soundOn = soundOn;
+//    }
 }

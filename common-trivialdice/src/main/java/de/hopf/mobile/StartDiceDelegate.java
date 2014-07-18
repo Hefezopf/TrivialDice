@@ -34,7 +34,7 @@ public class StartDiceDelegate implements Data {
     private Boolean bRoll = Boolean.FALSE;
     private static final String COUNT_KEY = "COUNT_KEY";
     private static final String INTERRUPTED_KEY = "INTERRUPTED_KEY";
-    private int KANTEN_LAENGE;
+    private int kantenLaenge;
     private DisplayMetrics metrics;
 
     // Premium
@@ -49,6 +49,7 @@ public class StartDiceDelegate implements Data {
         this.titleMsgKey = 0;
         this.startMsgKey = 0;
         this.bLite = false;
+//        drawView.setSoundOn(false);
     }
 
     // Lite
@@ -62,6 +63,7 @@ public class StartDiceDelegate implements Data {
         this.titleMsgKey = titleMsgKey;
         this.startMsgKey = startMsgKey;
         this.diceType = diceType;
+//        drawView.setSoundOn(false);
         
         this.bLite = true;
     }
@@ -90,18 +92,18 @@ public class StartDiceDelegate implements Data {
                 metrics = new DisplayMetrics();
             }
             activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            KANTEN_LAENGE = metrics.widthPixels / 2;
+            kantenLaenge = metrics.widthPixels / 2;
 
             TextView title = (TextView) activity.findViewById(this.titleMsgKey);
-            title.setTextSize(KANTEN_LAENGE / 5);
+            title.setTextSize(kantenLaenge / 5);
 
             TextView link_text = (TextView) activity.findViewById(this.linkMsgKey);
-            link_text.setTextSize(KANTEN_LAENGE / 9);
+            link_text.setTextSize(kantenLaenge / 9);
             link_text.setMovementMethod(LinkMovementMethod.getInstance());
 
             Button startButton = (Button) activity.findViewById(this.startMsgKey);
             startButton.setOnClickListener(mGetListener);
-            startButton.setTextSize(KANTEN_LAENGE / 7);
+            startButton.setTextSize(kantenLaenge / 7);
         }
     }
 
@@ -149,6 +151,10 @@ public class StartDiceDelegate implements Data {
         outState.putSerializable(INTERRUPTED_KEY, Boolean.TRUE);
     }
 
+//    public void setSound(boolean soundOn){
+//        drawView.setSoundOn(soundOn);
+//    }
+    
     @Override
     public Integer getNumber() {
         return number;
@@ -164,7 +170,7 @@ public class StartDiceDelegate implements Data {
                 activity.setContentView(this.mainMsgKey);
                 Button startButton = (Button) activity.findViewById(this.startMsgKey);
                 startButton.setOnClickListener(mGetListener);
-                startButton.setTextSize(KANTEN_LAENGE / 7);
+                startButton.setTextSize(kantenLaenge / 7);
                 startButton.requestFocus();
             }
         }
