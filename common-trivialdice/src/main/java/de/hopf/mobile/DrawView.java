@@ -21,6 +21,7 @@ import android.view.WindowManager;
 
 public class DrawView extends View implements OnTouchListener, Serializable {
     private static final long serialVersionUID = 1L;
+    // Würfel Seiten
     private final List<Point> pointsONE = new ArrayList<Point>();
     private final List<Point> pointsTWO = new ArrayList<Point>();
     private final List<Point> pointsTHREE = new ArrayList<Point>();
@@ -37,7 +38,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private final DiceType diceType;
 
     private boolean soundOn = true;
-    private Bitmap soundbitmap;
+    private Bitmap soundBitmap;
 
     public DrawView(Context context, WindowManager wm, int diceSoundKey, int hitMsgKey, DiceType diceType) {
         super(context);
@@ -142,7 +143,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
         drawCopyright(canvas, kantenLaenge);
         drawHitMessage(canvas, kantenLaenge);
-        drawDiceBorder(canvas, kantenLaenge);
         drawSpeakerBitmap(canvas);
         playSound();
 
@@ -158,7 +158,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             ((Data) this.getContext()).setNumber(0);
         }
 
-        drawDice(canvas, kantenLaenge, points);
+        drawDiceBorder(canvas, kantenLaenge);
+        drawDiceNumbers(canvas, kantenLaenge, points);
     }
 
     private void drawCopyright(Canvas canvas, final int kantenLaenge) {
@@ -217,7 +218,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
     }
 
-    private void drawDice(Canvas canvas, final int kantenLaenge, List<Point> points) {
+    private void drawDiceNumbers(Canvas canvas, final int kantenLaenge, List<Point> points) {
         switch (diceType) {
         case DICE_NORMAL:
             drawDiceNormal(canvas, kantenLaenge, points);
@@ -235,19 +236,19 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private void drawSpeakerBitmap(Canvas canvas) {
         if (soundOn) {
-            soundbitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
+            soundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
         } else {
-            soundbitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode);
+            soundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode);
         }
-        canvas.drawBitmap(soundbitmap, getLeftBitmapPos(metrics.widthPixels), getTopBitmapPos(metrics.heightPixels), paint);
+        canvas.drawBitmap(soundBitmap, getLeftBitmapPos(metrics.widthPixels), getTopBitmapPos(metrics.heightPixels), paint);
     }
 
     private int getTopBitmapPos(int height) {
-        return height - soundbitmap.getHeight() * 2;
+        return height - soundBitmap.getHeight() * 2;
     }
 
     private int getLeftBitmapPos(int width) {
-        return width / 2 - soundbitmap.getWidth() / 2;
+        return width / 2 - soundBitmap.getWidth() / 2;
     }
 
     private void drawDiceNormal(Canvas canvas, final int kantenLaenge, List<Point> points) {
@@ -365,15 +366,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private boolean isSoundOnBitmapTouched(MotionEvent event) {
         // if this is true, you've started your click inside your bitmap
         if (event.getRawX() >= getLeftBitmapPos(metrics.widthPixels)
-                && event.getRawX() < (getLeftBitmapPos(metrics.widthPixels) + soundbitmap.getWidth())
+                && event.getRawX() < (getLeftBitmapPos(metrics.widthPixels) + soundBitmap.getWidth())
                 && event.getRawY() >= getTopBitmapPos(metrics.heightPixels)
-                && event.getRawY() < (getTopBitmapPos(metrics.heightPixels) + soundbitmap.getHeight())) {
+                && event.getRawY() < (getTopBitmapPos(metrics.heightPixels) + soundBitmap.getHeight())) {
             return true;
         }
         return false;
     }
-
-//    public void setSoundOn(boolean soundOn) {
-//        this.soundOn = soundOn;
-//    }
 }
