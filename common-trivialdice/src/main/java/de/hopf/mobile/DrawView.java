@@ -146,20 +146,26 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         drawSpeakerBitmap(canvas);
         playSound();
 
+        calculateNumber();
+        drawDice(canvas, kantenLaenge);
+    }
+
+    private void calculateNumber() {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
             ((Data) this.getContext()).setNumber(new Integer((int) (Math.random() * 6)));
         }
 
-        List<Point> points = null;
 
         // NPE nach dem Start, manchmal beim drehen!
         if (((Data) this.getContext()).getNumber() == null) {
             ((Data) this.getContext()).setNumber(0);
         }
+    }
 
+    private void drawDice(Canvas canvas, final int kantenLaenge) {
         drawDiceBorder(canvas, kantenLaenge);
-        drawDiceNumbers(canvas, kantenLaenge, points);
+        drawDiceNumbers(canvas, kantenLaenge);
     }
 
     private void drawCopyright(Canvas canvas, final int kantenLaenge) {
@@ -218,16 +224,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
     }
 
-    private void drawDiceNumbers(Canvas canvas, final int kantenLaenge, List<Point> points) {
+    private void drawDiceNumbers(Canvas canvas, final int kantenLaenge) {
         switch (diceType) {
         case DICE_NORMAL:
-            drawDiceNormal(canvas, kantenLaenge, points);
+            drawDiceNormal(canvas, kantenLaenge);
             break;
         case DICE_COLOR:
-            drawDiceColor(canvas, kantenLaenge, points);
+            drawDiceColor(canvas, kantenLaenge);
             break;
         case DICE_DOUBLING:
-            drawDiceDoubling(canvas, kantenLaenge, points);
+            drawDiceDoubling(canvas, kantenLaenge);
             break;
         default:
             throw new IllegalArgumentException("Unbekannter Enum DiceType!");
@@ -251,7 +257,9 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return width / 2 - soundBitmap.getWidth() / 2;
     }
 
-    private void drawDiceNormal(Canvas canvas, final int kantenLaenge, List<Point> points) {
+    private void drawDiceNormal(Canvas canvas, final int kantenLaenge) {
+        List<Point> points = null;
+
         switch (((Data) this.getContext()).getNumber().intValue()) {
         case 0:
             points = pointsONE;
@@ -278,8 +286,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
     }
 
-    private void drawDiceColor(Canvas canvas, final int kantenLaenge, List<Point> points) {
-        points = pointsONE;
+    private void drawDiceColor(Canvas canvas, final int kantenLaenge) {        
         switch (((Data) this.getContext()).getNumber().intValue()) {
         case 0:
             paint.setColor(Color.CYAN);
@@ -301,14 +308,15 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             break;
         default:
         }
+
+        List<Point> points = pointsONE;
         for (Point point : points) {
             canvas.drawCircle(point.x, point.y, kantenLaenge / 3, paint);
         }
         paint.setColor(Color.WHITE);
     }
 
-    private void drawDiceDoubling(Canvas canvas, final int kantenLaenge, List<Point> points) {
-        points = pointsONE;
+    private void drawDiceDoubling(Canvas canvas, final int kantenLaenge) {
         paint.setColor(Color.WHITE);
         String text = "";
         switch (((Data) this.getContext()).getNumber().intValue()) {
@@ -335,6 +343,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
 
         paint.setTextSize(kantenLaenge / 2);
+        List<Point> points = pointsONE;
         for (Point point : points) {
             canvas.drawText(text, point.x, point.y + (paint.getTextSize() / 3), paint);
         }
