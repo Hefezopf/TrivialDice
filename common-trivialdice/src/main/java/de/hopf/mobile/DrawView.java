@@ -63,66 +63,66 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         this.wm.getDefaultDisplay().getMetrics(metrics);
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
-        final int KANTEN_LAENGE = width / 2;
+        final int kantenLaenge = width / 2;
 
-        int linkerRand = (width - KANTEN_LAENGE) / 2;
-        int obererRand = (height - KANTEN_LAENGE) / 2;
+        int linkerRand = (width - kantenLaenge) / 2;
+        int obererRand = (height - kantenLaenge) / 2;
 
         paint.setColor(Color.WHITE);
-        paint.setTextSize(KANTEN_LAENGE / 10);
+        paint.setTextSize(kantenLaenge / 10);
         paint.setAntiAlias(true);
         paint.setTextAlign(Align.LEFT);
 
         switch (diceType) {
         case DICE_NORMAL:
-            setupDiceNormal(KANTEN_LAENGE, linkerRand, obererRand);
+            setupDiceNormal(kantenLaenge, linkerRand, obererRand);
             break;
         case DICE_COLOR:
-            setupDiceColor(KANTEN_LAENGE, linkerRand, obererRand);
+            setupDiceColor(kantenLaenge, linkerRand, obererRand);
             break;
         case DICE_DOUBLING:
-            setupDiceDoubling(KANTEN_LAENGE, linkerRand, obererRand);
+            setupDiceDoubling(kantenLaenge, linkerRand, obererRand);
             break;
         default:
             throw new IllegalArgumentException("Unbekannter Enum DiceType!");
         }
     }
 
-    private void setupDiceNormal(final int KANTEN_LAENGE, int linkerRand, int obererRand) {
-        addPoint(linkerRand + (KANTEN_LAENGE / 2), obererRand + (KANTEN_LAENGE / 2), pointsONE);
+    private void setupDiceNormal(final int kantenLaenge, int linkerRand, int obererRand) {
+        addPoint(linkerRand + (kantenLaenge / 2), obererRand + (kantenLaenge / 2), pointsONE);
 
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE / 4), pointsTWO);
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE * 3 / 4), pointsTWO);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge / 4), pointsTWO);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge * 3 / 4), pointsTWO);
 
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE / 4), pointsTHREE);
-        addPoint(linkerRand + (KANTEN_LAENGE / 2), obererRand + (KANTEN_LAENGE / 2), pointsTHREE);
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE * 3 / 4), pointsTHREE);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge / 4), pointsTHREE);
+        addPoint(linkerRand + (kantenLaenge / 2), obererRand + (kantenLaenge / 2), pointsTHREE);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge * 3 / 4), pointsTHREE);
 
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE / 4), pointsFOUR);
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE * 3 / 4), pointsFOUR);
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE / 4), pointsFOUR);
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE * 3 / 4), pointsFOUR);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge / 4), pointsFOUR);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge * 3 / 4), pointsFOUR);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge / 4), pointsFOUR);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge * 3 / 4), pointsFOUR);
 
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE / 4), pointsFIVE);
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE * 3 / 4), pointsFIVE);
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE * 3 / 4), pointsFIVE);
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE / 4), pointsFIVE);
-        addPoint(linkerRand + (KANTEN_LAENGE / 2), obererRand + (KANTEN_LAENGE / 2), pointsFIVE);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge / 4), pointsFIVE);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge * 3 / 4), pointsFIVE);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge * 3 / 4), pointsFIVE);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge / 4), pointsFIVE);
+        addPoint(linkerRand + (kantenLaenge / 2), obererRand + (kantenLaenge / 2), pointsFIVE);
 
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE * 3 / 4), pointsSIX);
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE / 4), pointsSIX);
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE * 3 / 4), pointsSIX);
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE / 4), pointsSIX);
-        addPoint(linkerRand + (KANTEN_LAENGE / 4), obererRand + (KANTEN_LAENGE / 2), pointsSIX);
-        addPoint(linkerRand + (KANTEN_LAENGE * 3 / 4), obererRand + (KANTEN_LAENGE / 2), pointsSIX);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge * 3 / 4), pointsSIX);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge / 4), pointsSIX);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge * 3 / 4), pointsSIX);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge / 4), pointsSIX);
+        addPoint(linkerRand + (kantenLaenge / 4), obererRand + (kantenLaenge / 2), pointsSIX);
+        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand + (kantenLaenge / 2), pointsSIX);
     }
 
-    private void setupDiceColor(final int KANTEN_LAENGE, int linkerRand, int obererRand) {
-        addPoint(linkerRand + (KANTEN_LAENGE / 2), obererRand + (KANTEN_LAENGE / 2), pointsONE);
+    private void setupDiceColor(final int kantenLaenge, int linkerRand, int obererRand) {
+        addPoint(linkerRand + (kantenLaenge / 2), obererRand + (kantenLaenge / 2), pointsONE);
     }
 
-    private void setupDiceDoubling(final int KANTEN_LAENGE, int linkerRand, int obererRand) {
-        addPoint(linkerRand + (KANTEN_LAENGE / 2), obererRand + (KANTEN_LAENGE / 2), pointsONE);
+    private void setupDiceDoubling(final int kantenLaenge, int linkerRand, int obererRand) {
+        addPoint(linkerRand + (kantenLaenge / 2), obererRand + (kantenLaenge / 2), pointsONE);
     }
 
     private void addPoint(int x, int y, List<Point> points) {
@@ -138,11 +138,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             metrics = new DisplayMetrics();
         }
         this.wm.getDefaultDisplay().getMetrics(metrics);
-        final int KANTEN_LAENGE = metrics.widthPixels / 2;
+        final int kantenLaenge = metrics.widthPixels / 2;
 
-        drawCopyright(canvas, KANTEN_LAENGE);
-        drawHitMessage(canvas, KANTEN_LAENGE);
-        drawDiceBorder(canvas, KANTEN_LAENGE);
+        drawCopyright(canvas, kantenLaenge);
+        drawHitMessage(canvas, kantenLaenge);
+        drawDiceBorder(canvas, kantenLaenge);
         drawSpeakerBitmap(canvas);
         playSound();
 
@@ -158,33 +158,33 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             ((Data) this.getContext()).setNumber(0);
         }
 
-        drawDice(canvas, KANTEN_LAENGE, points);
+        drawDice(canvas, kantenLaenge, points);
     }
 
-    private void drawCopyright(Canvas canvas, final int KANTEN_LAENGE) {
+    private void drawCopyright(Canvas canvas, final int kantenLaenge) {
         paint.setTextAlign(Align.LEFT);
-        canvas.drawText("\u00A9" + " hopf-it.de", 10, KANTEN_LAENGE / 10, paint);
+        canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaenge / 10, paint);
     }
 
-    private void drawDiceBorder(Canvas canvas, final int KANTEN_LAENGE) {
-        int linkesEck = (metrics.widthPixels - KANTEN_LAENGE) / 2;
-        int oberesEck = (metrics.heightPixels - KANTEN_LAENGE) / 2;
+    private void drawDiceBorder(Canvas canvas, final int kantenLaenge) {
+        int linkesEck = (metrics.widthPixels - kantenLaenge) / 2;
+        int oberesEck = (metrics.heightPixels - kantenLaenge) / 2;
         
-        canvas.drawLine(linkesEck, oberesEck, linkesEck + KANTEN_LAENGE, oberesEck, paint);
-        canvas.drawLine(linkesEck, oberesEck, linkesEck, oberesEck + KANTEN_LAENGE, paint);
-        canvas.drawLine(linkesEck + KANTEN_LAENGE, oberesEck, linkesEck + KANTEN_LAENGE, oberesEck + KANTEN_LAENGE,
+        canvas.drawLine(linkesEck, oberesEck, linkesEck + kantenLaenge, oberesEck, paint);
+        canvas.drawLine(linkesEck, oberesEck, linkesEck, oberesEck + kantenLaenge, paint);
+        canvas.drawLine(linkesEck + kantenLaenge, oberesEck, linkesEck + kantenLaenge, oberesEck + kantenLaenge,
                 paint);
-        canvas.drawLine(linkesEck, oberesEck + KANTEN_LAENGE, linkesEck + KANTEN_LAENGE, oberesEck + KANTEN_LAENGE,
+        canvas.drawLine(linkesEck, oberesEck + kantenLaenge, linkesEck + kantenLaenge, oberesEck + kantenLaenge,
                 paint);
     }
 
-    private void drawHitMessage(Canvas canvas, final int KANTEN_LAENGE) {
-        int linkesEck = (metrics.widthPixels - KANTEN_LAENGE) / 2;
-        int oberesEck = (metrics.heightPixels - KANTEN_LAENGE) / 2;
+    private void drawHitMessage(Canvas canvas, final int kantenLaenge) {
+        int linkesEck = (metrics.widthPixels - kantenLaenge) / 2;
+        int oberesEck = (metrics.heightPixels - kantenLaenge) / 2;
         
         String hit_text = this.getContext().getString(hitMsgKey);
         paint.setTextAlign(Align.CENTER);
-        canvas.drawText(hit_text, linkesEck + (KANTEN_LAENGE / 2), oberesEck + KANTEN_LAENGE + (KANTEN_LAENGE / 10),
+        canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge + (kantenLaenge / 10),
                 paint);
     }
 
@@ -217,16 +217,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
     }
 
-    private void drawDice(Canvas canvas, final int KANTEN_LAENGE, List<Point> points) {
+    private void drawDice(Canvas canvas, final int kantenLaenge, List<Point> points) {
         switch (diceType) {
         case DICE_NORMAL:
-            drawDiceNormal(canvas, KANTEN_LAENGE, points);
+            drawDiceNormal(canvas, kantenLaenge, points);
             break;
         case DICE_COLOR:
-            drawDiceColor(canvas, KANTEN_LAENGE, points);
+            drawDiceColor(canvas, kantenLaenge, points);
             break;
         case DICE_DOUBLING:
-            drawDiceDoubling(canvas, KANTEN_LAENGE, points);
+            drawDiceDoubling(canvas, kantenLaenge, points);
             break;
         default:
             throw new IllegalArgumentException("Unbekannter Enum DiceType!");
@@ -250,7 +250,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return width / 2 - soundbitmap.getWidth() / 2;
     }
 
-    private void drawDiceNormal(Canvas canvas, final int KANTEN_LAENGE, List<Point> points) {
+    private void drawDiceNormal(Canvas canvas, final int kantenLaenge, List<Point> points) {
         switch (((Data) this.getContext()).getNumber().intValue()) {
         case 0:
             points = pointsONE;
@@ -273,11 +273,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         default:
         }
         for (Point point : points) {
-            canvas.drawCircle(point.x, point.y, KANTEN_LAENGE / 10, paint);
+            canvas.drawCircle(point.x, point.y, kantenLaenge / 10, paint);
         }
     }
 
-    private void drawDiceColor(Canvas canvas, final int KANTEN_LAENGE, List<Point> points) {
+    private void drawDiceColor(Canvas canvas, final int kantenLaenge, List<Point> points) {
         points = pointsONE;
         switch (((Data) this.getContext()).getNumber().intValue()) {
         case 0:
@@ -301,12 +301,12 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         default:
         }
         for (Point point : points) {
-            canvas.drawCircle(point.x, point.y, KANTEN_LAENGE / 3, paint);
+            canvas.drawCircle(point.x, point.y, kantenLaenge / 3, paint);
         }
         paint.setColor(Color.WHITE);
     }
 
-    private void drawDiceDoubling(Canvas canvas, final int KANTEN_LAENGE, List<Point> points) {
+    private void drawDiceDoubling(Canvas canvas, final int kantenLaenge, List<Point> points) {
         points = pointsONE;
         paint.setColor(Color.WHITE);
         String text = "";
@@ -333,11 +333,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             throw new IllegalArgumentException("Nummer nicht gültig!");
         }
 
-        paint.setTextSize(KANTEN_LAENGE / 2);
+        paint.setTextSize(kantenLaenge / 2);
         for (Point point : points) {
             canvas.drawText(text, point.x, point.y + (paint.getTextSize() / 3), paint);
         }
-        paint.setTextSize(KANTEN_LAENGE / 10);
+        paint.setTextSize(kantenLaenge / 10);
     }
 
     @Override
