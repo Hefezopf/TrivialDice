@@ -39,8 +39,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private boolean soundOn = true;
     private Bitmap soundBitmap;
     
-    private final DiceAmountType diceAmountType = DiceAmountType.ONE;
-//    private final DiceAmountType diceAmountType = DiceAmountType.TWO;
+    private DiceAmountType diceAmountType = DiceAmountType.ONE;
+    private Bitmap amountDiceBitmap;
 
     public DrawView(Context context, WindowManager wm, int diceSoundKey, int hitMsgKey, DiceType diceType) {
         super(context);
@@ -55,9 +55,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         this.hitMsgKey = hitMsgKey;
         this.diceType = diceType;
                 
-        initDice(pointsDiceOne);
-        initDice(pointsDiceTwo);
-
         if (paint == null) {
             paint = new Paint();
         }
@@ -78,6 +75,13 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         paint.setTextSize(kantenLaenge / 10);
         paint.setAntiAlias(true);
         paint.setTextAlign(Align.LEFT);
+
+        setupDice(diceType, kantenLaenge, linkerRand, obererRand);
+    }
+
+    private void setupDice(DiceType diceType, final int kantenLaenge, int linkerRand, int obererRand) {
+        initDice(pointsDiceOne);
+        initDice(pointsDiceTwo);
 
         switch (diceType) {
         case DICE_NORMAL:
@@ -169,16 +173,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         drawCopyright(canvas, kantenLaenge);
         drawHitMessage(canvas, kantenLaenge);
         drawSpeakerBitmap(canvas);
+        drawAmountDiceBitmap(canvas);
         playSound();
 
+        int number2 = calculateNumber2(); // TODO
         if(diceAmountType == DiceAmountType.ONE){
-            int number2 = calculateNumber2(); // TODO
-            drawCompleteDice(calculateNumber(), canvas, kantenLaenge, 0, pointsDiceOne.get(0));
+            drawCompleteDice(calculateNumber(), canvas, kantenLaenge, 0, pointsDiceOne);
         }
         else if(diceAmountType == DiceAmountType.TWO){
-            int number2 = calculateNumber2();
-            drawCompleteDice(calculateNumber(), canvas, kantenLaenge, -kantenLaenge/20*13, pointsDiceOne.get(0));
-            drawCompleteDice(number2, canvas, kantenLaenge, kantenLaenge/20*8, pointsDiceTwo.get(0));
+            drawCompleteDice(calculateNumber(), canvas, kantenLaenge, -kantenLaenge/20*13, pointsDiceOne);
+            drawCompleteDice(number2, canvas, kantenLaenge, kantenLaenge/20*8, pointsDiceTwo);
         }
         else{
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
@@ -190,7 +194,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
             ((Data) this.getContext()).setNumber(new Integer((int) (Math.random() * 6)));
         }
-
 
         // NPE nach dem Start, manchmal beim drehen!
         if (((Data) this.getContext()).getNumber() == null) {
@@ -206,7 +209,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             ((Data) this.getContext()).setNumber2(new Integer((int) (Math.random() * 6)));
         }
 
-
         // NPE nach dem Start, manchmal beim drehen!
         if (((Data) this.getContext()).getNumber2() == null) {
             ((Data) this.getContext()).setNumber2(0);
@@ -215,7 +217,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return ((Data) this.getContext()).getNumber2();
     }
 
-    private void drawCompleteDice(int number, Canvas canvas, final int kantenLaenge, int offset, List<Point> points) {
+    private void drawCompleteDice(int number, Canvas canvas, final int kantenLaenge, int offset, List<List<Point>> points) {
         drawDiceBorder(canvas, kantenLaenge, offset);
         drawDiceNumbers(number, canvas, kantenLaenge, points);
     }
@@ -286,18 +288,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
     }
 
-    private void drawDiceNumbers(int number, Canvas canvas, final int kantenLaenge, List<Point> points) {
+    private void drawDiceNumbers(int number, Canvas canvas, final int kantenLaenge, List<List<Point>> points) {
         switch (diceType) {
         case DICE_NORMAL:
-            drawDiceNormal(canvas, kantenLaenge);
-//            calculateNumber();
-            drawDiceNormal2(canvas, kantenLaenge);
+            drawDiceNormal(number, canvas, kantenLaenge, points);            
             break;
         case DICE_COLOR:
-            drawDiceColor(number, canvas, kantenLaenge, points);
+            drawDiceColor(number, canvas, kantenLaenge, points.get(0));
             break;
         case DICE_DOUBLING:
-            drawDiceDoubling(number, canvas, kantenLaenge, points);
+            drawDiceDoubling(number, canvas, kantenLaenge, points.get(0));
             break;
         default:
             throw new IllegalArgumentException("Unbekannter Enum DiceType!");
@@ -310,59 +310,43 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         } else {
             soundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode);
         }
-        canvas.drawBitmap(soundBitmap, getLeftBitmapPos(metrics.widthPixels), getTopBitmapPos(metrics.heightPixels), paint);
+        canvas.drawBitmap(soundBitmap, getLeftSoundBitmapPos(metrics.widthPixels), getTopSoundBitmapPos(metrics.heightPixels), paint);
     }
 
-    private void drawDiceNormal(Canvas canvas, final int kantenLaenge) {
-        List<Point> points = null;
-
-        switch (((Data) this.getContext()).getNumber().intValue()) {
-        case 0:
-            points = pointsDiceOne.get(0);
-            break;
-        case 1:
-            points = pointsDiceOne.get(1);
-            break;
-        case 2:
-            points = pointsDiceOne.get(2);
-            break;
-        case 3:
-            points = pointsDiceOne.get(3);
-            break;
-        case 4:
-            points = pointsDiceOne.get(4);
-            break;
-        case 5:
-            points = pointsDiceOne.get(5);
-            break;
-        default:
+    private void drawAmountDiceBitmap(Canvas canvas) {
+        if(diceAmountType == DiceAmountType.ONE){
+            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_off);
         }
-        for (Point point : points) {
-            canvas.drawCircle(point.x, point.y, kantenLaenge / 10, paint);
+        else if(diceAmountType == DiceAmountType.TWO){
+            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_on);
         }
+        else{
+            throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
+        }            
+        canvas.drawBitmap(amountDiceBitmap, getLeftAmountDiceBitmapPos(metrics.widthPixels), getTopAmountDiceBitmapPos(metrics.heightPixels), paint);
     }
 
-    private void drawDiceNormal2(Canvas canvas, final int kantenLaenge) {
+    private void drawDiceNormal(int number, Canvas canvas, final int kantenLaenge, List<List<Point>> pointsList) {
         List<Point> points = null;
 
-        switch (((Data) this.getContext()).getNumber2().intValue()) {
+        switch (number) {
         case 0:
-            points = pointsDiceTwo.get(0);
+            points = pointsList.get(0);
             break;
         case 1:
-            points = pointsDiceTwo.get(1);
+            points = pointsList.get(1);
             break;
         case 2:
-            points = pointsDiceTwo.get(2);
+            points = pointsList.get(2);
             break;
         case 3:
-            points = pointsDiceTwo.get(3);
+            points = pointsList.get(3);
             break;
         case 4:
-            points = pointsDiceTwo.get(4);
+            points = pointsList.get(4);
             break;
         case 5:
-            points = pointsDiceTwo.get(5);
+            points = pointsList.get(5);
             break;
         default:
         }
@@ -439,11 +423,35 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             return false;
         }
 
-        // Toggle sound
+        // Toggle Sound
         if(isSoundOnBitmapTouched(event)){
             soundOn = !soundOn;
             ((Data) this.getContext()).setRolled(Boolean.FALSE);
             ((Data) this.getContext()).setInterrupted(Boolean.TRUE);
+            invalidate();
+            return true;
+        }
+
+        // Toggle Ansicht
+        if(isAmountDiceBitmapTouched(event)){
+            if(diceAmountType == DiceAmountType.ONE){
+                diceAmountType = DiceAmountType.TWO;
+            }
+            else if(diceAmountType == DiceAmountType.TWO){
+                    diceAmountType = DiceAmountType.ONE;
+            }
+            else{
+                throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
+            }      
+            
+            final int kantenLaenge = metrics.widthPixels / 2;
+            int linkerRand = (metrics.widthPixels - kantenLaenge) / 2;
+            int obererRand = (metrics.heightPixels - kantenLaenge) / 2;
+
+            setupDice(diceType, kantenLaenge, linkerRand, obererRand);
+            
+            ((Data) this.getContext()).setRolled(Boolean.TRUE);
+            ((Data) this.getContext()).setInterrupted(Boolean.FALSE);
             invalidate();
             return true;
         }
@@ -456,16 +464,25 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }
 
     private boolean isSoundOnBitmapTouched(MotionEvent event) {
-        // if this is true, you've started your click inside your bitmap
-        if (event.getRawX() >= getLeftBitmapPos(metrics.widthPixels)
-                && event.getRawX() < (getLeftBitmapPos(metrics.widthPixels) + soundBitmap.getWidth())
-                && event.getRawY() >= getTopBitmapPos(metrics.heightPixels)
-                && event.getRawY() < (getTopBitmapPos(metrics.heightPixels) + soundBitmap.getHeight())) {
+        if (event.getRawX() >= getLeftSoundBitmapPos(metrics.widthPixels)
+                && event.getRawX() < (getLeftSoundBitmapPos(metrics.widthPixels) + soundBitmap.getWidth())
+                && event.getRawY() >= getTopSoundBitmapPos(metrics.heightPixels)
+                && event.getRawY() < (getTopSoundBitmapPos(metrics.heightPixels) + soundBitmap.getHeight())) {
             return true;
         }
         return false;
     }
 
+    private boolean isAmountDiceBitmapTouched(MotionEvent event) {
+        if (event.getRawX() >= getLeftAmountDiceBitmapPos(metrics.widthPixels)
+                && event.getRawX() < (getLeftAmountDiceBitmapPos(metrics.widthPixels) + amountDiceBitmap.getWidth())
+                && event.getRawY() >= getTopAmountDiceBitmapPos(metrics.heightPixels)
+                && event.getRawY() < (getTopAmountDiceBitmapPos(metrics.heightPixels) + amountDiceBitmap.getHeight())) {
+            return true;
+        }
+        return false;
+    }
+        
     private void addPoint(int x, int y, List<Point> points) {
         Point point = new Point();
         point.x = x;
@@ -474,6 +491,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }    
     
     private void initDice(List<List<Point>> pointsDice) {
+        pointsDice.clear();
         pointsDice.add(new ArrayList<Point>());
         pointsDice.add(new ArrayList<Point>());
         pointsDice.add(new ArrayList<Point>());
@@ -482,11 +500,19 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         pointsDice.add(new ArrayList<Point>());
     }   
     
-    private int getTopBitmapPos(int height) {
+    private int getTopSoundBitmapPos(int height) {
         return height - soundBitmap.getHeight() * 2/10*8;
     }
 
-    private int getLeftBitmapPos(int width) {
+    private int getLeftSoundBitmapPos(int width) {
         return width / 2 - soundBitmap.getWidth() / 2;
+    }   
+    
+    private int getTopAmountDiceBitmapPos(int height) {
+        return height - amountDiceBitmap.getHeight() * 2/10*8;
+    }
+
+    private int getLeftAmountDiceBitmapPos(int width) {
+        return width / 2 - amountDiceBitmap.getWidth() / 2 + amountDiceBitmap.getWidth()*3;
     }    
 }
