@@ -64,33 +64,31 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             metrics = new DisplayMetrics();
         }
         this.wm.getDefaultDisplay().getMetrics(metrics);
-        int width = metrics.widthPixels;
-        int height = metrics.heightPixels;
-        final int kantenLaenge = width / 2;
-
-        int linkerRand = (width - kantenLaenge) / 2;
-        int obererRand = (height - kantenLaenge) / 2;
+        
+        final int kantenLaengeWuerfel = metrics.widthPixels / 2;
+        int linkerWuerfelRand = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
+        int obererWürfelRand = (metrics.heightPixels - kantenLaengeWuerfel) / 2;
 
         paint.setColor(Color.WHITE);
-        paint.setTextSize(kantenLaenge / 10);
+        paint.setTextSize(kantenLaengeWuerfel / 10);
         paint.setAntiAlias(true);
         paint.setTextAlign(Align.LEFT);
 
-        setupDice(diceType, kantenLaenge, linkerRand, obererRand);
+        setupDice(diceType, kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand);
     }
 
-    private void setupDice(DiceType diceType, final int kantenLaenge, int linkerRand, int obererRand) {
+    private void setupDice(DiceType diceType, final int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand) {
         initDice(pointsDiceOne);
         initDice(pointsDiceTwo);
 
         switch (diceType) {
         case DICE_NORMAL:
             if(diceAmountType == DiceAmountType.ONE){
-                setupDiceNormal(kantenLaenge, linkerRand, obererRand, 0, pointsDiceOne);
+                setupDiceNormal(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne);
             }
             else if(diceAmountType == DiceAmountType.TWO){
-                setupDiceNormal(kantenLaenge, linkerRand, obererRand, -kantenLaenge/20*13, pointsDiceOne);
-                setupDiceNormal(kantenLaenge, linkerRand, obererRand, kantenLaenge/20*8, pointsDiceTwo);
+                setupDiceNormal(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, -kantenLaengeWuerfel/20*13, pointsDiceOne);
+                setupDiceNormal(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, kantenLaengeWuerfel/20*8, pointsDiceTwo);
             }
             else{
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
@@ -98,11 +96,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             break;
         case DICE_COLOR:
             if(diceAmountType == DiceAmountType.ONE){
-                setupDiceColor(kantenLaenge, linkerRand, obererRand, 0, pointsDiceOne.get(0));
+                setupDiceColor(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne.get(0));
             }
             else if(diceAmountType == DiceAmountType.TWO){
-                setupDiceColor(kantenLaenge, linkerRand, obererRand, -kantenLaenge/20*13, pointsDiceOne.get(0));
-                setupDiceColor(kantenLaenge, linkerRand, obererRand, kantenLaenge/20*8, pointsDiceTwo.get(0));
+                setupDiceColor(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, -kantenLaengeWuerfel/20*13, pointsDiceOne.get(0));
+                setupDiceColor(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, kantenLaengeWuerfel/20*8, pointsDiceTwo.get(0));
             }
             else{
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
@@ -110,11 +108,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             break;
         case DICE_DOUBLING:
             if(diceAmountType == DiceAmountType.ONE){
-                setupDiceDoubling(kantenLaenge, linkerRand, obererRand, 0, pointsDiceOne.get(0));
+                setupDiceDoubling(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne.get(0));
             }
             else if(diceAmountType == DiceAmountType.TWO){
-                setupDiceDoubling(kantenLaenge, linkerRand, obererRand, -kantenLaenge/20*13, pointsDiceOne.get(0));
-                setupDiceDoubling(kantenLaenge, linkerRand, obererRand, kantenLaenge/20*8, pointsDiceTwo.get(0));
+                setupDiceDoubling(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, -kantenLaengeWuerfel/20*13, pointsDiceOne.get(0));
+                setupDiceDoubling(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, kantenLaengeWuerfel/20*8, pointsDiceTwo.get(0));
             }
             else{
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
@@ -125,41 +123,41 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
     }
 
-    private void setupDiceNormal(final int kantenLaenge, int linkerRand, int obererRand, int offset, List<List<Point>> pointsDice ) {
-        addPoint(linkerRand + (kantenLaenge / 2), obererRand  + offset + (kantenLaenge / 2), pointsDice.get(0));
+    private void setupDiceNormal(final int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand, int offset, List<List<Point>> pointsDice ) {
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 2), obererWürfelRand  + offset + (kantenLaengeWuerfel / 2), pointsDice.get(0));
 
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge / 4), pointsDice.get(1));
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge * 3 / 4), pointsDice.get(1));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 4), pointsDice.get(1));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(1));
 
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge / 4), pointsDice.get(2));
-        addPoint(linkerRand + (kantenLaenge / 2), obererRand  + offset + (kantenLaenge / 2), pointsDice.get(2));
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge * 3 / 4), pointsDice.get(2));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 4), pointsDice.get(2));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 2), obererWürfelRand  + offset + (kantenLaengeWuerfel / 2), pointsDice.get(2));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(2));
 
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge / 4), pointsDice.get(3));
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge * 3 / 4), pointsDice.get(3));
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge / 4), pointsDice.get(3));
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge * 3 / 4), pointsDice.get(3));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 4), pointsDice.get(3));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(3));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 4), pointsDice.get(3));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(3));
 
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge / 4), pointsDice.get(4));
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge * 3 / 4), pointsDice.get(4));
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge * 3 / 4), pointsDice.get(4));
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge / 4), pointsDice.get(4));
-        addPoint(linkerRand + (kantenLaenge / 2), obererRand  + offset + (kantenLaenge / 2), pointsDice.get(4));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 4), pointsDice.get(4));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(4));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(4));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 4), pointsDice.get(4));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 2), obererWürfelRand  + offset + (kantenLaengeWuerfel / 2), pointsDice.get(4));
 
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge * 3 / 4), pointsDice.get(5));
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge / 4), pointsDice.get(5));
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge * 3 / 4), pointsDice.get(5));
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge / 4), pointsDice.get(5));
-        addPoint(linkerRand + (kantenLaenge / 4), obererRand  + offset + (kantenLaenge / 2), pointsDice.get(5));
-        addPoint(linkerRand + (kantenLaenge * 3 / 4), obererRand  + offset + (kantenLaenge / 2), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 4), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 4), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 2), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand  + offset + (kantenLaengeWuerfel / 2), pointsDice.get(5));
     }
 
-    private void setupDiceColor(final int kantenLaenge, int linkerRand, int obererRand, int offset, List<Point> points) {
-        addPoint(linkerRand + (kantenLaenge / 2), obererRand + offset  + (kantenLaenge / 2), points);
+    private void setupDiceColor(final int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand, int offset, List<Point> points) {
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 2), obererWürfelRand + offset  + (kantenLaengeWuerfel / 2), points);
     }
 
-    private void setupDiceDoubling(final int kantenLaenge, int linkerRand, int obererRand, int offset, List<Point> points) {
-        addPoint(linkerRand + (kantenLaenge / 2), obererRand + offset + (kantenLaenge / 2), points);
+    private void setupDiceDoubling(final int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand, int offset, List<Point> points) {
+        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 2), obererWürfelRand + offset + (kantenLaengeWuerfel / 2), points);
     }
 
     @Override
@@ -168,21 +166,21 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             metrics = new DisplayMetrics();
         }
         this.wm.getDefaultDisplay().getMetrics(metrics);
-        final int kantenLaenge = metrics.widthPixels / 2;
+        final int kantenLaengeWuerfel = metrics.widthPixels / 2;
 
-        drawCopyright(canvas, kantenLaenge);
-        drawHitMessage(canvas, kantenLaenge);
+        drawCopyright(canvas, kantenLaengeWuerfel);
+        drawHitMessage(canvas, kantenLaengeWuerfel);
         drawSpeakerBitmap(canvas);
         drawAmountDiceBitmap(canvas);
         playSound();
 
         int number2 = calculateNumber2(); // TODO NPE wenn nicht vorher ausgeführt!
         if(diceAmountType == DiceAmountType.ONE){
-            drawCompleteDice(calculateNumber(), canvas, kantenLaenge, 0, pointsDiceOne);
+            drawCompleteDice(calculateNumber(), canvas, kantenLaengeWuerfel, 0, pointsDiceOne);
         }
         else if(diceAmountType == DiceAmountType.TWO){
-            drawCompleteDice(calculateNumber(), canvas, kantenLaenge, -kantenLaenge/20*13, pointsDiceOne);
-            drawCompleteDice(number2, canvas, kantenLaenge, kantenLaenge/20*8, pointsDiceTwo);
+            drawCompleteDice(calculateNumber(), canvas, kantenLaengeWuerfel, -kantenLaengeWuerfel/20*13, pointsDiceOne);
+            drawCompleteDice(number2, canvas, kantenLaengeWuerfel, kantenLaengeWuerfel/20*8, pointsDiceTwo);
         }
         else{
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
@@ -217,41 +215,41 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return ((Data) this.getContext()).getNumber2();
     }
 
-    private void drawCompleteDice(int number, Canvas canvas, final int kantenLaenge, int offset, List<List<Point>> points) {
-        drawDiceBorder(canvas, kantenLaenge, offset);
-        drawDiceNumbers(number, canvas, kantenLaenge, points);
+    private void drawCompleteDice(int number, Canvas canvas, final int kantenLaengeWuerfel, int offset, List<List<Point>> points) {
+        drawDiceBorder(canvas, kantenLaengeWuerfel, offset);
+        drawDiceNumbers(number, canvas, kantenLaengeWuerfel, points);
     }
 
-    private void drawCopyright(Canvas canvas, final int kantenLaenge) {
+    private void drawCopyright(Canvas canvas, final int kantenLaengeWuerfel) {
         paint.setTextAlign(Align.LEFT);
-        canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaenge / 10, paint);
+        canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaengeWuerfel / 10, paint);
     }
 
-    private void drawDiceBorder(Canvas canvas, final int kantenLaenge, int offset) {
-        int linkesEck = (metrics.widthPixels - kantenLaenge) / 2;
-        int oberesEck = (metrics.heightPixels - kantenLaenge) / 2 + offset;
+    private void drawDiceBorder(Canvas canvas, final int kantenLaengeWuerfel, int offset) {
+        int linkesEck = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
+        int oberesEck = (metrics.heightPixels - kantenLaengeWuerfel) / 2 + offset;
 
-        canvas.drawLine(linkesEck, oberesEck, linkesEck + kantenLaenge, oberesEck, paint);
-        canvas.drawLine(linkesEck, oberesEck, linkesEck, oberesEck + kantenLaenge, paint);
-        canvas.drawLine(linkesEck + kantenLaenge, oberesEck, linkesEck + kantenLaenge, oberesEck + kantenLaenge,
+        canvas.drawLine(linkesEck, oberesEck, linkesEck + kantenLaengeWuerfel, oberesEck, paint);
+        canvas.drawLine(linkesEck, oberesEck, linkesEck, oberesEck + kantenLaengeWuerfel, paint);
+        canvas.drawLine(linkesEck + kantenLaengeWuerfel, oberesEck, linkesEck + kantenLaengeWuerfel, oberesEck + kantenLaengeWuerfel,
                 paint);
-        canvas.drawLine(linkesEck, oberesEck + kantenLaenge, linkesEck + kantenLaenge, oberesEck + kantenLaenge,
+        canvas.drawLine(linkesEck, oberesEck + kantenLaengeWuerfel, linkesEck + kantenLaengeWuerfel, oberesEck + kantenLaengeWuerfel,
                 paint);
     }
 
-    private void drawHitMessage(Canvas canvas, final int kantenLaenge) {
-        int linkesEck = (metrics.widthPixels - kantenLaenge) / 2;
-        int oberesEck = (metrics.heightPixels - kantenLaenge) / 2;
+    private void drawHitMessage(Canvas canvas, final int kantenLaengeWuerfel) {
+        int linkesEck = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
+        int oberesEck = (metrics.heightPixels - kantenLaengeWuerfel) / 2;
         
         String hit_text = this.getContext().getString(hitMsgKey);
         paint.setTextAlign(Align.CENTER);
         
         if(diceAmountType == DiceAmountType.ONE){
-            canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge + (kantenLaenge / 10),
+            canvas.drawText(hit_text, linkesEck + (kantenLaengeWuerfel / 2), oberesEck + kantenLaengeWuerfel + (kantenLaengeWuerfel / 10),
                     paint);        
         }
         else if (diceAmountType == DiceAmountType.TWO){
-            canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge + (kantenLaenge / 2),
+            canvas.drawText(hit_text, linkesEck + (kantenLaengeWuerfel / 2), oberesEck + kantenLaengeWuerfel + (kantenLaengeWuerfel / 2),
                 paint);
         }
         else{
@@ -288,16 +286,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
     }
 
-    private void drawDiceNumbers(int number, Canvas canvas, final int kantenLaenge, List<List<Point>> points) {
+    private void drawDiceNumbers(int number, Canvas canvas, final int kantenLaengeWuerfel, List<List<Point>> points) {
         switch (diceType) {
         case DICE_NORMAL:
-            drawDiceNormal(number, canvas, kantenLaenge, points);            
+            drawDiceNormal(number, canvas, kantenLaengeWuerfel, points);            
             break;
         case DICE_COLOR:
-            drawDiceColor(number, canvas, kantenLaenge, points.get(0));
+            drawDiceColor(number, canvas, kantenLaengeWuerfel, points.get(0));
             break;
         case DICE_DOUBLING:
-            drawDiceDoubling(number, canvas, kantenLaenge, points.get(0));
+            drawDiceDoubling(number, canvas, kantenLaengeWuerfel, points.get(0));
             break;
         default:
             throw new IllegalArgumentException("Unbekannter Enum DiceType!");
@@ -326,7 +324,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         canvas.drawBitmap(amountDiceBitmap, getLeftAmountDiceBitmapPos(metrics.widthPixels), getTopAmountDiceBitmapPos(metrics.heightPixels), paint);
     }
 
-    private void drawDiceNormal(int number, Canvas canvas, final int kantenLaenge, List<List<Point>> pointsList) {
+    private void drawDiceNormal(int number, Canvas canvas, final int kantenLaengeWuerfel, List<List<Point>> pointsList) {
         List<Point> points = null;
 
         switch (number) {
@@ -350,16 +348,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             break;
         default:
         }
-        drawPoints(canvas, kantenLaenge, points, kantenLaenge / 10);
+        drawPoints(canvas, kantenLaengeWuerfel, points, kantenLaengeWuerfel / 10);
     }
 
-    private void drawPoints(Canvas canvas, final int kantenLaenge, List<Point> points, int radius) {
+    private void drawPoints(Canvas canvas, final int kantenLaengeWuerfel, List<Point> points, int radius) {
         for (Point point : points) {
             canvas.drawCircle(point.x, point.y, radius, paint);
         }
     }
 
-    private void drawDiceColor(int number, Canvas canvas, final int kantenLaenge, List<Point> points) {        
+    private void drawDiceColor(int number, Canvas canvas, final int kantenLaengeWuerfel, List<Point> points) {        
         switch (number) {
         case 0:
             paint.setColor(Color.CYAN);
@@ -382,11 +380,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         default:
         }
 
-        drawPoints(canvas, kantenLaenge, points, kantenLaenge / 3);        
+        drawPoints(canvas, kantenLaengeWuerfel, points, kantenLaengeWuerfel / 3);        
         paint.setColor(Color.WHITE);
     }
 
-    private void drawDiceDoubling(int number, Canvas canvas, final int kantenLaenge, List<Point> points) {        
+    private void drawDiceDoubling(int number, Canvas canvas, final int kantenLaengeWuerfel, List<Point> points) {        
         paint.setColor(Color.WHITE);
         String text = "";
         switch (number) {
@@ -412,11 +410,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             throw new IllegalArgumentException("Nummer nicht gültig!");
         }
 
-        paint.setTextSize(kantenLaenge / 2);
+        paint.setTextSize(kantenLaengeWuerfel / 2);
         for (Point point : points) {
             canvas.drawText(text, point.x, point.y + (paint.getTextSize() / 3), paint);
         }
-        paint.setTextSize(kantenLaenge / 10);
+        paint.setTextSize(kantenLaengeWuerfel / 10);
     }
 
     @Override
@@ -446,11 +444,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
             }      
             
-            final int kantenLaenge = metrics.widthPixels / 2;
-            int linkerRand = (metrics.widthPixels - kantenLaenge) / 2;
-            int obererRand = (metrics.heightPixels - kantenLaenge) / 2;
+            final int kantenLaengeWuerfel = metrics.widthPixels / 2;
+            int linkerWuerfelRand = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
+            int obererWürfelRand = (metrics.heightPixels - kantenLaengeWuerfel) / 2;
 
-            setupDice(diceType, kantenLaenge, linkerRand, obererRand);
+            setupDice(diceType, kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand);
             
             ((Data) this.getContext()).setRolled(Boolean.TRUE);
             ((Data) this.getContext()).setInterrupted(Boolean.FALSE);
