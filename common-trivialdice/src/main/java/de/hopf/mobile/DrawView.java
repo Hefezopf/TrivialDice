@@ -176,7 +176,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         drawAmountDiceBitmap(canvas);
         playSound();
 
-        int number2 = calculateNumber2(); // TODO
+        int number2 = calculateNumber2(); // TODO NPE wenn nicht vorher ausgeführt!
         if(diceAmountType == DiceAmountType.ONE){
             drawCompleteDice(calculateNumber(), canvas, kantenLaenge, 0, pointsDiceOne);
         }

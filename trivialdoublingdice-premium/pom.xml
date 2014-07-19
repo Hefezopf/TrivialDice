@@ -6,7 +6,7 @@
   <parent>
     <groupId>de.hopf.mobile</groupId>
     <artifactId>trivialdice-parent</artifactId>
-    <version>1.29</version>
+    <version>1.30</version>
   </parent>
 
   <artifactId>trivialdoublingdice-premium</artifactId>
@@ -30,7 +30,7 @@
     <dependency>
       <groupId>de.hopf.mobile</groupId>
       <artifactId>common-trivialdice</artifactId>
-      <version>1.29</version>
+      <version>1.30</version>
       <type>jar</type>
     </dependency>
 
