@@ -350,8 +350,12 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             break;
         default:
         }
+        drawPoints(canvas, kantenLaenge, points, kantenLaenge / 10);
+    }
+
+    private void drawPoints(Canvas canvas, final int kantenLaenge, List<Point> points, int radius) {
         for (Point point : points) {
-            canvas.drawCircle(point.x, point.y, kantenLaenge / 10, paint);
+            canvas.drawCircle(point.x, point.y, radius, paint);
         }
     }
 
@@ -378,9 +382,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         default:
         }
 
-        for (Point point : points) {
-            canvas.drawCircle(point.x, point.y, kantenLaenge / 3, paint);
-        }
+        drawPoints(canvas, kantenLaenge, points, kantenLaenge / 3);        
         paint.setColor(Color.WHITE);
     }
 
@@ -513,6 +515,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }
 
     private int getLeftAmountDiceBitmapPos(int width) {
-        return width / 2 - amountDiceBitmap.getWidth() / 2 + amountDiceBitmap.getWidth()*3;
+        return width / 2 - amountDiceBitmap.getWidth() / 2 + /* Offset */amountDiceBitmap.getWidth()*3;
     }    
 }
