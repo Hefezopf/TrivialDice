@@ -29,6 +29,7 @@ public class StartDiceDelegate implements Data {
 
     private DrawView drawView;
     private Integer number;
+    private Integer number2;
     private int counter;
     private Boolean bInterrupted = Boolean.FALSE;
     private Boolean bRoll = Boolean.FALSE;
@@ -151,10 +152,6 @@ public class StartDiceDelegate implements Data {
         outState.putSerializable(INTERRUPTED_KEY, Boolean.TRUE);
     }
 
-//    public void setSound(boolean soundOn){
-//        drawView.setSoundOn(soundOn);
-//    }
-    
     @Override
     public Integer getNumber() {
         return number;
@@ -176,6 +173,16 @@ public class StartDiceDelegate implements Data {
         }
     }
 
+    @Override
+    public Integer getNumber2() {
+        return number2;
+    }
+
+    @Override
+    public void setNumber2(Integer number2) {
+        this.number2 = number2;
+    }
+    
     @Override
     public Boolean hasInterrupted() {
         return bInterrupted;
