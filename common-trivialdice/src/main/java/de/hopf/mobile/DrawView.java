@@ -12,6 +12,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
+import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -226,15 +227,39 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }
 
     private void drawDiceBorder(Canvas canvas, final int kantenLaengeWuerfel, int offset) {
-        int linkesEck = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
-        int oberesEck = (metrics.heightPixels - kantenLaengeWuerfel) / 2 + offset;
+        int linkesEck = (metrics.widthPixels ) / 2;
+        int oberesEck = (metrics.heightPixels ) / 2 + offset;
 
-        canvas.drawLine(linkesEck, oberesEck, linkesEck + kantenLaengeWuerfel, oberesEck, paint);
-        canvas.drawLine(linkesEck, oberesEck, linkesEck, oberesEck + kantenLaengeWuerfel, paint);
-        canvas.drawLine(linkesEck + kantenLaengeWuerfel, oberesEck, linkesEck + kantenLaengeWuerfel, oberesEck + kantenLaengeWuerfel,
-                paint);
-        canvas.drawLine(linkesEck, oberesEck + kantenLaengeWuerfel, linkesEck + kantenLaengeWuerfel, oberesEck + kantenLaengeWuerfel,
-                paint);
+//        int linkesEck = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
+//        int oberesEck = (metrics.heightPixels - kantenLaengeWuerfel) / 2 + offset;
+//
+//        canvas.drawLine(linkesEck, oberesEck, linkesEck + kantenLaengeWuerfel, oberesEck, paint);
+//        canvas.drawLine(linkesEck, oberesEck, linkesEck, oberesEck + kantenLaengeWuerfel, paint);
+//        canvas.drawLine(linkesEck + kantenLaengeWuerfel, oberesEck, linkesEck + kantenLaengeWuerfel, oberesEck + kantenLaengeWuerfel,
+//                paint);
+//        canvas.drawLine(linkesEck, oberesEck + kantenLaengeWuerfel, linkesEck + kantenLaengeWuerfel, oberesEck + kantenLaengeWuerfel,
+//                paint);       
+        
+        float width = getWidth();
+        float height = getHeight();
+        float radius;
+
+        if (width > height){
+            radius = height/4;
+        }else{
+            radius = width/4;
+        }
+        paint.setStrokeWidth(2);    
+        paint.setStyle(Paint.Style.STROKE);
+        
+        final RectF rect = new RectF();
+        rect.set(linkesEck - radius, 
+                oberesEck - radius, 
+                linkesEck + radius, 
+                oberesEck + radius);
+
+        canvas.drawRoundRect(rect, 10, 10, paint);
+        paint.setStyle(Paint.Style.FILL);
     }
 
     private void drawHitMessage(Canvas canvas, final int kantenLaengeWuerfel) {
