@@ -3,23 +3,45 @@ package de.hopf.mobile.drawable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hopf.mobile.Point;
-
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
+import de.hopf.mobile.DiceAmountType;
+import de.hopf.mobile.Point;
 
 public abstract class BaseDrawable implements Drawable {
 
-    protected void initDice(List<List<Point>> pointsDice) {
+    protected int kantenLaengeWuerfel;
+    protected int linkerWuerfelRand;
+    protected int obererWürfelRand;
+  
+    public BaseDrawable(int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand) {
+        super();
+        this.kantenLaengeWuerfel = kantenLaengeWuerfel;
+        this.linkerWuerfelRand = linkerWuerfelRand;
+        this.obererWürfelRand = obererWürfelRand;
+    }
+    
+    protected void initDice(List<List<List<Point>>> pointsDice, DiceAmountType diceAmountType) {
         pointsDice.clear();
-        pointsDice.add(new ArrayList<Point>());
-        pointsDice.add(new ArrayList<Point>());
-        pointsDice.add(new ArrayList<Point>());
-        pointsDice.add(new ArrayList<Point>());
-        pointsDice.add(new ArrayList<Point>());
-        pointsDice.add(new ArrayList<Point>());
+        if (diceAmountType == DiceAmountType.ONE) {
+            pointsDice.add(new ArrayList<List<Point>>()); 
+        } else if (diceAmountType == DiceAmountType.TWO) {
+            pointsDice.add(new ArrayList<List<Point>>()); 
+            pointsDice.add(new ArrayList<List<Point>>()); 
+        } else {
+            throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
+        }
+        for (List<List<Point>> pointList : pointsDice) {
+            pointList.clear();
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+        }
     }     
     
     public void drawDiceBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaengeWuerfel, int offset) {

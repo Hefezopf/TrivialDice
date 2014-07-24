@@ -5,21 +5,32 @@ import java.util.List;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import de.hopf.mobile.DiceAmountType;
 import de.hopf.mobile.Point;
 
 public class NormalDiceDrawable extends BaseDrawable {
 
-    private final List<List<Point>> pointsDiceOne = new ArrayList<List<Point>>(); 
+    private final List<List<List<Point>>> pointsDices = new ArrayList<List<List<Point>>>(); 
        
     public NormalDiceDrawable(int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand) {
-        super();
-        initDice(pointsDiceOne);
-        setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne);
+        super(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand);
+        initDice(pointsDices, DiceAmountType.ONE);
+        setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDices.get(0));
      }
 
     @Override
-    public List<List<Point>> getDrawableList() {
-        return pointsDiceOne;
+    public List<List<List<Point>>> getDrawableList(DiceAmountType diceAmountType) {
+        if (diceAmountType == DiceAmountType.ONE) {
+            initDice(pointsDices, DiceAmountType.ONE);
+            setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDices.get(0));
+        } else if (diceAmountType == DiceAmountType.TWO) {
+            initDice(pointsDices, DiceAmountType.TWO);
+            setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, -kantenLaengeWuerfel / 20 * 13, pointsDices.get(0));
+            setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, kantenLaengeWuerfel / 20 * 8, pointsDices.get(1));
+        } else {
+            throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
+        }
+        return pointsDices;
     }
     
     private void setupDice(final int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand,
@@ -74,30 +85,34 @@ public class NormalDiceDrawable extends BaseDrawable {
     }
 
     @Override
-    public void drawContent(int number, Paint paint, Canvas canvas, int kantenLaengeWuerfel, List<List<Point>> points) {
-        List<Point> pointsList = null;
+    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaengeWuerfel, List<List<List<Point>>> points) {
+        int index = 0;
 
-        switch (number) {
-        case 0:
-            pointsList = points.get(0);
-            break;
-        case 1:
-            pointsList = points.get(1);
-            break;
-        case 2:
-            pointsList = points.get(2);
-            break;
-        case 3:
-            pointsList = points.get(3);
-            break;
-        case 4:
-            pointsList = points.get(4);
-            break;
-        case 5:
-            pointsList = points.get(5);
-            break;
-        default:
+        for (List<List<Point>> pointList : points) {        
+            List<Point> pointsList = null;
+    
+            switch (numberList.get(index++)) {
+            case 0:
+                pointsList = pointList.get(0);
+                break;
+            case 1:
+                pointsList = pointList.get(1);
+                break;
+            case 2:
+                pointsList = pointList.get(2);
+                break;
+            case 3:
+                pointsList = pointList.get(3);
+                break;
+            case 4:
+                pointsList = pointList.get(4);
+                break;
+            case 5:
+                pointsList = pointList.get(5);
+                break;
+            default:
+            }
+            drawPoints(paint, canvas, kantenLaengeWuerfel, pointsList, kantenLaengeWuerfel / 10);
         }
-        drawPoints(paint, canvas, kantenLaengeWuerfel, pointsList, kantenLaengeWuerfel / 10);
     }
 }

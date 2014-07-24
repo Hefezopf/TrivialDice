@@ -5,8 +5,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import de.hopf.mobile.drawable.Drawable;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import de.hopf.mobile.drawable.Drawable;
 
 public class StartDiceDelegate implements Data {
     private final Activity activity;
@@ -25,7 +24,7 @@ public class StartDiceDelegate implements Data {
     private final int linkMsgKey;
     private final int startMsgKey;
     private final boolean bLite;
-    private final DiceType diceType;
+//    private final DiceType diceType;
     private int fullVersionLinkKey;
 
     private DrawView drawView;
@@ -40,12 +39,12 @@ public class StartDiceDelegate implements Data {
     private final Drawable drawable;
     
     // Premium
-    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, DiceType diceType, Drawable drawable) {
+    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
         this.mainMsgKey = mainMsgKey;
-        this.diceType = diceType;
+//        this.diceType = diceType;
         
         this.linkMsgKey = 0;
         this.startMsgKey = 0;
@@ -56,14 +55,14 @@ public class StartDiceDelegate implements Data {
 
     // Lite
     public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
-            int titleMsgKey, int startMsgKey, DiceType diceType, int fullVersionLinkKey, Drawable drawable) {
+            int titleMsgKey, int startMsgKey,/* DiceType diceType,*/ int fullVersionLinkKey, Drawable drawable) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
         this.mainMsgKey = mainMsgKey;
         this.linkMsgKey = linkMsgKey;
         this.startMsgKey = startMsgKey;
-        this.diceType = diceType;
+//        this.diceType = diceType;
         this.fullVersionLinkKey = fullVersionLinkKey;        
         
         this.bLite = true;
@@ -83,7 +82,7 @@ public class StartDiceDelegate implements Data {
             bInterrupted = (Boolean) savedInstanceState.getSerializable(INTERRUPTED_KEY);
         }
 
-        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey, this.diceType, drawable);
+        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey,/* this.diceType,*/ drawable);
         activity.setContentView(drawView);
         drawView.requestFocus();
 
