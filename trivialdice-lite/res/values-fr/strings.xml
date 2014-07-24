@@ -3,7 +3,7 @@
     <string name="app_name">Simple Cube Lite</string>
     <string name="hit">Toucher</string>    
     
-    <string name="link">http://market.android.com/details?id=de.hopf.mobile.trivialdice</string>
+    <string name="link">http://play.google.com/store/apps/details?id=de.hopf.mobile.trivialdice</string>
     <string name="link_text">Chercher comble version ici!</string>
     <string name="start">Autre&#8230;</string>
 </resources>

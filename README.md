@@ -40,7 +40,7 @@ mvn android:manifest-update (vorher Properties in der Parent POM einstellen)
 mvn android:manifest-update -Dandroid.manifest.versionName=1.13 -Dandroid.manifest.versionCode=13
 
 Artifact versions increment:
------------------------------
+----------------------------
 mvn versions:set -DnewVersion=1.17 
 mvn clean install -DskipTests
 mvn versions:commit (löscht pom.xml.versionsBackup Files)
