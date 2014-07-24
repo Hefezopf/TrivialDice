@@ -3,11 +3,14 @@ package de.hopf.mobile.trivialdice;
 import de.hopf.mobile.DiceType;
 import de.hopf.mobile.StartDiceBase;
 import de.hopf.mobile.StartDiceDelegate;
+import de.hopf.mobile.drawable.Drawable;
+import de.hopf.mobile.drawable.NormalDiceDrawable;
 
 public class StartDice extends StartDiceBase {
     
     @Override
     public void initDelegate() {
-        this.startDiceDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, DiceType.DICE_NORMAL);
+        Drawable drawable = new NormalDiceDrawable(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand);
+        this.startDiceDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, DiceType.DICE_NORMAL, drawable);
     }    
 }

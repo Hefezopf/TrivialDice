@@ -5,6 +5,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import de.hopf.mobile.drawable.Drawable;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -34,9 +36,11 @@ public class StartDiceDelegate implements Data {
     private Boolean bRoll = Boolean.FALSE;
     private static final String COUNT_KEY = "COUNT_KEY";
     private static final String INTERRUPTED_KEY = "INTERRUPTED_KEY";
-
+    
+    private final Drawable drawable;
+    
     // Premium
-    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, DiceType diceType) {
+    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, DiceType diceType, Drawable drawable) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -46,11 +50,13 @@ public class StartDiceDelegate implements Data {
         this.linkMsgKey = 0;
         this.startMsgKey = 0;
         this.bLite = false;
+        
+        this.drawable = drawable;
     }
 
     // Lite
     public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
-            int titleMsgKey, int startMsgKey, DiceType diceType, int fullVersionLinkKey) {
+            int titleMsgKey, int startMsgKey, DiceType diceType, int fullVersionLinkKey, Drawable drawable) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -61,6 +67,8 @@ public class StartDiceDelegate implements Data {
         this.fullVersionLinkKey = fullVersionLinkKey;        
         
         this.bLite = true;
+        
+        this.drawable = drawable;
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -75,19 +83,13 @@ public class StartDiceDelegate implements Data {
             bInterrupted = (Boolean) savedInstanceState.getSerializable(INTERRUPTED_KEY);
         }
 
-        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey, this.diceType);
+        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey, this.diceType, drawable);
         activity.setContentView(drawView);
         drawView.requestFocus();
 
         // StartInfo nur beim ersten mal
         if (bLite && number == null) {
-            activity.setContentView(this.mainMsgKey);
-
-            Button link_text = (Button) activity.findViewById(this.linkMsgKey);
-            link_text.setOnClickListener(fullVersionListener);
-
-            Button startButton = (Button) activity.findViewById(this.startMsgKey);
-            startButton.setOnClickListener(continueListener);
+            showSplashScreen();
         }
     }
 
@@ -155,15 +157,19 @@ public class StartDiceDelegate implements Data {
         if (this.bLite) {
             if ((counter > 10) && number != null && number.intValue() == 5) {
                 counter = 0;
-                activity.setContentView(this.mainMsgKey);
-                
-                Button link_text = (Button) activity.findViewById(this.linkMsgKey);
-                link_text.setOnClickListener(fullVersionListener);
-                
-                Button startButton = (Button) activity.findViewById(this.startMsgKey);
-                startButton.setOnClickListener(continueListener);
+                showSplashScreen();
             }
         }
+    }
+
+    private void showSplashScreen() {
+        activity.setContentView(this.mainMsgKey);
+        
+        Button link_text = (Button) activity.findViewById(this.linkMsgKey);
+        link_text.setOnClickListener(fullVersionListener);
+        
+        Button startButton = (Button) activity.findViewById(this.startMsgKey);
+        startButton.setOnClickListener(continueListener);
     }
 
     @Override

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hopf.mobile.drawable.BaseDrawable;
+import de.hopf.mobile.drawable.Drawable;
+
 import android.R;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,7 +15,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
-import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -24,7 +26,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private static final long serialVersionUID = 1L;
 
     // 1. Würfel
-    private final List<List<Point>> pointsDiceOne = new ArrayList<List<Point>>();
+//    private final List<List<Point>> pointsDiceOne = new ArrayList<List<Point>>();
+    private List<List<Point>> pointsDiceOneNEW = new ArrayList<List<Point>>();
     // 2. Würfel
     private final List<List<Point>> pointsDiceTwo = new ArrayList<List<Point>>();
 
@@ -42,8 +45,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private DiceAmountType diceAmountType = DiceAmountType.ONE;
     private Bitmap amountDiceBitmap;
-
-    public DrawView(Context context, WindowManager wm, int diceSoundKey, int hitMsgKey, DiceType diceType) {
+    
+    Drawable drawable;
+    
+    public DrawView(Context context, WindowManager wm, int diceSoundKey, int hitMsgKey, DiceType diceType, Drawable drawable) {
         super(context);
         setFocusable(true);
         setFocusableInTouchMode(true);
@@ -75,20 +80,22 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         paint.setAntiAlias(true);
         paint.setTextAlign(Align.LEFT);
 
+        this.drawable = drawable;
+        pointsDiceOneNEW = drawable.getDrawableList();
         setupDice(diceType, kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand);
     }
 
     private void setupDice(DiceType diceType, final int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand) {
-        initDice(pointsDiceOne);
+//        initDice(pointsDiceOne);
         initDice(pointsDiceTwo);
 
         switch (diceType) {
         case DICE_NORMAL:
             if (diceAmountType == DiceAmountType.ONE) {
-                setupDiceNormal(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne);
+//                setupDiceNormal(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne);
             } else if (diceAmountType == DiceAmountType.TWO) {
-                setupDiceNormal(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand,
-                        -kantenLaengeWuerfel / 20 * 13, pointsDiceOne);
+//                setupDiceNormal(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand,
+//                        -kantenLaengeWuerfel / 20 * 13, pointsDiceOne);
                 setupDiceNormal(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, kantenLaengeWuerfel / 20 * 8,
                         pointsDiceTwo);
             } else {
@@ -97,10 +104,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             break;
         case DICE_COLOR:
             if (diceAmountType == DiceAmountType.ONE) {
-                setupDiceColor(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne.get(0));
+            ;//    setupDiceColor(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne.get(0));
             } else if (diceAmountType == DiceAmountType.TWO) {
-                setupDiceColor(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand,
-                        -kantenLaengeWuerfel / 20 * 13, pointsDiceOne.get(0));
+//                setupDiceColor(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand,
+//                        -kantenLaengeWuerfel / 20 * 13, pointsDiceOne.get(0));
                 setupDiceColor(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, kantenLaengeWuerfel / 20 * 8,
                         pointsDiceTwo.get(0));
             } else {
@@ -109,10 +116,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             break;
         case DICE_DOUBLING:
             if (diceAmountType == DiceAmountType.ONE) {
-                setupDiceDoubling(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne.get(0));
+//                setupDiceDoubling(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDiceOne.get(0));
             } else if (diceAmountType == DiceAmountType.TWO) {
-                setupDiceDoubling(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand,
-                        -kantenLaengeWuerfel / 20 * 13, pointsDiceOne.get(0));
+//                setupDiceDoubling(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand,
+//                        -kantenLaengeWuerfel / 20 * 13, pointsDiceOne.get(0));
                 setupDiceDoubling(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand,
                         kantenLaengeWuerfel / 20 * 8, pointsDiceTwo.get(0));
             } else {
@@ -204,10 +211,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         int number2 = calculateNumber2(); // TODO NPE wenn nicht vorher
                                           // ausgeführt!
         if (diceAmountType == DiceAmountType.ONE) {
-            drawCompleteDice(calculateNumber(), canvas, kantenLaengeWuerfel, 0, pointsDiceOne);
+            drawCompleteDice(calculateNumber(), canvas, kantenLaengeWuerfel, 0, pointsDiceOneNEW);
         } else if (diceAmountType == DiceAmountType.TWO) {
-            drawCompleteDice(calculateNumber(), canvas, kantenLaengeWuerfel, -kantenLaengeWuerfel / 20 * 13,
-                    pointsDiceOne);
+//            drawCompleteDice(calculateNumber(), canvas, kantenLaengeWuerfel, -kantenLaengeWuerfel / 20 * 13,
+//                    pointsDiceOne);
             drawCompleteDice(number2, canvas, kantenLaengeWuerfel, kantenLaengeWuerfel / 20 * 8, pointsDiceTwo);
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
@@ -244,51 +251,13 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private void drawCompleteDice(int number, Canvas canvas, final int kantenLaengeWuerfel, int offset,
             List<List<Point>> points) {
-        drawDiceBorder(canvas, kantenLaengeWuerfel, offset);
-        drawDiceNumbers(number, canvas, kantenLaengeWuerfel, points);
+        ((BaseDrawable)drawable).drawDiceBorder(paint, canvas, metrics, kantenLaengeWuerfel, offset);
+        drawable.drawContent(number, paint, canvas, kantenLaengeWuerfel, points);        
     }
 
     private void drawCopyright(Canvas canvas, final int kantenLaengeWuerfel) {
         paint.setTextAlign(Align.LEFT);
         canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaengeWuerfel / 10, paint);
-    }
-
-    private void drawDiceBorder(Canvas canvas, final int kantenLaengeWuerfel, int offset) {
-        int linkesEck = (metrics.widthPixels) / 2;
-        int oberesEck = (metrics.heightPixels) / 2 + offset;
-
-        // int linkesEck = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
-        // int oberesEck = (metrics.heightPixels - kantenLaengeWuerfel) / 2 +
-        // offset;
-        //
-        // canvas.drawLine(linkesEck, oberesEck, linkesEck +
-        // kantenLaengeWuerfel, oberesEck, paint);
-        // canvas.drawLine(linkesEck, oberesEck, linkesEck, oberesEck +
-        // kantenLaengeWuerfel, paint);
-        // canvas.drawLine(linkesEck + kantenLaengeWuerfel, oberesEck, linkesEck
-        // + kantenLaengeWuerfel, oberesEck + kantenLaengeWuerfel,
-        // paint);
-        // canvas.drawLine(linkesEck, oberesEck + kantenLaengeWuerfel, linkesEck
-        // + kantenLaengeWuerfel, oberesEck + kantenLaengeWuerfel,
-        // paint);
-
-        float width = getWidth();
-        float height = getHeight();
-        float radius;
-
-        if (width > height) {
-            radius = height / 4;
-        } else {
-            radius = width / 4;
-        }
-        paint.setStrokeWidth(2);
-        paint.setStyle(Paint.Style.STROKE);
-
-        final RectF rect = new RectF();
-        rect.set(linkesEck - radius, oberesEck - radius, linkesEck + radius, oberesEck + radius);
-
-        canvas.drawRoundRect(rect, 10, 10, paint);
-        paint.setStyle(Paint.Style.FILL);
     }
 
     private void drawHitMessage(Canvas canvas, final int kantenLaengeWuerfel) {
@@ -338,22 +307,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         }
     }
 
-    private void drawDiceNumbers(int number, Canvas canvas, final int kantenLaengeWuerfel, List<List<Point>> points) {
-        switch (diceType) {
-        case DICE_NORMAL:
-            drawDiceNormal(number, canvas, kantenLaengeWuerfel, points);
-            break;
-        case DICE_COLOR:
-            drawDiceColor(number, canvas, kantenLaengeWuerfel, points.get(0));
-            break;
-        case DICE_DOUBLING:
-            drawDiceDoubling(number, canvas, kantenLaengeWuerfel, points.get(0));
-            break;
-        default:
-            throw new IllegalArgumentException("Unbekannter Enum DiceType!");
-        }
-    }
-
     private void drawSpeakerBitmap(Canvas canvas) {
         canvas.drawBitmap(getSoundBitmap(), getLeftSoundBitmapPos(metrics.widthPixels),
                 getTopSoundBitmapPos(metrics.heightPixels), paint);
@@ -387,99 +340,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private void drawAmountDiceBitmap(Canvas canvas) {
         canvas.drawBitmap(getAmountDiceBitmap(), getLeftAmountDiceBitmapPos(metrics.widthPixels),
                 getTopAmountDiceBitmapPos(metrics.heightPixels), paint);
-    }
-
-    private void drawDiceNormal(int number, Canvas canvas, final int kantenLaengeWuerfel, List<List<Point>> pointsList) {
-        List<Point> points = null;
-
-        switch (number) {
-        case 0:
-            points = pointsList.get(0);
-            break;
-        case 1:
-            points = pointsList.get(1);
-            break;
-        case 2:
-            points = pointsList.get(2);
-            break;
-        case 3:
-            points = pointsList.get(3);
-            break;
-        case 4:
-            points = pointsList.get(4);
-            break;
-        case 5:
-            points = pointsList.get(5);
-            break;
-        default:
-        }
-        drawPoints(canvas, kantenLaengeWuerfel, points, kantenLaengeWuerfel / 10);
-    }
-
-    private void drawPoints(Canvas canvas, final int kantenLaengeWuerfel, List<Point> points, int radius) {
-        for (Point point : points) {
-            canvas.drawCircle(point.x, point.y, radius, paint);
-        }
-    }
-
-    private void drawDiceColor(int number, Canvas canvas, final int kantenLaengeWuerfel, List<Point> points) {
-        switch (number) {
-        case 0:
-            paint.setColor(Color.CYAN);
-            break;
-        case 1:
-            paint.setColor(Color.BLUE);
-            break;
-        case 2:
-            paint.setColor(Color.RED);
-            break;
-        case 3:
-            paint.setColor(Color.GREEN);
-            break;
-        case 4:
-            paint.setColor(Color.WHITE);
-            break;
-        case 5:
-            paint.setColor(Color.YELLOW);
-            break;
-        default:
-        }
-
-        drawPoints(canvas, kantenLaengeWuerfel, points, kantenLaengeWuerfel / 3);
-        paint.setColor(Color.WHITE);
-    }
-
-    private void drawDiceDoubling(int number, Canvas canvas, final int kantenLaengeWuerfel, List<Point> points) {
-        paint.setColor(Color.WHITE);
-        String text = "";
-        switch (number) {
-        case 0:
-            text = "2";
-            break;
-        case 1:
-            text = "4";
-            break;
-        case 2:
-            text = "8";
-            break;
-        case 3:
-            text = "16";
-            break;
-        case 4:
-            text = "32";
-            break;
-        case 5:
-            text = "64";
-            break;
-        default:
-            throw new IllegalArgumentException("Nummer nicht gültig!");
-        }
-
-        paint.setTextSize(kantenLaengeWuerfel / 2);
-        for (Point point : points) {
-            canvas.drawText(text, point.x, point.y + (paint.getTextSize() / 3), paint);
-        }
-        paint.setTextSize(kantenLaengeWuerfel / 10);
     }
 
     @Override
@@ -548,8 +408,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private void addPoint(int x, int y, List<Point> points) {
         Point point = new Point();
-        point.x = x;
-        point.y = y;
+        point.setX(x);
+        point.setY(y);
         points.add(point);
     }
 

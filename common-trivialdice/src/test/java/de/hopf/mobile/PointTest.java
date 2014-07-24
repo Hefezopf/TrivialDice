@@ -10,8 +10,8 @@ public class PointTest
     @Test
 	public void testToString() {
         Point p = new Point();
-        p.x = 1;
-        p.y = 2;
+        p.setX(1);
+        p.setY(2);
 		Assert.assertEquals(p.toString(), "1.0, 2.0");
 	}
 }
