@@ -83,12 +83,6 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
 
             TouchUtils.tapView(this, startButton);
         }
-
-//        try {
-//          Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//          e.printStackTrace();
-//        }
         
         ((Data)startDice).setNumber(0);
         
@@ -113,12 +107,6 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
 
         TouchUtils.tapView(this, linkVollVersion);
         
-//        try {
-//            Thread.sleep(2000);
-//          } catch (InterruptedException e) {
-//            e.printStackTrace();
-//          }
-                  
         assertTrue(linkVollVersion.getText().toString().startsWith("Get full version here!"));
         
         assertFalse(startDice.getCurrentFocus() instanceof Button);
@@ -132,12 +120,6 @@ public abstract class TrivialDiceBaseTest extends ActivityInstrumentationTestCas
         assertTrue(startDice.getCurrentFocus() instanceof Button);
 
         TouchUtils.tapView(this, startButton);
-        
-//        try {
-//          Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//          e.printStackTrace();
-//        }
         
         ((Data)startDice).setNumber(0);
         
