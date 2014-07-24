@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="31" android:versionName="1.31" package="de.hopf.android.trivialdice.color">    
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="32" android:versionName="1.32" package="de.hopf.android.trivialdice.color">    
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
     <uses-sdk android:minSdkVersion="5" android:targetSdkVersion="20"/>    
                   
     <application android:allowBackup="true" android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:label="@string/app_name" android:name="de.hopf.android.trivialdice.color.StartDice">
+        <activity android:label="@string/app_name" android:name="de.hopf.android.trivialdice.color.StartDice" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -11,5 +12,4 @@
         </activity>
     </application>
 
-<!--     <instrumentation android:name="android.test.InstrumentationTestRunner" android:targetPackage="de.hopf.android.trivialdice.color"/> -->    
 </manifest>

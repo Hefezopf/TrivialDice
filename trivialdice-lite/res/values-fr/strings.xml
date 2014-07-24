@@ -3,6 +3,6 @@
     <string name="app_name">Simple Cube Lite</string>
     <string name="hit">Toucher</string>    
     
-    <string name="link_text">Chercher <b><a href="http://market.android.com/details?id=de.hopf.mobile.trivialdice">comble version</a></b> ici!\n</string>
+    <string name="link_text">Chercher <b><a href="http://market.android.com/details?id=de.hopf.mobile.trivialdice">comble version</a></b> ici!</string>
     <string name="start">Autre&#8230;</string>
 </resources>

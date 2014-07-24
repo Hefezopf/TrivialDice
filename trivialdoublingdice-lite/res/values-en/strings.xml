@@ -3,6 +3,6 @@
     <string name="app_name">Trivial Doubling Dice Lite</string>
     <string name="hit">Hit screen to roll</string>    
     
-    <string name="link_text">Get <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.doubling">full version</a></b> here!\n</string>
+    <string name="link_text">Get <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.doubling">full version</a></b> here!</string>
     <string name="start">Continue playing</string>
 </resources>

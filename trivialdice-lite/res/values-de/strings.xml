@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Einfacher Würfel Lite</string>
-    <string name="hit">Berühren um zu würfeln</string>    
+    <string name="app_name">Einfacher W&#252;rfel Lite</string>
+    <string name="hit">Ber&#252;hren um zu w&#252;rfeln</string>    
     
-    <string name="link_text">Hole <b><a href="http://market.android.com/details?id=de.hopf.mobile.trivialdice">Vollversion</a></b> hier!\n</string>
+    <string name="link_text">Hole <b><a href="http://market.android.com/details?id=de.hopf.mobile.trivialdice">Vollversion</a></b> hier!</string>
     <string name="start">Weiter&#8230;</string>
 </resources>

@@ -22,12 +22,11 @@
         android:paddingBottom="50dp"
         android:text="@string/link_text"
         android:textSize="48sp" />
-
+ 
     <Button
         android:id="@+id/start"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
         android:text="@string/start"
         android:textSize="48sp" >
 
