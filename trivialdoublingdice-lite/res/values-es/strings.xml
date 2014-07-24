@@ -3,6 +3,7 @@
     <string name="app_name">Trivial Cubo Duplicar Lite</string>
     <string name="hit">Toque para lanzar los dados</string>    
     
-    <string name="link_text">Obtener la <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.doubling">versión completa</a></b> aquí!</string>
+    <string name="link">http://market.android.com/details?id=de.hopf.android.trivialdice.doubling</string>
+    <string name="link_text">Obtener la versión completa aquí!</string>
     <string name="start">Más&#8230;</string>
 </resources>

@@ -3,6 +3,7 @@
     <string name="app_name">Simple cube de couleur Lite</string>
     <string name="hit">Toucher</string>    
     
-    <string name="link_text">Chercher <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.color">comble version</a></b> ici!</string>
+    <string name="link">http://market.android.com/details?id=de.hopf.android.trivialdice.color</string>
+    <string name="link_text">Chercher comble version ici!</string>
     <string name="start">Autre&#8230;</string>
 </resources>

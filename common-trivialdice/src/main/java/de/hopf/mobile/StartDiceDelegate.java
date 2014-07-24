@@ -6,15 +6,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class StartDiceDelegate implements Data {
     private final Activity activity;
@@ -22,10 +21,10 @@ public class StartDiceDelegate implements Data {
     private final int hitMsgKey;
     private final int mainMsgKey;
     private final int linkMsgKey;
-    private final int titleMsgKey;
     private final int startMsgKey;
     private final boolean bLite;
     private final DiceType diceType;
+    private int fullVersionLinkKey;
 
     private DrawView drawView;
     private Integer number;
@@ -35,8 +34,6 @@ public class StartDiceDelegate implements Data {
     private Boolean bRoll = Boolean.FALSE;
     private static final String COUNT_KEY = "COUNT_KEY";
     private static final String INTERRUPTED_KEY = "INTERRUPTED_KEY";
-    private int kantenLaenge;
-    private DisplayMetrics metrics;
 
     // Premium
     public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, DiceType diceType) {
@@ -47,24 +44,21 @@ public class StartDiceDelegate implements Data {
         this.diceType = diceType;
         
         this.linkMsgKey = 0;
-        this.titleMsgKey = 0;
         this.startMsgKey = 0;
         this.bLite = false;
-//        drawView.setSoundOn(false);
     }
 
     // Lite
     public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
-            int titleMsgKey, int startMsgKey, DiceType diceType) {
+            int titleMsgKey, int startMsgKey, DiceType diceType, int fullVersionLinkKey) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
         this.mainMsgKey = mainMsgKey;
         this.linkMsgKey = linkMsgKey;
-        this.titleMsgKey = titleMsgKey;
         this.startMsgKey = startMsgKey;
         this.diceType = diceType;
-//        drawView.setSoundOn(false);
+        this.fullVersionLinkKey = fullVersionLinkKey;        
         
         this.bLite = true;
     }
@@ -89,22 +83,11 @@ public class StartDiceDelegate implements Data {
         if (bLite && number == null) {
             activity.setContentView(this.mainMsgKey);
 
-            if (metrics == null) {
-                metrics = new DisplayMetrics();
-            }
-            activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            kantenLaenge = metrics.widthPixels / 2;
-
-            TextView title = (TextView) activity.findViewById(this.titleMsgKey);
-            title.setTextSize(kantenLaenge / 5);
-
-            TextView link_text = (TextView) activity.findViewById(this.linkMsgKey);
-            link_text.setTextSize(kantenLaenge / 9);
-            link_text.setMovementMethod(LinkMovementMethod.getInstance());
+            Button link_text = (Button) activity.findViewById(this.linkMsgKey);
+            link_text.setOnClickListener(fullVersionListener);
 
             Button startButton = (Button) activity.findViewById(this.startMsgKey);
-            startButton.setOnClickListener(mGetListener);
-            startButton.setTextSize(kantenLaenge / 7);
+            startButton.setOnClickListener(continueListener);
         }
     }
 
@@ -139,11 +122,19 @@ public class StartDiceDelegate implements Data {
         }
     }
 
-    private final OnClickListener mGetListener = new OnClickListener() {
+    private final OnClickListener continueListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
             activity.setContentView(drawView);
             drawView.requestFocus();
+        }
+    };
+
+    private final OnClickListener fullVersionListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent getWebPage = new Intent(Intent.ACTION_VIEW, Uri.parse(activity.getString(fullVersionLinkKey)));
+            activity.startActivity(getWebPage);
         }
     };
 
@@ -165,10 +156,12 @@ public class StartDiceDelegate implements Data {
             if ((counter > 10) && number != null && number.intValue() == 5) {
                 counter = 0;
                 activity.setContentView(this.mainMsgKey);
+                
+                Button link_text = (Button) activity.findViewById(this.linkMsgKey);
+                link_text.setOnClickListener(fullVersionListener);
+                
                 Button startButton = (Button) activity.findViewById(this.startMsgKey);
-                startButton.setOnClickListener(mGetListener);
-                startButton.setTextSize(kantenLaenge / 7);
-                startButton.requestFocus();
+                startButton.setOnClickListener(continueListener);
             }
         }
     }

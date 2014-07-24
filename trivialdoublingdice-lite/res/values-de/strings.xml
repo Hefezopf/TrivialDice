@@ -3,6 +3,7 @@
     <string name="app_name">Einfacher Verdoppelw&#252;rfel Lite</string>
     <string name="hit">Ber&#252;hren um zu w&#252;rfeln</string>    
     
-    <string name="link_text">Hole <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.doubling">Vollversion</a></b> hier!</string>
+    <string name="link">http://market.android.com/details?id=de.hopf.android.trivialdice.doubling</string>
+    <string name="link_text">Hole Vollversion hier!</string>
     <string name="start">Weiter&#8230;</string>
 </resources>

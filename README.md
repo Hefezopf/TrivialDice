@@ -54,6 +54,7 @@ Button KONFIGURATION DER PRODUKTIONSVERSION Neue APK-Datei in Produktionsphase h
  
 Run Emulator:
 -------------
+Left Conrtol + F11 = Landscape (Keyboard off in Emulator!)
 emulator -avd <avd_name> -gpu on -wipe-data -scale 96dpi -dpi-device 160
  -> also: emulator -avd A8 -gpu on -wipe-data -scale 96dpi -dpi-device 160
 oder:
