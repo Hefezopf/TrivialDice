@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:versionCode="32" android:versionName="1.32" package="de.hopf.mobile.trivialdice">  
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:versionCode="33" android:versionName="1.33" package="de.hopf.mobile.trivialdice">  
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
     <uses-permission android:name="android.permission.INJECT_EVENTS" tools:ignore="ProtectedPermissions"/> 
     
