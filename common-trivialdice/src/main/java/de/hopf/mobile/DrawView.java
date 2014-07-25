@@ -174,7 +174,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
                         + (kantenLaenge / 2), paint);
             } else if (itemAmountType == ItemAmountType.THREE) {
                 canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-                        + (kantenLaenge / 2), paint); //TODO
+                        + (kantenLaenge / 2), paint);
             } else {
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
             }
@@ -227,11 +227,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private Bitmap getAmountDiceBitmap() {
         if (itemAmountType == ItemAmountType.ONE) {
-            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_off);
+            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_play);
         } else if (itemAmountType == ItemAmountType.TWO) {
-            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_on);
+            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_ff);
         } else if (itemAmountType == ItemAmountType.THREE) {
-            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_off); // TODO
+            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_next); // TODO
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
         }
