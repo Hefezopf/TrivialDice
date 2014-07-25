@@ -37,7 +37,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private boolean soundOn = true;
     private Bitmap soundBitmap;
 
-    private DiceAmountType diceAmountType = DiceAmountType.ONE;
+    private ItemAmountType diceAmountType = ItemAmountType.ONE;
     private Bitmap amountDiceBitmap;
     
     Drawable drawable;
@@ -90,16 +90,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         playSound();
 
         List<Integer> numberList = new ArrayList<Integer>();
-        if (diceAmountType == DiceAmountType.ONE) {
+        if (diceAmountType == ItemAmountType.ONE) {
             numberList.add(calculateNumber()); 
-        } else if (diceAmountType == DiceAmountType.TWO) {
+        } else if (diceAmountType == ItemAmountType.TWO) {
             numberList.add(calculateNumber()); 
             numberList.add(calculateNumber2());
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
         }
         
-        drawCompleteDice(numberList, canvas, kantenLaengeWuerfel, 0, pointsDices);
+        drawCompleteDice(numberList, canvas, kantenLaengeWuerfel, pointsDices);
     }
 
     private int calculateNumber() {
@@ -130,14 +130,13 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return ((Data) this.getContext()).getNumber2();
     }
 
-    private void drawCompleteDice(List<Integer> numberList, Canvas canvas, final int kantenLaengeWuerfel, int offset,
-            List<List<List<Point>>> points) {
-        if (diceAmountType == DiceAmountType.ONE) {
-            ((BaseDrawable)drawable).drawDiceBorder(paint, canvas, metrics, kantenLaengeWuerfel, 0);
+    private void drawCompleteDice(List<Integer> numberList, Canvas canvas, final int kantenLaengeWuerfel, List<List<List<Point>>> points) {
+        if (diceAmountType == ItemAmountType.ONE) {
+            ((BaseDrawable)drawable).drawDiceBorder(paint, canvas, metrics, kantenLaengeWuerfel, ItemAmountType.ONE.getOffset1());
             drawable.drawContent(numberList, paint, canvas, kantenLaengeWuerfel, points);        
-        } else if (diceAmountType == DiceAmountType.TWO) {
-            ((BaseDrawable)drawable).drawDiceBorder(paint, canvas, metrics, kantenLaengeWuerfel, -kantenLaengeWuerfel / 20 * 13);
-            ((BaseDrawable)drawable).drawDiceBorder(paint, canvas, metrics, kantenLaengeWuerfel, kantenLaengeWuerfel / 20 * 8);
+        } else if (diceAmountType == ItemAmountType.TWO) {
+            ((BaseDrawable)drawable).drawDiceBorder(paint, canvas, metrics, kantenLaengeWuerfel, kantenLaengeWuerfel / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset1());
+            ((BaseDrawable)drawable).drawDiceBorder(paint, canvas, metrics, kantenLaengeWuerfel, kantenLaengeWuerfel / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset2());
             drawable.drawContent(numberList, paint, canvas, kantenLaengeWuerfel, points);        
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
@@ -156,10 +155,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         String hit_text = this.getContext().getString(hitMsgKey);
         paint.setTextAlign(Align.CENTER);
 
-        if (diceAmountType == DiceAmountType.ONE) {
+        if (diceAmountType == ItemAmountType.ONE) {
             canvas.drawText(hit_text, linkesEck + (kantenLaengeWuerfel / 2), oberesEck + kantenLaengeWuerfel
                     + (kantenLaengeWuerfel / 10), paint);
-        } else if (diceAmountType == DiceAmountType.TWO) {
+        } else if (diceAmountType == ItemAmountType.TWO) {
             canvas.drawText(hit_text, linkesEck + (kantenLaengeWuerfel / 2), oberesEck + kantenLaengeWuerfel
                     + (kantenLaengeWuerfel / 2), paint);
         } else {
@@ -212,9 +211,9 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }
 
     private Bitmap getAmountDiceBitmap() {
-        if (diceAmountType == DiceAmountType.ONE) {
+        if (diceAmountType == ItemAmountType.ONE) {
             amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_off);
-        } else if (diceAmountType == DiceAmountType.TWO) {
+        } else if (diceAmountType == ItemAmountType.TWO) {
             amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_on);
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
@@ -245,10 +244,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
         // Toggle Ansicht
         if (isAmountDiceBitmapTouched(event)) {
-            if (diceAmountType == DiceAmountType.ONE) {
-                diceAmountType = DiceAmountType.TWO;
-            } else if (diceAmountType == DiceAmountType.TWO) {
-                diceAmountType = DiceAmountType.ONE;
+            if (diceAmountType == ItemAmountType.ONE) {
+                diceAmountType = ItemAmountType.TWO;
+            } else if (diceAmountType == ItemAmountType.TWO) {
+                diceAmountType = ItemAmountType.ONE;
             } else {
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
             }

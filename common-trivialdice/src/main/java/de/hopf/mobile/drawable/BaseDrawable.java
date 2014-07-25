@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
-import de.hopf.mobile.DiceAmountType;
+import de.hopf.mobile.ItemAmountType;
 import de.hopf.mobile.Point;
 
 public abstract class BaseDrawable implements Drawable {
@@ -23,11 +23,11 @@ public abstract class BaseDrawable implements Drawable {
         this.obererWürfelRand = obererWürfelRand;
     }
     
-    protected void initDice(List<List<List<Point>>> pointsDice, DiceAmountType diceAmountType) {
+    protected void initDice(List<List<List<Point>>> pointsDice, ItemAmountType diceAmountType) {
         pointsDice.clear();
-        if (diceAmountType == DiceAmountType.ONE) {
+        if (diceAmountType == ItemAmountType.ONE) {
             pointsDice.add(new ArrayList<List<Point>>()); 
-        } else if (diceAmountType == DiceAmountType.TWO) {
+        } else if (diceAmountType == ItemAmountType.TWO) {
             pointsDice.add(new ArrayList<List<Point>>()); 
             pointsDice.add(new ArrayList<List<Point>>()); 
         } else {
@@ -44,9 +44,9 @@ public abstract class BaseDrawable implements Drawable {
         }
     }     
     
-    public void drawDiceBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaengeWuerfel, int offset) {
+    public void drawDiceBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaengeWuerfel, int offsetX) {
         int linkesEck = (metrics.widthPixels) / 2;
-        int oberesEck = (metrics.heightPixels) / 2 + offset;
+        int oberesEck = (metrics.heightPixels) / 2 + offsetX;
 
         float width = metrics.widthPixels;
         float height = metrics.heightPixels;
