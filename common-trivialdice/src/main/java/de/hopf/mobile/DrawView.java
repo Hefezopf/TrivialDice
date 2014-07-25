@@ -134,7 +134,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }
 
     private void drawHitMessage(Canvas canvas) {
-        if(((Data) this.getContext()).getNumber() == null){
+        if(((Data) this.getContext()).getNumber() == null){ // Nur beim Ersten mal
             final int kantenLaenge = getWidth() / 2;
             int linkesEck = (metrics.widthPixels - kantenLaenge) / 2;
             int oberesEck = (metrics.heightPixels - kantenLaenge) / 2;

@@ -1,6 +1,5 @@
 package de.hopf.mobile.drawable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.graphics.Canvas;
@@ -10,8 +9,6 @@ import de.hopf.mobile.Point;
 
 public class NormalDiceDrawable extends BaseDrawable {
 
-    private final List<List<List<Point>>> pointsDices = new ArrayList<List<List<Point>>>(); 
-       
     public NormalDiceDrawable(int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand) {
         super(kantenLaenge, linkerWuerfelRand, obererWürfelRand);
         initDice(pointsDices, ItemAmountType.ONE);

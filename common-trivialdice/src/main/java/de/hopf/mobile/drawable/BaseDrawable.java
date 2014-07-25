@@ -12,6 +12,8 @@ import de.hopf.mobile.Point;
 
 public abstract class BaseDrawable implements Drawable {
 
+    protected final List<List<List<Point>>> pointsDices = new ArrayList<List<List<Point>>>(); 
+    
     protected int kantenLaenge;
     protected int linkerWuerfelRand;
     protected int obererWürfelRand;
