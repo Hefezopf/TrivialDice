@@ -256,6 +256,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             ((Data) this.getContext()).setRolled(Boolean.FALSE);
             ((Data) this.getContext()).setInterrupted(Boolean.TRUE);
             invalidate();
+            
             return true;
         }
 
@@ -276,6 +277,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             ((Data) this.getContext()).setRolled(Boolean.TRUE);
             ((Data) this.getContext()).setInterrupted(Boolean.FALSE);
             invalidate();
+
             return true;
         }
 
