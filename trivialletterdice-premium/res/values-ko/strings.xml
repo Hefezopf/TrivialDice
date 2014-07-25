@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">문자를 하나의 큐브</string>
+    <string name="hit">롤 스크린을 명중</string>    
+</resources>

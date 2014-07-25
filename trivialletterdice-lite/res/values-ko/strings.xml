@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">문자를 하나 큐브 라이트</string>
+    <string name="hit">롤 스크린을 명중</string>    
+    
+    <string name="link">http://play.google.com/store/apps/details?id=de.hopf.mobile.trivialdice.letter</string>
+    <string name="link_text">구멍 정식 버전 여기에!</string>
+    <string name="start">더</string>
+</resources>

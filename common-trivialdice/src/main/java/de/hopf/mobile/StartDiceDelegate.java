@@ -24,9 +24,7 @@ public class StartDiceDelegate implements Data {
     private final int linkMsgKey;
     private final int startMsgKey;
     private final boolean bLite;
-//    private final DiceType diceType;
     private int fullVersionLinkKey;
-
     private DrawView drawView;
     private Integer number;
     private Integer number2;
@@ -37,37 +35,34 @@ public class StartDiceDelegate implements Data {
     private static final String INTERRUPTED_KEY = "INTERRUPTED_KEY";
     
     private final Drawable drawable;
+    private final int maxNum;
     
     // Premium
-    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable) {
+    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, int maxNum) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
-        this.mainMsgKey = mainMsgKey;
-//        this.diceType = diceType;
-        
+        this.mainMsgKey = mainMsgKey;      
         this.linkMsgKey = 0;
         this.startMsgKey = 0;
         this.bLite = false;
-        
         this.drawable = drawable;
+        this.maxNum = maxNum;        
     }
 
     // Lite
     public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
-            int titleMsgKey, int startMsgKey,/* DiceType diceType,*/ int fullVersionLinkKey, Drawable drawable) {
+            int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, int maxNum) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
         this.mainMsgKey = mainMsgKey;
         this.linkMsgKey = linkMsgKey;
         this.startMsgKey = startMsgKey;
-//        this.diceType = diceType;
         this.fullVersionLinkKey = fullVersionLinkKey;        
-        
         this.bLite = true;
-        
         this.drawable = drawable;
+        this.maxNum = maxNum;        
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +77,7 @@ public class StartDiceDelegate implements Data {
             bInterrupted = (Boolean) savedInstanceState.getSerializable(INTERRUPTED_KEY);
         }
 
-        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey,/* this.diceType,*/ drawable);
+        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey, drawable, maxNum);
         activity.setContentView(drawView);
         drawView.requestFocus();
 

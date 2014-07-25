@@ -34,9 +34,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private final int hitMsgKey;
     private Bitmap soundBitmap;
     private Bitmap amountDiceBitmap;    
-    private final Drawable drawable;
+    private final Drawable drawable; 
+    private final int maxNum;
     
-    public DrawView(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable) {
+    public DrawView(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum) {
         super(context);
         setFocusable(true);
         setFocusableInTouchMode(true);
@@ -44,7 +45,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
-        this.drawable = drawable;
+        this.drawable = drawable; 
+        this.maxNum = maxNum;
 
         init(windowManager, diceSoundKey, drawable);
     }
@@ -58,7 +60,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private void initPaint() {
         paint.setColor(Color.WHITE);
-        paint.setTextSize( getWidth() / 2 / 10);
         paint.setAntiAlias(true);
         paint.setTextAlign(Align.LEFT);
     }
@@ -73,10 +74,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         drawItem(canvas);
     }
 
-    private int calculateNumber() {
+    private int calculateNumber(int maxNum) {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
-            ((Data) this.getContext()).setNumber(new Integer((int) (Math.random() * 6)));
+            ((Data) this.getContext()).setNumber(new Integer((int) (Math.random() * maxNum)));
         }
 
         // NPE nach dem Start, manchmal beim drehen!
@@ -87,10 +88,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return ((Data) this.getContext()).getNumber();
     }
 
-    private int calculateNumber2() {
+    private int calculateNumber2(int maxNum) {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
-            ((Data) this.getContext()).setNumber2(new Integer((int) (Math.random() * 6)));
+            ((Data) this.getContext()).setNumber2(new Integer((int) (Math.random() * maxNum)));
         }
 
         // NPE nach dem Start, manchmal beim drehen!
@@ -104,10 +105,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private void drawItem(Canvas canvas) {
         List<Integer> numberList = new ArrayList<Integer>();
         if (itemAmountType == ItemAmountType.ONE) {
-            numberList.add(calculateNumber()); 
+            numberList.add(calculateNumber(maxNum)); 
         } else if (itemAmountType == ItemAmountType.TWO) {
-            numberList.add(calculateNumber()); 
-            numberList.add(calculateNumber2());
+            numberList.add(calculateNumber(maxNum)); 
+            numberList.add(calculateNumber2(maxNum));
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
         }
@@ -127,6 +128,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private void drawCopyright(Canvas canvas) {
         int kantenLaenge = getWidth() / 2;
+        paint.setTextSize(kantenLaenge / 10);        
         paint.setTextAlign(Align.LEFT);
         canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaenge / 10, paint);
     }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trivial Letter Lite</string>
+    <string name="hit">Hit screen to roll</string>    
+    
+    <string name="link">http://play.google.com/store/apps/details?id=de.hopf.mobile.trivialdice.letter</string>
+    <string name="link_text">Get full version here!</string>
+    <string name="start">Continue playing</string>
+</resources>

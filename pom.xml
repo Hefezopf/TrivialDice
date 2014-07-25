@@ -32,6 +32,8 @@
 	  
     <module>test-trivialdice</module>	
 
+    <module>trivialletterdice-lite</module>
+    <module>trivialletterdice-premium</module>
     <module>trivialdice-lite</module>
     <module>trivialdice-premium</module>
     <module>trivialcolordice-lite</module>
@@ -39,6 +41,8 @@
     <module>trivialdoublingdice-lite</module>
     <module>trivialdoublingdice-premium</module>
 
+    <module>trivialletterdice-lite-test</module>
+    <module>trivialletterdice-premium-test</module>
     <module>trivialdice-lite-test</module>
     <module>trivialdice-premium-test</module>
     <module>trivialcolordice-lite-test</module>
