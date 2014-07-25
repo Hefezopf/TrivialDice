@@ -26,10 +26,9 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private List<List<List<Point>>> pointsDices;
 
-    private final WindowManager wm;
     private Paint paint;
-    private MediaPlayer mp;
-    private DisplayMetrics metrics;
+    private MediaPlayer mediaPlayer;
+    private final DisplayMetrics metrics = new DisplayMetrics();
 
     private final int diceSoundKey;
     private final int hitMsgKey;
@@ -40,16 +39,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     private ItemAmountType diceAmountType = ItemAmountType.ONE;
     private Bitmap amountDiceBitmap;
     
-    Drawable drawable;
+    private final Drawable drawable;
     
-    public DrawView(Context context, WindowManager wm, int diceSoundKey, int hitMsgKey, Drawable drawable) {
+    public DrawView(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable) {
         super(context);
         setFocusable(true);
         setFocusableInTouchMode(true);
         this.setOnTouchListener(this);
 
-        if (mp == null) {
-            mp = MediaPlayer.create(this.getContext(), diceSoundKey);
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
         }
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -57,14 +56,10 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         if (paint == null) {
             paint = new Paint();
         }
-        this.wm = wm;
+        
+        windowManager.getDefaultDisplay().getMetrics(metrics);
 
-        if (metrics == null) {
-            metrics = new DisplayMetrics();
-        }
-        this.wm.getDefaultDisplay().getMetrics(metrics);
-
-        final int kantenLaengeWuerfel = metrics.widthPixels / 2;
+        final int kantenLaengeWuerfel = getWidth() / 2;
 
         paint.setColor(Color.WHITE);
         paint.setTextSize(kantenLaengeWuerfel / 10);
@@ -77,11 +72,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     @Override
     public void onDraw(Canvas canvas) {
-        if (metrics == null) {
-            metrics = new DisplayMetrics();
-        }
-        this.wm.getDefaultDisplay().getMetrics(metrics);
-        final int kantenLaengeWuerfel = metrics.widthPixels / 2;
+        final int kantenLaengeWuerfel = getWidth() / 2;
 
         drawCopyright(canvas, kantenLaengeWuerfel);
         drawHitMessage(canvas, kantenLaengeWuerfel);
@@ -168,12 +159,12 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     private void playSound() {
         if (soundOn && ((Data) this.getContext()).hasRolled().equals(Boolean.TRUE)) {
-            if (mp == null) {
-                mp = MediaPlayer.create(this.getContext(), diceSoundKey);
-            } else if (mp != null) { // Reported Bug v1.5 Dec 23, 2010 2:59:25
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
+            } else if (mediaPlayer != null) { // Reported Bug v1.5 Dec 23, 2010 2:59:25
                                      // PM
-                mp.setVolume(2f, 2f);
-                mp.start();
+                mediaPlayer.setVolume(2f, 2f);
+                mediaPlayer.start();
             }
 
             ((Data) this.getContext()).setRolled(Boolean.FALSE);
