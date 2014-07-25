@@ -10,5 +10,5 @@ import de.hopf.mobile.Point;
 public interface Drawable {
     public List<List<List<Point>>> getDrawableList(ItemAmountType diceAmountType);
     
-    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, final int kantenLaengeWuerfel, List<List<List<Point>>> points);
+    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, final int kantenLaenge, List<List<List<Point>>> points);
 }

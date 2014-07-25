@@ -65,25 +65,12 @@ public class DrawView extends View implements OnTouchListener, Serializable {
 
     @Override
     public void onDraw(Canvas canvas) {
-        final int kantenLaengeWuerfel = getWidth() / 2;
-
-        drawCopyright(canvas, kantenLaengeWuerfel);
-        drawHitMessage(canvas, kantenLaengeWuerfel);
+        drawCopyright(canvas);
+        drawHitMessage(canvas);
         drawSpeakerBitmap(canvas);
         drawAmountDiceBitmap(canvas);
-        playSound();
-
-        List<Integer> numberList = new ArrayList<Integer>();
-        if (itemAmountType == ItemAmountType.ONE) {
-            numberList.add(calculateNumber()); 
-        } else if (itemAmountType == ItemAmountType.TWO) {
-            numberList.add(calculateNumber()); 
-            numberList.add(calculateNumber2());
-        } else {
-            throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
-        }
-        
-        drawItem(numberList, canvas, kantenLaengeWuerfel);
+        playSound();     
+        drawItem(canvas);
     }
 
     private int calculateNumber() {
@@ -114,38 +101,51 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return ((Data) this.getContext()).getNumber2();
     }
 
-    private void drawItem(List<Integer> numberList, Canvas canvas, final int kantenLaengeWuerfel) {
+    private void drawItem(Canvas canvas) {
+        List<Integer> numberList = new ArrayList<Integer>();
         if (itemAmountType == ItemAmountType.ONE) {
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaengeWuerfel, ItemAmountType.ONE.getOffset1());
-            drawable.drawContent(numberList, paint, canvas, kantenLaengeWuerfel, pointsItems);        
+            numberList.add(calculateNumber()); 
         } else if (itemAmountType == ItemAmountType.TWO) {
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaengeWuerfel, kantenLaengeWuerfel / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset1());
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaengeWuerfel, kantenLaengeWuerfel / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset2());
-            drawable.drawContent(numberList, paint, canvas, kantenLaengeWuerfel, pointsItems);        
+            numberList.add(calculateNumber()); 
+            numberList.add(calculateNumber2());
+        } else {
+            throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
+        }
+        
+        final int kantenLaenge = getWidth() / 2;
+        if (itemAmountType == ItemAmountType.ONE) {
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, ItemAmountType.ONE.getOffset1());
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
+        } else if (itemAmountType == ItemAmountType.TWO) {
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset1());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset2());
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
         }
     }
 
-    private void drawCopyright(Canvas canvas, final int kantenLaengeWuerfel) {
+    private void drawCopyright(Canvas canvas) {
+        int kantenLaenge = getWidth() / 2;
         paint.setTextAlign(Align.LEFT);
-        canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaengeWuerfel / 10, paint);
+        canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaenge / 10, paint);
     }
 
-    private void drawHitMessage(Canvas canvas, final int kantenLaengeWuerfel) {
+    private void drawHitMessage(Canvas canvas) {
         if(((Data) this.getContext()).getNumber() == null){
-            int linkesEck = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
-            int oberesEck = (metrics.heightPixels - kantenLaengeWuerfel) / 2;
+            final int kantenLaenge = getWidth() / 2;
+            int linkesEck = (metrics.widthPixels - kantenLaenge) / 2;
+            int oberesEck = (metrics.heightPixels - kantenLaenge) / 2;
     
             String hit_text = this.getContext().getString(hitMsgKey);
             paint.setTextAlign(Align.CENTER);
     
             if (itemAmountType == ItemAmountType.ONE) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaengeWuerfel / 2), oberesEck + kantenLaengeWuerfel
-                        + (kantenLaengeWuerfel / 10), paint);
+                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+                        + (kantenLaenge / 10), paint);
             } else if (itemAmountType == ItemAmountType.TWO) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaengeWuerfel / 2), oberesEck + kantenLaengeWuerfel
-                        + (kantenLaengeWuerfel / 2), paint);
+                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+                        + (kantenLaenge / 2), paint);
             } else {
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
             }

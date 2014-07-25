@@ -9,7 +9,7 @@ public class StartDice extends StartDiceBase {
 
     @Override
     public void initDelegate() {
-        Drawable drawable = new ColorDiceDrawable(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand);  
+        Drawable drawable = new ColorDiceDrawable(kantenLaenge, linkerWuerfelRand, obererWürfelRand);  
         this.startDiceDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, drawable);
     }
 }

@@ -12,80 +12,80 @@ public class NormalDiceDrawable extends BaseDrawable {
 
     private final List<List<List<Point>>> pointsDices = new ArrayList<List<List<Point>>>(); 
        
-    public NormalDiceDrawable(int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand) {
-        super(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand);
+    public NormalDiceDrawable(int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand) {
+        super(kantenLaenge, linkerWuerfelRand, obererWürfelRand);
         initDice(pointsDices, ItemAmountType.ONE);
-        setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, 0, pointsDices.get(0));
+        setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, 0, pointsDices.get(0));
      }
 
     @Override
     public List<List<List<Point>>> getDrawableList(ItemAmountType diceAmountType) {
         if (diceAmountType == ItemAmountType.ONE) {
             initDice(pointsDices, ItemAmountType.ONE);
-            setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, ItemAmountType.ONE.getOffset1(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, ItemAmountType.ONE.getOffset1(), pointsDices.get(0));
         } else if (diceAmountType == ItemAmountType.TWO) {
             initDice(pointsDices, ItemAmountType.TWO);
-            setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, kantenLaengeWuerfel / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset1(), pointsDices.get(0));
-            setupDice(kantenLaengeWuerfel, linkerWuerfelRand, obererWürfelRand, kantenLaengeWuerfel / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset2(), pointsDices.get(1));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset1(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset2(), pointsDices.get(1));
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
         }
         return pointsDices;
     }
     
-    private void setupDice(final int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand,
+    private void setupDice(final int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand,
             int offsetX, List<List<Point>> pointsDice) {
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 2), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 2),
+        addPoint(linkerWuerfelRand + (kantenLaenge / 2), obererWürfelRand + offsetX + (kantenLaenge / 2),
                 pointsDice.get(0));
 
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 4),
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX + (kantenLaenge / 4),
                 pointsDice.get(1));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(1));
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge * 3 / 4), pointsDice.get(1));
 
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 4),
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX + (kantenLaenge / 4),
                 pointsDice.get(2));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 2), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 2),
+        addPoint(linkerWuerfelRand + (kantenLaenge / 2), obererWürfelRand + offsetX + (kantenLaenge / 2),
                 pointsDice.get(2));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(2));
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge * 3 / 4), pointsDice.get(2));
 
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 4),
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX + (kantenLaenge / 4),
                 pointsDice.get(3));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(3));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel / 4), pointsDice.get(3));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(3));
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX
+                + (kantenLaenge * 3 / 4), pointsDice.get(3));
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge / 4), pointsDice.get(3));
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge * 3 / 4), pointsDice.get(3));
 
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 4),
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX + (kantenLaenge / 4),
                 pointsDice.get(4));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(4));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(4));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel / 4), pointsDice.get(4));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 2), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 2),
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge * 3 / 4), pointsDice.get(4));
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX
+                + (kantenLaenge * 3 / 4), pointsDice.get(4));
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge / 4), pointsDice.get(4));
+        addPoint(linkerWuerfelRand + (kantenLaenge / 2), obererWürfelRand + offsetX + (kantenLaenge / 2),
                 pointsDice.get(4));
 
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(5));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel / 4), pointsDice.get(5));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel * 3 / 4), pointsDice.get(5));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 4),
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge * 3 / 4), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge / 4), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX
+                + (kantenLaenge * 3 / 4), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX + (kantenLaenge / 4),
                 pointsDice.get(5));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel / 4), obererWürfelRand + offsetX + (kantenLaengeWuerfel / 2),
+        addPoint(linkerWuerfelRand + (kantenLaenge / 4), obererWürfelRand + offsetX + (kantenLaenge / 2),
                 pointsDice.get(5));
-        addPoint(linkerWuerfelRand + (kantenLaengeWuerfel * 3 / 4), obererWürfelRand + offsetX
-                + (kantenLaengeWuerfel / 2), pointsDice.get(5));
+        addPoint(linkerWuerfelRand + (kantenLaenge * 3 / 4), obererWürfelRand + offsetX
+                + (kantenLaenge / 2), pointsDice.get(5));
     }
 
     @Override
-    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaengeWuerfel, List<List<List<Point>>> points) {
+    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaenge, List<List<List<Point>>> points) {
         int index = 0;
 
         for (List<List<Point>> pointList : points) {        
@@ -112,7 +112,7 @@ public class NormalDiceDrawable extends BaseDrawable {
                 break;
             default:
             }
-            drawPoints(paint, canvas, kantenLaengeWuerfel, pointsList, kantenLaengeWuerfel / 10);
+            drawPoints(paint, canvas, kantenLaenge, pointsList, kantenLaenge / 10);
         }
     }
 }

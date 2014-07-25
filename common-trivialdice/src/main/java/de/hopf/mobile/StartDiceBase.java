@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
 public abstract class StartDiceBase extends Activity implements Data {
 
     protected StartDiceDelegate startDiceDelegate;
-    protected int kantenLaengeWuerfel;
+    protected int kantenLaenge;
     protected int linkerWuerfelRand;
     protected int obererWürfelRand;
     
@@ -20,9 +20,9 @@ public abstract class StartDiceBase extends Activity implements Data {
         DisplayMetrics metrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        kantenLaengeWuerfel = metrics.widthPixels / 2;
-        linkerWuerfelRand = (metrics.widthPixels - kantenLaengeWuerfel) / 2;
-        obererWürfelRand = (metrics.heightPixels - kantenLaengeWuerfel) / 2;
+        kantenLaenge = metrics.widthPixels / 2;
+        linkerWuerfelRand = (metrics.widthPixels - kantenLaenge) / 2;
+        obererWürfelRand = (metrics.heightPixels - kantenLaenge) / 2;
         
         initDelegate();
         startDiceDelegate.onCreate(savedInstanceState);

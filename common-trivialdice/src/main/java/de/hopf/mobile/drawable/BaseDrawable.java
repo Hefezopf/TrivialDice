@@ -12,13 +12,13 @@ import de.hopf.mobile.Point;
 
 public abstract class BaseDrawable implements Drawable {
 
-    protected int kantenLaengeWuerfel;
+    protected int kantenLaenge;
     protected int linkerWuerfelRand;
     protected int obererWürfelRand;
   
-    public BaseDrawable(int kantenLaengeWuerfel, int linkerWuerfelRand, int obererWürfelRand) {
+    public BaseDrawable(int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand) {
         super();
-        this.kantenLaengeWuerfel = kantenLaengeWuerfel;
+        this.kantenLaenge = kantenLaenge;
         this.linkerWuerfelRand = linkerWuerfelRand;
         this.obererWürfelRand = obererWürfelRand;
     }
@@ -45,7 +45,7 @@ public abstract class BaseDrawable implements Drawable {
         }
     }     
     
-    public void drawBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaengeWuerfel, int offsetX) {
+    public void drawBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaenge, int offsetX) {
         int linkesEck = (metrics.widthPixels) / 2;
         int oberesEck = (metrics.heightPixels) / 2 + offsetX;
 
@@ -75,7 +75,7 @@ public abstract class BaseDrawable implements Drawable {
         points.add(point);
     }
     
-    protected void drawPoints(Paint paint, Canvas canvas, final int kantenLaengeWuerfel, List<Point> points, int radius) {
+    protected void drawPoints(Paint paint, Canvas canvas, final int kantenLaenge, List<Point> points, int radius) {
         for (Point point : points) {
             canvas.drawCircle(point.getX(), point.getY(), radius, paint);
         }
