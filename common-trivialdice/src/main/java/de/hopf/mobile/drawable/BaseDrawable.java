@@ -33,6 +33,7 @@ public abstract class BaseDrawable implements Drawable {
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
         }
+        
         for (List<List<Point>> pointList : pointsDice) {
             pointList.clear();
             pointList.add(new ArrayList<Point>());
@@ -44,7 +45,7 @@ public abstract class BaseDrawable implements Drawable {
         }
     }     
     
-    public void drawDiceBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaengeWuerfel, int offsetX) {
+    public void drawBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaengeWuerfel, int offsetX) {
         int linkesEck = (metrics.widthPixels) / 2;
         int oberesEck = (metrics.heightPixels) / 2 + offsetX;
 
