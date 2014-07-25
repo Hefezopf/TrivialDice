@@ -2,28 +2,23 @@ package de.hopf.mobile;
 
 public class Point
 {
-	private float x, y;
+	private final int x, y;
 
-	@Override
+	public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
 	public String toString() {
 		return x + ", " + y;
 	}
 
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public float getY() {
+    public int getY() {
         return y;
     }
-
-    public void setY(float y) {
-        this.y = y;
-    }
-	
-	
 }

@@ -115,11 +115,11 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         
         final int kantenLaenge = getWidth() / 2;
         if (itemAmountType == ItemAmountType.ONE) {
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, ItemAmountType.ONE.getOffset1());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, ItemAmountType.ONE.getPointOne().getY());
             drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
         } else if (itemAmountType == ItemAmountType.TWO) {
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset1());
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset2());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointOne().getY());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointTwo().getY());
             drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);

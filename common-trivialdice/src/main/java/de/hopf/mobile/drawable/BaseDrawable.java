@@ -71,9 +71,7 @@ public abstract class BaseDrawable implements Drawable {
     }
     
     protected void addPoint(int x, int y, List<Point> points) {
-        Point point = new Point();
-        point.setX(x);
-        point.setY(y);
+        Point point = new Point(x, y);
         points.add(point);
     }
     

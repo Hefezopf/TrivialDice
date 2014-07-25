@@ -21,11 +21,11 @@ public class DoublingDiceDrawable extends BaseDrawable {
     public List<List<List<Point>>> getDrawableList(ItemAmountType diceAmountType) {
         if (diceAmountType == ItemAmountType.ONE) {
             initDice(pointsDices, ItemAmountType.ONE);
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, ItemAmountType.ONE.getOffset1(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, ItemAmountType.ONE.getPointOne().getY(), pointsDices.get(0));
         } else if (diceAmountType == ItemAmountType.TWO) {
             initDice(pointsDices, ItemAmountType.TWO);
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset1(), pointsDices.get(0));
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getOffset2(), pointsDices.get(1));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointOne().getY(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointTwo().getY(), pointsDices.get(1));
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
         }

@@ -9,9 +9,7 @@ public class PointTest
 
     @Test
 	public void testToString() {
-        Point p = new Point();
-        p.setX(1);
-        p.setY(2);
-		Assert.assertEquals(p.toString(), "1.0, 2.0");
+        Point p = new Point(1 ,2);
+		Assert.assertEquals(p.toString(), "1, 2");
 	}
 }

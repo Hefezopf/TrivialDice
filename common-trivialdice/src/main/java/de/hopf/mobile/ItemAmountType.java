@@ -1,26 +1,29 @@
 package de.hopf.mobile;
 
 public enum ItemAmountType {
-    ONE(0, 0), TWO(-13, 8);
+    ONE(new Point(0, 0)), TWO(new Point(0, -13), new Point(0, 8));//, THREE(-13, 8);
 
-    private int offset1;
-    private int offset2;
+    private Point pointOne;
+    private Point pointTwo;
 
-    private ItemAmountType(int offset1, int offset2) {
-        this.offset1 = offset1;
-        this.offset2 = offset2;
+    private ItemAmountType(Point one) {
+        this.pointOne = one;
     }
 
-    public int getOffset1() {
-        return offset1;
+    private ItemAmountType(Point one, Point two) {
+        this.pointOne = one;
+        this.pointTwo = two;
     }
 
-    public int getOffset2() {
-        return offset2;
-    }
-    
     public static int getFaktor() {
         return 20;
     }
-    
+
+    public Point getPointOne() {
+        return pointOne;
+    }
+
+    public Point getPointTwo() {
+        return pointTwo;
+    }
 }
