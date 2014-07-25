@@ -28,6 +28,7 @@ public class StartDiceDelegate implements Data {
     private DrawView drawView;
     private Integer number;
     private Integer number2;
+    private Integer number3;
     private int counter;
     private Boolean bInterrupted = Boolean.FALSE;
     private Boolean bRoll = Boolean.FALSE;
@@ -174,6 +175,16 @@ public class StartDiceDelegate implements Data {
     @Override
     public void setNumber2(Integer number2) {
         this.number2 = number2;
+    }
+    
+    @Override
+    public Integer getNumber3() {
+        return number3;
+    }
+
+    @Override
+    public void setNumber3(Integer number3) {
+        this.number3 = number3;
     }
     
     @Override

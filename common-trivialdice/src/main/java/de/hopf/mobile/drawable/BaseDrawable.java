@@ -32,12 +32,17 @@ public abstract class BaseDrawable implements Drawable {
         } else if (diceAmountType == ItemAmountType.TWO) {
             pointsDice.add(new ArrayList<List<Point>>()); 
             pointsDice.add(new ArrayList<List<Point>>()); 
+        } else if (diceAmountType == ItemAmountType.THREE) {
+            pointsDice.add(new ArrayList<List<Point>>()); 
+            pointsDice.add(new ArrayList<List<Point>>()); 
+            pointsDice.add(new ArrayList<List<Point>>()); 
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
         }
         
         for (List<List<Point>> pointList : pointsDice) {
             pointList.clear();
+            // TODO ???
             pointList.add(new ArrayList<Point>());
             pointList.add(new ArrayList<Point>());
             pointList.add(new ArrayList<Point>());
@@ -47,9 +52,9 @@ public abstract class BaseDrawable implements Drawable {
         }
     }     
     
-    public void drawBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaenge, int offsetX) {
-        int linkesEck = (metrics.widthPixels) / 2;
-        int oberesEck = (metrics.heightPixels) / 2 + offsetX;
+    public void drawBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaenge, int offsetX, int offsetY) {
+        int linkesEck = (metrics.widthPixels) / 2 + offsetX;
+        int oberesEck = (metrics.heightPixels) / 2 + offsetY;
 
         float width = metrics.widthPixels;
         float height = metrics.heightPixels;

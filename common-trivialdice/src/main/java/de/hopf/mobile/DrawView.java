@@ -102,6 +102,21 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return ((Data) this.getContext()).getNumber2();
     }
 
+
+    private int calculateNumber3(int maxNum) {
+        // Rechnen!
+        if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
+            ((Data) this.getContext()).setNumber3(new Integer((int) (Math.random() * maxNum)));
+        }
+
+        // NPE nach dem Start, manchmal beim drehen!
+        if (((Data) this.getContext()).getNumber3() == null) {
+            ((Data) this.getContext()).setNumber3(0);
+        }
+
+        return ((Data) this.getContext()).getNumber3();
+    }
+
     private void drawItem(Canvas canvas) {
         List<Integer> numberList = new ArrayList<Integer>();
         if (itemAmountType == ItemAmountType.ONE) {
@@ -109,17 +124,26 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         } else if (itemAmountType == ItemAmountType.TWO) {
             numberList.add(calculateNumber(maxNum)); 
             numberList.add(calculateNumber2(maxNum));
+        } else if (itemAmountType == ItemAmountType.THREE) {
+            numberList.add(calculateNumber(maxNum)); 
+            numberList.add(calculateNumber2(maxNum));
+            numberList.add(calculateNumber3(maxNum));
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
         }
         
         final int kantenLaenge = getWidth() / 2;
         if (itemAmountType == ItemAmountType.ONE) {
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, ItemAmountType.ONE.getPointOne().getY());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, ItemAmountType.ONE.getPointOne().getX(), ItemAmountType.ONE.getPointOne().getY());
             drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
         } else if (itemAmountType == ItemAmountType.TWO) {
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointOne().getY());
-            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointTwo().getY());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointOne().getY());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.TWO.getPointTwo().getY());
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
+        } else if (itemAmountType == ItemAmountType.THREE) {
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.THREE.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.THREE.getPointOne().getY());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.THREE.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.THREE.getPointTwo().getY());
+            ((BaseDrawable)drawable).drawBorder(paint, canvas, metrics, kantenLaenge, kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.THREE.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * ItemAmountType.THREE.getPointThree().getY());
             drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
@@ -148,6 +172,9 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             } else if (itemAmountType == ItemAmountType.TWO) {
                 canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
                         + (kantenLaenge / 2), paint);
+            } else if (itemAmountType == ItemAmountType.THREE) {
+                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+                        + (kantenLaenge / 2), paint); //TODO
             } else {
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
             }
@@ -203,6 +230,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_off);
         } else if (itemAmountType == ItemAmountType.TWO) {
             amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_on);
+        } else if (itemAmountType == ItemAmountType.THREE) {
+            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btn_star_big_off); // TODO
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);
         }
@@ -235,6 +264,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
             if (itemAmountType == ItemAmountType.ONE) {
                 itemAmountType = ItemAmountType.TWO;
             } else if (itemAmountType == ItemAmountType.TWO) {
+                itemAmountType = ItemAmountType.THREE;
+            } else if (itemAmountType == ItemAmountType.THREE) {
                 itemAmountType = ItemAmountType.ONE;
             } else {
                 throw new IllegalArgumentException("Unbekannter DiceAmountType: " + itemAmountType);

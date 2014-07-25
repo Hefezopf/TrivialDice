@@ -60,6 +60,16 @@ public abstract class StartDiceBase extends Activity implements Data {
     }
 
     @Override
+    public Integer getNumber3() {
+        return startDiceDelegate.getNumber3();
+    }
+
+    @Override
+    public void setNumber3(Integer number3) {
+        startDiceDelegate.setNumber3(number3);
+    }
+
+    @Override
     public Boolean hasInterrupted() {
         return startDiceDelegate.hasInterrupted();
     }
