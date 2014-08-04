@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Bouteilles tourner Lite</string>
+    <string name="hit">Touchez pour faire pivoter</string>    
+    
+    <string name="link">http://play.google.com/store/apps/details?id=de.hopf.android.bottlespin</string>
+    <string name="link_text">Chercher comble version ici!</string>
+    <string name="start">Autre&#8230;</string>
+</resources>

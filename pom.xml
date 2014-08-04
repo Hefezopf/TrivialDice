@@ -32,6 +32,8 @@
 	  
     <module>test-trivialdice</module>	
 
+    <module>trivialbottlespin-lite</module>
+    <module>trivialbottlespin-premium</module>
     <module>trivialletterdice-lite</module>
     <module>trivialletterdice-premium</module>
     <module>trivialdice-lite</module>

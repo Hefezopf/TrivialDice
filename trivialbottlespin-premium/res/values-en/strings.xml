@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trivial Bottle Spin Lite</string>
+    <string name="hit">Hit screen to spin</string>
+</resources>

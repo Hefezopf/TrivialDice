@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
+import de.hopf.mobile.DrawView;
 import de.hopf.mobile.ItemAmountType;
 import de.hopf.mobile.Point;
 
@@ -52,7 +53,7 @@ public abstract class BaseDrawable implements Drawable {
         }
     }     
     
-    public void drawBorder(Paint paint, Canvas canvas, DisplayMetrics metrics, final int kantenLaenge, int offsetX, int offsetY) {
+    public void drawBorder(DrawView dv, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
         int linkesEck = (metrics.widthPixels) / 2 + offsetX;
         int oberesEck = (metrics.heightPixels) / 2 + offsetY;
 

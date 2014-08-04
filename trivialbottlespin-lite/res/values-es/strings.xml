@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Botellas giran Lite</string>
+    <string name="hit">Toca para girar</string>    
+    
+    <string name="link">http://play.google.com/store/apps/details?id=de.hopf.android.bottlespin</string>
+    <string name="link_text">Obtener la versión completa aquí!</string>
+    <string name="start">Más&#8230;</string>
+</resources>

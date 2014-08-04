@@ -37,9 +37,10 @@ public class StartDiceDelegate implements Data {
     
     private final Drawable drawable;
     private final int maxNum;
+    private final boolean bImageApp;
     
     // Premium
-    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, int maxNum) {
+    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, int maxNum, boolean bImageApp) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -49,11 +50,12 @@ public class StartDiceDelegate implements Data {
         this.bLite = false;
         this.drawable = drawable;
         this.maxNum = maxNum;        
+        this.bImageApp = bImageApp;
     }
 
     // Lite
     public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
-            int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, int maxNum) {
+            int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, int maxNum, boolean bImageApp) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -63,7 +65,9 @@ public class StartDiceDelegate implements Data {
         this.fullVersionLinkKey = fullVersionLinkKey;        
         this.bLite = true;
         this.drawable = drawable;
-        this.maxNum = maxNum;        
+        this.maxNum = maxNum;      
+        this.bImageApp = bImageApp;
+        
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +82,7 @@ public class StartDiceDelegate implements Data {
             bInterrupted = (Boolean) savedInstanceState.getSerializable(INTERRUPTED_KEY);
         }
 
-        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey, drawable, maxNum);
+        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey, drawable, maxNum, bImageApp, bLite);
         activity.setContentView(drawView);
         drawView.requestFocus();
 
@@ -150,9 +154,17 @@ public class StartDiceDelegate implements Data {
         this.number = number;
         counter++;
         if (this.bLite) {
-            if ((counter > 10) && number != null && number.intValue() == 5) {
-                counter = 0;
-                showSplashScreen();
+            if (this.bImageApp){
+                if ((counter > 500)) {
+                    counter = 0;
+                    showSplashScreen();
+                }
+            }
+            else{
+                if ((counter > 10) && number != null && number.intValue() == 5) {
+                    counter = 0;
+                    showSplashScreen();
+                }                
             }
         }
     }

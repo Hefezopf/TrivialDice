@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trivial Bottle Spin Lite</string>
+    <string name="hit">Hit screen to spin</string>
+    
+    <string name="link">http://play.google.com/store/apps/details?id=de.hopf.android.bottlespin</string>
+    <string name="link_text">Get full version here!</string>
+    <string name="start">Continue playing</string>
+</resources>
