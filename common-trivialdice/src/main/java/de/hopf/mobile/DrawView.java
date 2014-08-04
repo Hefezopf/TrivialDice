@@ -321,6 +321,6 @@ public class DrawView extends View implements OnTouchListener, Serializable {
     }
 
     private int getLeftAmountDiceBitmapPos(int width) {
-        return width / 2 - getAmountDiceBitmap().getWidth() / 2 + /* Offset */getAmountDiceBitmap().getWidth() * 3;
+        return width / 2 - getAmountDiceBitmap().getWidth() / 2 +  /* Offset */getAmountDiceBitmap().getWidth() * 3;
     }
 }
