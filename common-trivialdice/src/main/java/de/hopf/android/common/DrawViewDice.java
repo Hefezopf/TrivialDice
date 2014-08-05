@@ -1,6 +1,5 @@
 package de.hopf.android.common;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,76 +8,37 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
 import android.media.MediaPlayer;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import de.hopf.android.common.drawable.Drawable;
-import de.hopf.android.common.drawable.base.BaseDrawable;
+import de.hopf.android.common.drawable.base.BaseDiceDrawable;
 
-public class DrawView extends View implements OnTouchListener, Serializable {
+public class DrawViewDice extends DrawViewBase {
     private static final long serialVersionUID = 1L;
 
-    private List<List<List<Point>>> pointsItems;
-    private final Paint paint = new Paint();
-    private final DisplayMetrics metrics = new DisplayMetrics();
-    private ItemAmountType itemAmountType = ItemAmountType.ONE;
     private boolean soundOn = true;
     private MediaPlayer mediaPlayer;
     private final int diceSoundKey;
-    private final int hitMsgKey;
     private Bitmap soundBitmap;
     private Bitmap amountDiceBitmap;    
-    private final Drawable drawable; 
     private final int maxNum;
-    private final boolean bLite;
-    private final boolean bImageApp;
     
-    public DrawView(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, boolean bImageApp, boolean bLite) {
-        super(context);
-        setFocusable(true);
-        setFocusableInTouchMode(true);
-        this.setOnTouchListener(this);
+    public DrawViewDice(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, boolean bLite) {
+        super(context, windowManager, hitMsgKey, drawable, bLite);
 
         this.diceSoundKey = diceSoundKey;
-        this.hitMsgKey = hitMsgKey;
-        this.drawable = drawable; 
         this.maxNum = maxNum;
-        this.bImageApp = bImageApp;
-        this.bLite = bLite;
-
-        init(windowManager, diceSoundKey, drawable);
-    }
-
-    private void init(WindowManager windowManager, int diceSoundKey, Drawable drawable) {
-        if(diceSoundKey != 0){
-            mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
-        }
-        windowManager.getDefaultDisplay().getMetrics(metrics);
-        initPaint();
-        pointsItems = drawable.getDrawableList(itemAmountType);
-    }
-
-    private void initPaint() {
-        paint.setColor(Color.WHITE);
-        paint.setAntiAlias(true);
-        paint.setTextAlign(Align.LEFT);
+        mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
     }
 
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        drawCopyright(canvas);
-        drawHitMessage(canvas);
         drawSpeakerBitmap(canvas);
         drawAmountDiceBitmap(canvas);
         playSound();     
-        drawItem(canvas);
     }
 
     private int calculateNumber(int maxNum) {
@@ -124,7 +84,8 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         return ((Data) this.getContext()).getNumber3();
     }
 
-    private void drawItem(Canvas canvas) {
+    @Override
+    protected void drawItem(Canvas canvas) {
         List<Integer> numberList = new ArrayList<Integer>();
         if (itemAmountType == ItemAmountType.ONE) {
             numberList.add(calculateNumber(maxNum)); 
@@ -141,98 +102,59 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         
         final int kantenLaenge = getWidth() / 2;
         if (itemAmountType == ItemAmountType.ONE) {
-            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, itemAmountType.getPointOne().getX(), itemAmountType.getPointOne().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
+            ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, itemAmountType.getPointOne().getX(), itemAmountType.getPointOne().getY());
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
         } else if (itemAmountType == ItemAmountType.TWO) {
-            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
-            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
+            ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
+            ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
         } else if (itemAmountType == ItemAmountType.THREE) {
-            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
-            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
-            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
+            ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
+            ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
+            ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getY());
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
     }
 
-    private void drawCopyright(Canvas canvas) {
-        if(bLite){
-            int kantenLaenge = getWidth() / 2;
-            paint.setTextSize(kantenLaenge / 10);        
-            paint.setTextAlign(Align.LEFT);
-            canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaenge / 10, paint);
-        }
-    }
-
-    private void drawHitMessage(Canvas canvas) {
-        if(((Data) this.getContext()).getNumber() == null){ // Nur beim Ersten mal
-            final int kantenLaenge = getWidth() / 2;
-            int linkesEck = (metrics.widthPixels - kantenLaenge) / 2;
-            int oberesEck = (metrics.heightPixels - kantenLaenge) / 2;
-    
-            String hit_text = this.getContext().getString(hitMsgKey);
-            paint.setTextAlign(Align.CENTER);
-    
-            if (itemAmountType == ItemAmountType.ONE) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-                        + (kantenLaenge / 10), paint);
-            } else if (itemAmountType == ItemAmountType.TWO) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-                        + (kantenLaenge / 2), paint);
-            } else if (itemAmountType == ItemAmountType.THREE) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-                        + (kantenLaenge / 2), paint);
-            } else {
-                throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
-            }
-        }
-    }
-
     private void playSound() {
-        if(!bImageApp){
-            if (soundOn && ((Data) this.getContext()).hasRolled().equals(Boolean.TRUE)) {
-                if (mediaPlayer == null) {
-                    mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
-                } else if (mediaPlayer != null) { // Reported Bug v1.5 Dec 23, 2010 2:59:25
-                                         // PM
-                    mediaPlayer.setVolume(2f, 2f);
-                    mediaPlayer.start();
-                }
-    
-                ((Data) this.getContext()).setRolled(Boolean.FALSE);
-    
-                // Rausgenommen V1.28 am 17.7.2ß14
-                // invalidate();
-                // return;
-                // Rausgenommen V1.28 am 17.7.2ß14
-    
-            } else {
-                // Nicht beim Ersten mal!
-                if (((Data) this.getContext()).getNumber() != null) {
-                    try {
-                        Thread.sleep(400);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        if (soundOn && ((Data) this.getContext()).hasRolled().equals(Boolean.TRUE)) {
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
+            } else if (mediaPlayer != null) { // Reported Bug v1.5 Dec 23, 2010 2:59:25
+                                     // PM
+                mediaPlayer.setVolume(2f, 2f);
+                mediaPlayer.start();
+            }
+
+            ((Data) this.getContext()).setRolled(Boolean.FALSE);
+
+            // Rausgenommen V1.28 am 17.7.2ß14
+            // invalidate();
+            // return;
+            // Rausgenommen V1.28 am 17.7.2ß14
+
+        } else {
+            // Nicht beim Ersten mal!
+            if (((Data) this.getContext()).getNumber() != null) {
+                try {
+                    Thread.sleep(400);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
     }
 
     private void drawSpeakerBitmap(Canvas canvas) {
-        if(!bImageApp){
-            canvas.drawBitmap(getSoundBitmap(), getLeftSoundBitmapPos(metrics.widthPixels),
-                    getTopSoundBitmapPos(metrics.heightPixels), paint);
-        }
+        canvas.drawBitmap(getSoundBitmap(), getLeftSoundBitmapPos(metrics.widthPixels),
+                getTopSoundBitmapPos(metrics.heightPixels), paint);
     }
 
     private void drawAmountDiceBitmap(Canvas canvas) {
-        if(!bImageApp){
-            canvas.drawBitmap(getAmountDiceBitmap(), getLeftAmountDiceBitmapPos(metrics.widthPixels),
-                    getTopAmountDiceBitmapPos(metrics.heightPixels), paint);
-        }
+        canvas.drawBitmap(getAmountDiceBitmap(), getLeftAmountDiceBitmapPos(metrics.widthPixels),
+                getTopAmountDiceBitmapPos(metrics.heightPixels), paint);
     }
 
     private Bitmap getSoundBitmap() {
@@ -287,7 +209,7 @@ public class DrawView extends View implements OnTouchListener, Serializable {
                 throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
             }
 
-            pointsItems = drawable.getDrawableList(itemAmountType);
+            drawable.initDrawableList(itemAmountType);
 
             ((Data) this.getContext()).setRolled(Boolean.TRUE);
             ((Data) this.getContext()).setInterrupted(Boolean.FALSE);

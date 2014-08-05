@@ -23,5 +23,4 @@ public abstract class TrivialDicePremiumBaseTest extends TrivialDiceBaseTest
     @MediumTest
     public void testStartButtonViewCreated() {
     }
- 
 }

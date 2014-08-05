@@ -15,7 +15,6 @@ public class LetterDiceDrawable extends BaseDiceDrawable {
         super(kantenLaenge, linkerWuerfelRand, obererWürfelRand);
      }
 
-   
     @Override
     public void setupDice(final int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand, int offsetX, int offsetY, List<List<Point>> pointsDice) {
         addPoint(linkerWuerfelRand + (kantenLaenge / 2) + offsetX, obererWürfelRand + offsetY + (kantenLaenge / 2),
@@ -68,10 +67,10 @@ public class LetterDiceDrawable extends BaseDiceDrawable {
     }
 
     @Override
-    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaenge, List<List<List<Point>>> points) {
+    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaenge) {
         paint.setColor(Color.WHITE);
         int index = 0;
-        for (List<List<Point>> pointList : points) {
+        for (List<List<Point>> pointList : pointsDices) {
             String text = "";
             switch (numberList.get(index++)) {
             case 0:

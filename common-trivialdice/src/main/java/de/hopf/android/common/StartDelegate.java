@@ -17,30 +17,29 @@ import android.widget.Button;
 import de.hopf.android.common.drawable.Drawable;
 
 public class StartDelegate implements Data {
-    private final Activity activity;
-    private final int diceSoundKey;
-    private final int hitMsgKey;
-    private final int mainMsgKey;
-    private final int linkMsgKey;
-    private final int startMsgKey;
-    private final boolean bLite;
+    protected final Activity activity;
+    protected final int diceSoundKey;
+    protected final int hitMsgKey;
+    protected final int mainMsgKey;
+    protected final int linkMsgKey;
+    protected final int startMsgKey;
+    protected final boolean bLite;
     private int fullVersionLinkKey;
-    private DrawView drawView;
-    private Integer number;
+    protected DrawViewBase drawView;
+    protected Integer number;
     private Integer number2;
     private Integer number3;
     private int counter;
-    private Boolean bInterrupted = Boolean.FALSE;
+    protected Boolean bInterrupted = Boolean.FALSE;
     private Boolean bRoll = Boolean.FALSE;
-    private static final String COUNT_KEY = "COUNT_KEY";
-    private static final String INTERRUPTED_KEY = "INTERRUPTED_KEY";
+    protected static final String COUNT_KEY = "COUNT_KEY";
+    protected static final String INTERRUPTED_KEY = "INTERRUPTED_KEY";
     
-    private final Drawable drawable;
-    private final int maxNum;
-    private final boolean bImageApp;
+    protected final Drawable drawable;
+    protected final int maxNum;
     
     // Premium
-    public StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, int maxNum, boolean bImageApp) {
+    protected StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, int maxNum, DrawViewBase drawView) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -50,12 +49,12 @@ public class StartDelegate implements Data {
         this.bLite = false;
         this.drawable = drawable;
         this.maxNum = maxNum;        
-        this.bImageApp = bImageApp;
+        this.drawView = drawView;
     }
 
     // Lite
-    public StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
-            int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, int maxNum, boolean bImageApp) {
+    protected StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
+            int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, int maxNum, DrawViewBase drawView) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -66,8 +65,7 @@ public class StartDelegate implements Data {
         this.bLite = true;
         this.drawable = drawable;
         this.maxNum = maxNum;      
-        this.bImageApp = bImageApp;
-        
+        this.drawView = drawView;
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +80,6 @@ public class StartDelegate implements Data {
             bInterrupted = (Boolean) savedInstanceState.getSerializable(INTERRUPTED_KEY);
         }
 
-        drawView = new DrawView(this.activity, activity.getWindowManager(), this.diceSoundKey, this.hitMsgKey, drawable, maxNum, bImageApp, bLite);
         activity.setContentView(drawView);
         drawView.requestFocus();
 
@@ -153,23 +150,9 @@ public class StartDelegate implements Data {
     public void setNumber(Integer number) {
         this.number = number;
         counter++;
-        if (this.bLite) {
-            if (this.bImageApp){
-                if ((counter > 500)) {
-                    counter = 0;
-                    showSplashScreen();
-                }
-            }
-            else{
-                if ((counter > 10) && number != null && number.intValue() == 5) {
-                    counter = 0;
-                    showSplashScreen();
-                }                
-            }
-        }
     }
 
-    private void showSplashScreen() {
+    protected void showSplashScreen() {
         activity.setContentView(this.mainMsgKey);
         
         Button link_text = (Button) activity.findViewById(this.linkMsgKey);
@@ -222,5 +205,10 @@ public class StartDelegate implements Data {
     @Override
     public int getCounter() {
         return counter;
+    }
+    
+//    @Override
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 }

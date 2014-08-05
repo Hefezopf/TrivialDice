@@ -11,7 +11,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import de.hopf.android.common.Data;
-import de.hopf.android.common.DrawView;
+import de.hopf.android.common.DrawViewBase;
 import de.hopf.android.common.ItemAmountType;
 import de.hopf.android.common.Point;
 import de.hopf.android.common.drawable.base.BaseDrawable;
@@ -30,7 +30,7 @@ public class BottleSpinDrawable extends BaseDrawable {
      }
 
     @Override
-    public void drawShape(DrawView drawView, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
+    public void drawShape(DrawViewBase drawView, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
         // Nicht beim ersten mal
         if (((Data) drawView.getContext()).getCounter() > 1) {
             angle = angle + 8*speed;
@@ -68,12 +68,12 @@ public class BottleSpinDrawable extends BaseDrawable {
     }
     
     @Override
-    public List<List<List<Point>>> getDrawableList(ItemAmountType diceAmountType) {        
-        initDice(pointsDices, diceAmountType);        
+    public List<List<List<Point>>> initDrawableList(ItemAmountType diceAmountType) {        
+        initDice(diceAmountType);        
         return pointsDices;
     }
 
     @Override
-    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaenge, List<List<List<Point>>> points) {
+    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaenge) {
     }
 }

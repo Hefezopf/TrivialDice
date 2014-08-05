@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
-import de.hopf.android.common.DrawView;
+import de.hopf.android.common.DrawViewBase;
 import de.hopf.android.common.ItemAmountType;
 import de.hopf.android.common.Point;
 import de.hopf.android.common.drawable.Drawable;
@@ -27,22 +27,22 @@ public abstract class BaseDrawable implements Drawable {
         this.obererWürfelRand = obererWürfelRand;
     }
     
-    protected void initDice(List<List<List<Point>>> pointsDice, ItemAmountType diceAmountType) {
-        pointsDice.clear();
+    protected void initDice(ItemAmountType diceAmountType) {
+        pointsDices.clear();
         if (diceAmountType == ItemAmountType.ONE) {
-            pointsDice.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
         } else if (diceAmountType == ItemAmountType.TWO) {
-            pointsDice.add(new ArrayList<List<Point>>()); 
-            pointsDice.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
         } else if (diceAmountType == ItemAmountType.THREE) {
-            pointsDice.add(new ArrayList<List<Point>>()); 
-            pointsDice.add(new ArrayList<List<Point>>()); 
-            pointsDice.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
         }
         
-        for (List<List<Point>> pointList : pointsDice) {
+        for (List<List<Point>> pointList : pointsDices) {
             pointList.clear();
             // TODO ???
             pointList.add(new ArrayList<Point>());
@@ -54,7 +54,7 @@ public abstract class BaseDrawable implements Drawable {
         }
     }     
     
-    public void drawShape(DrawView dv, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
+    public void drawShape(DrawViewBase dv, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
         int linkesEck = (metrics.widthPixels) / 2 + offsetX;
         int oberesEck = (metrics.heightPixels) / 2 + offsetY;
 

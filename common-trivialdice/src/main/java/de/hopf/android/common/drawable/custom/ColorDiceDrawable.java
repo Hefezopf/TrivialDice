@@ -21,10 +21,9 @@ public class ColorDiceDrawable extends BaseDiceDrawable {
     }
 
     @Override
-    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, final int kantenLaenge,
-            List<List<List<Point>>> points) {
+    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, final int kantenLaenge) {
         int index = 0;
-        for (List<List<Point>> pointList : points) {
+        for (List<List<Point>> pointList : pointsDices) {
             switch (numberList.get(index++)) {
             case 0:
                 paint.setColor(Color.CYAN);

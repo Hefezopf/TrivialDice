@@ -11,13 +11,13 @@ public abstract class BaseDiceDrawable extends BaseDrawable {
         
     public BaseDiceDrawable(int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand) {
         super(kantenLaenge, linkerWuerfelRand, obererWürfelRand);
-        initDice(pointsDices, ItemAmountType.ONE);
+        initDice(ItemAmountType.ONE);
         setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, ItemAmountType.ONE.getPointOne().getX(), ItemAmountType.ONE.getPointOne().getY(), pointsDices.get(0));        
     }
 
     @Override
-    public List<List<List<Point>>> getDrawableList(ItemAmountType diceAmountType) {
-        initDice(pointsDices, diceAmountType);
+    public List<List<List<Point>>> initDrawableList(ItemAmountType diceAmountType) {
+        initDice(diceAmountType);
         if (diceAmountType == ItemAmountType.ONE) {
             setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, diceAmountType.getPointOne().getX(), diceAmountType.getPointOne().getY(), pointsDices.get(0));
         } else if (diceAmountType == ItemAmountType.TWO) {

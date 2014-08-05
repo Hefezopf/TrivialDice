@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:versionCode="34" android:versionName="1.34" package="de.hopf.mobile.trivialdice.letter">  
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
-    <uses-permission android:name="android.permission.INJECT_EVENTS" tools:ignore="ProtectedPermissions"/> 
     
     <uses-sdk android:minSdkVersion="5" android:targetSdkVersion="20"/>    
      

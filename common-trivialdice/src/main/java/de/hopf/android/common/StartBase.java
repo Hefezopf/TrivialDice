@@ -6,7 +6,7 @@ import android.util.DisplayMetrics;
 
 public abstract class StartBase extends Activity implements Data {
 
-    protected StartDelegate startDiceDelegate;
+    protected StartDelegate startDelegate;
     protected int kantenLaenge;
     protected int linkerWuerfelRand;
     protected int obererWürfelRand;
@@ -25,13 +25,13 @@ public abstract class StartBase extends Activity implements Data {
         obererWürfelRand = (metrics.heightPixels - kantenLaenge) / 2;
         
         initDelegate();
-        startDiceDelegate.onCreate(savedInstanceState);
+        startDelegate.onCreate(savedInstanceState);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        startDiceDelegate.onSaveInstanceState(outState);
+        startDelegate.onSaveInstanceState(outState);
     }
 
     @Override
@@ -41,56 +41,56 @@ public abstract class StartBase extends Activity implements Data {
 
     @Override
     public Integer getNumber() {
-        return startDiceDelegate.getNumber();
+        return startDelegate.getNumber();
     }
 
     @Override
     public void setNumber(Integer number) {
-        startDiceDelegate.setNumber(number);
+        startDelegate.setNumber(number);
     }
 
     @Override
     public Integer getNumber2() {
-        return startDiceDelegate.getNumber2();
+        return startDelegate.getNumber2();
     }
 
     @Override
     public void setNumber2(Integer number2) {
-        startDiceDelegate.setNumber2(number2);
+        startDelegate.setNumber2(number2);
     }
 
     @Override
     public Integer getNumber3() {
-        return startDiceDelegate.getNumber3();
+        return startDelegate.getNumber3();
     }
 
     @Override
     public void setNumber3(Integer number3) {
-        startDiceDelegate.setNumber3(number3);
+        startDelegate.setNumber3(number3);
     }
 
     @Override
     public Boolean hasInterrupted() {
-        return startDiceDelegate.hasInterrupted();
+        return startDelegate.hasInterrupted();
     }
 
     @Override
     public void setInterrupted(Boolean bInterrupted) {
-        startDiceDelegate.setInterrupted(bInterrupted);
+        startDelegate.setInterrupted(bInterrupted);
     }
 
     @Override
     public Boolean hasRolled() {
-        return startDiceDelegate.hasRolled();
+        return startDelegate.hasRolled();
     }
 
     @Override
     public void setRolled(Boolean bRoll) {
-        startDiceDelegate.setRolled(bRoll);
+        startDelegate.setRolled(bRoll);
     }
 
     @Override
     public int getCounter() {
-        return startDiceDelegate.getCounter();
+        return startDelegate.getCounter();
     }
 }

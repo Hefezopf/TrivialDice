@@ -22,10 +22,10 @@ public class DoublingDiceDrawable extends BaseDiceDrawable {
     }
 
     @Override
-    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaenge, List<List<List<Point>>> points) {
+    public void drawContent(List<Integer> numberList, Paint paint, Canvas canvas, int kantenLaenge) {
         paint.setColor(Color.WHITE);
         int index = 0;
-        for (List<List<Point>> pointList : points) {
+        for (List<List<Point>> pointList : pointsDices) {
             String text = "";
             switch (numberList.get(index++)) {
             case 0:
