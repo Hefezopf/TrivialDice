@@ -25,16 +25,13 @@ public class BottleSpinDrawable extends BaseDrawable {
     
     public BottleSpinDrawable(Resources resources, int bottleId, int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand) {
         super(kantenLaenge, linkerWuerfelRand, obererWürfelRand);
-
         bitmap = BitmapFactory.decodeResource(resources, bottleId);
-        
 //        initDice(pointsDices, ItemAmountType.ONE);        
 //        setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, ItemAmountType.ONE.getPointOne().getX(), ItemAmountType.ONE.getPointOne().getY(), pointsDices.get(0));
      }
 
     @Override
     public void drawBorder(DrawView drawView, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
-
         // Nicht beim ersten mal
         if (((Data) drawView.getContext()).getCounter() > 1) {
             angle = angle + 8*speed;
