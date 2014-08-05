@@ -43,6 +43,8 @@
     <module>trivialdoublingdice-lite</module>
     <module>trivialdoublingdice-premium</module>
 
+    <module>trivialbottlespin-lite-test</module>
+    <module>trivialbottlespin-premium-test</module>
     <module>trivialletterdice-lite-test</module>
     <module>trivialletterdice-premium-test</module>
     <module>trivialdice-lite-test</module>
