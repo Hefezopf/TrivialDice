@@ -16,7 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import de.hopf.android.common.drawable.Drawable;
 
-public class StartDiceDelegate implements Data {
+public class StartDelegate implements Data {
     private final Activity activity;
     private final int diceSoundKey;
     private final int hitMsgKey;
@@ -40,7 +40,7 @@ public class StartDiceDelegate implements Data {
     private final boolean bImageApp;
     
     // Premium
-    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, int maxNum, boolean bImageApp) {
+    public StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, int maxNum, boolean bImageApp) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -54,7 +54,7 @@ public class StartDiceDelegate implements Data {
     }
 
     // Lite
-    public StartDiceDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
+    public StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
             int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, int maxNum, boolean bImageApp) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;

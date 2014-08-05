@@ -18,8 +18,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
-import de.hopf.android.common.drawable.BaseDrawable;
 import de.hopf.android.common.drawable.Drawable;
+import de.hopf.android.common.drawable.base.BaseDrawable;
 
 public class DrawView extends View implements OnTouchListener, Serializable {
     private static final long serialVersionUID = 1L;

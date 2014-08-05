@@ -1,4 +1,4 @@
-package de.hopf.android.common.drawable;
+package de.hopf.android.common.drawable.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import android.util.DisplayMetrics;
 import de.hopf.android.common.DrawView;
 import de.hopf.android.common.ItemAmountType;
 import de.hopf.android.common.Point;
+import de.hopf.android.common.drawable.Drawable;
 
 public abstract class BaseDrawable implements Drawable {
 

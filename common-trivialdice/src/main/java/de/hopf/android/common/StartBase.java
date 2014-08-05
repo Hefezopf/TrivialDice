@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
-public abstract class StartDiceBase extends Activity implements Data {
+public abstract class StartBase extends Activity implements Data {
 
-    protected StartDiceDelegate startDiceDelegate;
+    protected StartDelegate startDiceDelegate;
     protected int kantenLaenge;
     protected int linkerWuerfelRand;
     protected int obererWürfelRand;
