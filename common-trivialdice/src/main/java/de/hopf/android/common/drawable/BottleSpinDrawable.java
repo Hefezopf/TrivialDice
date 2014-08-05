@@ -1,4 +1,4 @@
-package de.hopf.mobile.drawable;
+package de.hopf.android.common.drawable;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import de.hopf.mobile.Data;
-import de.hopf.mobile.DrawView;
-import de.hopf.mobile.ItemAmountType;
-import de.hopf.mobile.Point;
+import de.hopf.android.common.Data;
+import de.hopf.android.common.DrawView;
+import de.hopf.android.common.ItemAmountType;
+import de.hopf.android.common.Point;
 
 public class BottleSpinDrawable extends BaseDrawable {
 
@@ -31,7 +31,7 @@ public class BottleSpinDrawable extends BaseDrawable {
      }
 
     @Override
-    public void drawBorder(DrawView drawView, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
+    public void drawShape(DrawView drawView, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
         // Nicht beim ersten mal
         if (((Data) drawView.getContext()).getCounter() > 1) {
             angle = angle + 8*speed;
@@ -89,6 +89,7 @@ public class BottleSpinDrawable extends BaseDrawable {
         return pointsDices;
     }
     
+    @SuppressWarnings("unused")
     private void setupDice(final int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand,
             int offsetX, int offsetY, List<List<Point>> pointsDice) {
 //        addPoint(linkerWuerfelRand + (kantenLaenge / 2) + offsetX, obererWürfelRand + offsetY + (kantenLaenge / 2),

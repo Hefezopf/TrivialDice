@@ -1,4 +1,4 @@
-package de.hopf.mobile;
+package de.hopf.android.common;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import de.hopf.mobile.drawable.Drawable;
+import de.hopf.android.common.drawable.Drawable;
 
 public class StartDiceDelegate implements Data {
     private final Activity activity;

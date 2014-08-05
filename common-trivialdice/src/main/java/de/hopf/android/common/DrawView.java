@@ -1,4 +1,4 @@
-package de.hopf.mobile;
+package de.hopf.android.common;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
-import de.hopf.mobile.drawable.BaseDrawable;
-import de.hopf.mobile.drawable.Drawable;
+import de.hopf.android.common.drawable.BaseDrawable;
+import de.hopf.android.common.drawable.Drawable;
 
 public class DrawView extends View implements OnTouchListener, Serializable {
     private static final long serialVersionUID = 1L;
@@ -141,16 +141,16 @@ public class DrawView extends View implements OnTouchListener, Serializable {
         
         final int kantenLaenge = getWidth() / 2;
         if (itemAmountType == ItemAmountType.ONE) {
-            ((BaseDrawable)drawable).drawBorder(this, paint, canvas, metrics, itemAmountType.getPointOne().getX(), itemAmountType.getPointOne().getY());
+            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, itemAmountType.getPointOne().getX(), itemAmountType.getPointOne().getY());
             drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
         } else if (itemAmountType == ItemAmountType.TWO) {
-            ((BaseDrawable)drawable).drawBorder(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
-            ((BaseDrawable)drawable).drawBorder(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
+            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
+            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
             drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
         } else if (itemAmountType == ItemAmountType.THREE) {
-            ((BaseDrawable)drawable).drawBorder(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
-            ((BaseDrawable)drawable).drawBorder(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
-            ((BaseDrawable)drawable).drawBorder(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getY());
+            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
+            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
+            ((BaseDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getY());
             drawable.drawContent(numberList, paint, canvas, kantenLaenge, pointsItems);        
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);

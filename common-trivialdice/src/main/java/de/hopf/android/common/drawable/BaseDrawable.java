@@ -1,4 +1,4 @@
-package de.hopf.mobile.drawable;
+package de.hopf.android.common.drawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
-import de.hopf.mobile.DrawView;
-import de.hopf.mobile.ItemAmountType;
-import de.hopf.mobile.Point;
+import de.hopf.android.common.DrawView;
+import de.hopf.android.common.ItemAmountType;
+import de.hopf.android.common.Point;
 
 public abstract class BaseDrawable implements Drawable {
 
@@ -53,7 +53,7 @@ public abstract class BaseDrawable implements Drawable {
         }
     }     
     
-    public void drawBorder(DrawView dv, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
+    public void drawShape(DrawView dv, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
         int linkesEck = (metrics.widthPixels) / 2 + offsetX;
         int oberesEck = (metrics.heightPixels) / 2 + offsetY;
 

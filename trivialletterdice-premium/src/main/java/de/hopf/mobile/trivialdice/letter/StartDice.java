@@ -1,9 +1,9 @@
 package de.hopf.mobile.trivialdice.letter;
 
-import de.hopf.mobile.StartDiceBase;
-import de.hopf.mobile.StartDiceDelegate;
-import de.hopf.mobile.drawable.Drawable;
-import de.hopf.mobile.drawable.LetterDiceDrawable;
+import de.hopf.android.common.StartDiceBase;
+import de.hopf.android.common.StartDiceDelegate;
+import de.hopf.android.common.drawable.Drawable;
+import de.hopf.android.common.drawable.LetterDiceDrawable;
 
 public class StartDice extends StartDiceBase {
     

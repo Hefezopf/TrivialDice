@@ -1,4 +1,4 @@
-package de.hopf.mobile;
+package de.hopf.android.common;
 
 public enum ItemAmountType {
     ONE(new Point(0, 0)), 

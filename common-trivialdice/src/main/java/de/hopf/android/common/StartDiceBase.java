@@ -1,4 +1,4 @@
-package de.hopf.mobile;
+package de.hopf.android.common;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -1,9 +1,9 @@
 package de.hopf.android.trivialdice.doubling.lite;
 
-import de.hopf.mobile.StartDiceBase;
-import de.hopf.mobile.StartDiceDelegate;
-import de.hopf.mobile.drawable.DoublingDiceDrawable;
-import de.hopf.mobile.drawable.Drawable;
+import de.hopf.android.common.StartDiceBase;
+import de.hopf.android.common.StartDiceDelegate;
+import de.hopf.android.common.drawable.DoublingDiceDrawable;
+import de.hopf.android.common.drawable.Drawable;
 
 public class StartDice extends StartDiceBase {
 

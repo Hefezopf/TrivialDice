@@ -1,4 +1,4 @@
-package de.hopf.mobile.drawable;
+package de.hopf.android.common.drawable;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
-import de.hopf.mobile.ItemAmountType;
-import de.hopf.mobile.Point;
+import de.hopf.android.common.ItemAmountType;
+import de.hopf.android.common.Point;
 
 public class LetterDiceDrawable extends BaseDrawable {
        

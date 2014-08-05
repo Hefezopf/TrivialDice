@@ -1,7 +1,9 @@
 package de.hopf.mobile;
 
-import de.hopf.mobile.drawable.Drawable;
-import de.hopf.mobile.drawable.NormalDiceDrawable;
+import de.hopf.android.common.StartDiceBase;
+import de.hopf.android.common.StartDiceDelegate;
+import de.hopf.android.common.drawable.Drawable;
+import de.hopf.android.common.drawable.NormalDiceDrawable;
 
 
 public class StartDice extends StartDiceBase {

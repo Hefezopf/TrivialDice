@@ -1,5 +1,7 @@
 package de.hopf.mobile;
 
+import de.hopf.android.common.Data;
+import de.hopf.android.common.DrawView;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;

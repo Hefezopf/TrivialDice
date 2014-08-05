@@ -1,8 +1,6 @@
 package de.hopf.mobile.trivialdice.letter.lite;
 
 import de.hopf.mobile.TrivialDiceBaseTest;
-import de.hopf.mobile.trivialdice.letter.lite.R;
-import de.hopf.mobile.trivialdice.letter.lite.StartDice;
 
 public class TrivialDiceLiteTest extends TrivialDiceBaseTest {
     public TrivialDiceLiteTest() {
