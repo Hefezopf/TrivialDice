@@ -38,20 +38,24 @@ public abstract class BaseDrawable implements Drawable {
             pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
+        } else if (amountType == ItemAmountType.FOUR) {
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
         } else {
             throw new IllegalArgumentException("Unbekannter amountType: " + amountType);
         }
         
-//        for (List<List<Point>> pointList : pointsDices) {
-//            pointList.clear();
-//            // TODO ???
-//            pointList.add(new ArrayList<Point>());
-//            pointList.add(new ArrayList<Point>());
-//            pointList.add(new ArrayList<Point>());
-//            pointList.add(new ArrayList<Point>());
-//            pointList.add(new ArrayList<Point>());
-//            pointList.add(new ArrayList<Point>());
-//        }
+        for (List<List<Point>> pointList : pointsDices) {
+            pointList.clear();
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+            pointList.add(new ArrayList<Point>());
+        }
     }     
     
     public void drawShape(DrawViewBase dv, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
