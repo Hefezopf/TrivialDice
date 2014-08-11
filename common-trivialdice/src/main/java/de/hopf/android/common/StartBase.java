@@ -9,7 +9,7 @@ public abstract class StartBase extends Activity implements Data {
     protected StartDelegate startDelegate;
     protected int kantenLaenge;
     protected int linkerWuerfelRand;
-    protected int obererWürfelRand;
+    protected int obererWuerfelRand;
     
     public abstract void initDelegate();
 
@@ -22,7 +22,7 @@ public abstract class StartBase extends Activity implements Data {
 
         kantenLaenge = metrics.widthPixels / 3;
         linkerWuerfelRand = (metrics.widthPixels - kantenLaenge) / 2;
-        obererWürfelRand = (metrics.heightPixels - kantenLaenge) / 2;
+        obererWuerfelRand = (metrics.heightPixels - kantenLaenge) / 2;
         
         initDelegate();
         startDelegate.onCreate(savedInstanceState);

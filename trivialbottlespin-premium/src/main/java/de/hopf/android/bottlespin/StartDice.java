@@ -9,7 +9,7 @@ public class StartDice extends StartBase {
 
     @Override
     public void initDelegate() {
-        Drawable drawable = new BottleSpinDrawable(this.getResources(), R.raw.bottle, kantenLaenge, linkerWuerfelRand, obererWürfelRand);
+        Drawable drawable = new BottleSpinDrawable(this.getResources(), R.raw.bottle, kantenLaenge, linkerWuerfelRand, obererWuerfelRand);
         this.startDelegate = new StartImageDelegate(this, R.string.hit, R.layout.main, drawable);
     }
 }
