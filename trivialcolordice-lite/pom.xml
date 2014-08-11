@@ -6,7 +6,7 @@
   <parent>
     <groupId>de.hopf.mobile</groupId>
     <artifactId>trivialdice-parent</artifactId>
-    <version>1.34</version>
+    <version>1.35</version>
   </parent>
 
   <artifactId>trivialcolordice-lite</artifactId>
@@ -36,7 +36,7 @@
     <dependency>
       <groupId>de.hopf.mobile</groupId>
       <artifactId>common-trivialdice</artifactId>
-      <version>1.34</version>
+      <version>1.35</version>
       <type>jar</type>
     </dependency>
 

@@ -27,31 +27,31 @@ public abstract class BaseDrawable implements Drawable {
         this.obererWürfelRand = obererWürfelRand;
     }
     
-    protected void initDice(ItemAmountType diceAmountType) {
+    protected void initDice(ItemAmountType amountType) {
         pointsDices.clear();
-        if (diceAmountType == ItemAmountType.ONE) {
+        if (amountType == ItemAmountType.ONE) {
             pointsDices.add(new ArrayList<List<Point>>()); 
-        } else if (diceAmountType == ItemAmountType.TWO) {
+        } else if (amountType == ItemAmountType.TWO) {
             pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
-        } else if (diceAmountType == ItemAmountType.THREE) {
+        } else if (amountType == ItemAmountType.THREE) {
             pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
         } else {
-            throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
+            throw new IllegalArgumentException("Unbekannter amountType: " + amountType);
         }
         
-        for (List<List<Point>> pointList : pointsDices) {
-            pointList.clear();
-            // TODO ???
-            pointList.add(new ArrayList<Point>());
-            pointList.add(new ArrayList<Point>());
-            pointList.add(new ArrayList<Point>());
-            pointList.add(new ArrayList<Point>());
-            pointList.add(new ArrayList<Point>());
-            pointList.add(new ArrayList<Point>());
-        }
+//        for (List<List<Point>> pointList : pointsDices) {
+//            pointList.clear();
+//            // TODO ???
+//            pointList.add(new ArrayList<Point>());
+//            pointList.add(new ArrayList<Point>());
+//            pointList.add(new ArrayList<Point>());
+//            pointList.add(new ArrayList<Point>());
+//            pointList.add(new ArrayList<Point>());
+//            pointList.add(new ArrayList<Point>());
+//        }
     }     
     
     public void drawShape(DrawViewBase dv, Paint paint, Canvas canvas, DisplayMetrics metrics, int offsetX, int offsetY) {
