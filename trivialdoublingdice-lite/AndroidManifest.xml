@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="35" android:versionName="1.35" package="de.hopf.android.trivialdice.doubling.lite">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="36" android:versionName="1.36" package="de.hopf.android.trivialdice.doubling.lite">
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
     <uses-sdk android:minSdkVersion="5" android:targetSdkVersion="20"/>    
       
