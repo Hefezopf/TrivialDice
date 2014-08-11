@@ -19,19 +19,32 @@ public abstract class BaseDiceDrawable extends BaseDrawable {
     public List<List<List<Point>>> initDrawableList(ItemAmountType amountType) {
         initDice(amountType);
         if (amountType == ItemAmountType.ONE) {
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, amountType.getPointOne().getX(), amountType.getPointOne().getY(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, amountType.getPointOne().getX(), amountType.getPointOne().getY(), pointsDices.get(0));
         } else if (amountType == ItemAmountType.TWO) {
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getY(), pointsDices.get(0));
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getY(), pointsDices.get(1));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getY(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getY(), pointsDices.get(1));
         } else if (amountType == ItemAmountType.THREE) {
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getY(), pointsDices.get(0));
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getY(), pointsDices.get(1));
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getY(), pointsDices.get(2));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getY(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getY(), pointsDices.get(1));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getY(), pointsDices.get(2));
         } else if (amountType == ItemAmountType.FOUR) {
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getY(), pointsDices.get(0));
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getY(), pointsDices.get(1));
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getY(), pointsDices.get(2));
-            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFour().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFour().getY(), pointsDices.get(3));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getY(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getY(), pointsDices.get(1));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getY(), pointsDices.get(2));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFour().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFour().getY(), pointsDices.get(3));
+        } else if (amountType == ItemAmountType.FIVE) {
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getY(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getY(), pointsDices.get(1));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getY(), pointsDices.get(2));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFour().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFour().getY(), pointsDices.get(3));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFive().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFive().getY(), pointsDices.get(4));
+        } else if (amountType == ItemAmountType.SIX) {
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointOne().getY(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointTwo().getY(), pointsDices.get(1));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointThree().getY(), pointsDices.get(2));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFour().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFour().getY(), pointsDices.get(3));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFive().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointFive().getY(), pointsDices.get(4));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWuerfelRand, kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointSix().getX(), kantenLaenge / ItemAmountType.getFaktor() * amountType.getPointSix().getY(), pointsDices.get(5));
         } else {
             throw new IllegalArgumentException("Unbekannter amountType: " + amountType);
         }

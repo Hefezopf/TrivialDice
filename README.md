@@ -1,5 +1,5 @@
 TrivialDice
-===========
+============
 
 A trivial dice app for android
 

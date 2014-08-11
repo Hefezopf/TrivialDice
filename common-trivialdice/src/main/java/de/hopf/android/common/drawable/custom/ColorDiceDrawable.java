@@ -46,7 +46,7 @@ public class ColorDiceDrawable extends BaseDiceDrawable {
             default:
             }
 
-            drawPoints(paint, canvas, kantenLaenge, pointList.get(0), kantenLaenge / 3);
+            drawPoints(paint, canvas, kantenLaenge, pointList.get(0), kantenLaenge / 4);
             paint.setColor(Color.WHITE);
         }
     }

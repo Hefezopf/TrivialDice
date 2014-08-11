@@ -61,7 +61,7 @@ public abstract class DrawViewBase extends View implements OnTouchListener, Seri
     }
 
     private void drawHitMessage(Canvas canvas) {
-        if(((Data) this.getContext()).getNumber() == null){ // Nur beim Ersten mal
+        if(((Data) this.getContext()).getNumber() == null){ // Nur beim Ersten mal anzeigen
             final int kantenLaenge = getWidth() / 2;
             int linkesEck = (metrics.widthPixels - kantenLaenge) / 2;
             int oberesEck = (metrics.heightPixels - kantenLaenge) / 2;
@@ -69,21 +69,27 @@ public abstract class DrawViewBase extends View implements OnTouchListener, Seri
             String hit_text = this.getContext().getString(hitMsgKey);
             paint.setTextAlign(Align.CENTER);
     
-            if (itemAmountType == ItemAmountType.ONE) {
+//            if (itemAmountType == ItemAmountType.ONE) {
                 canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
                         + (kantenLaenge / 10), paint);
-            } else if (itemAmountType == ItemAmountType.TWO) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-                        + (kantenLaenge / 2), paint);
-            } else if (itemAmountType == ItemAmountType.THREE) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-                        + (kantenLaenge / 2), paint);
-            } else if (itemAmountType == ItemAmountType.FOUR) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-                        + (kantenLaenge / 2), paint);
-            } else {
-                throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
-            }
+//            } else if (itemAmountType == ItemAmountType.TWO) {
+//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+//                        + (kantenLaenge / 2), paint);
+//            } else if (itemAmountType == ItemAmountType.THREE) {
+//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+//                        + (kantenLaenge / 2), paint);
+//            } else if (itemAmountType == ItemAmountType.FOUR) {
+//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+//                        + (kantenLaenge / 2), paint);
+//            } else if (itemAmountType == ItemAmountType.FIVE) {
+//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+//                        + (kantenLaenge / 2), paint);
+//            } else if (itemAmountType == ItemAmountType.SIX) {
+//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+//                        + (kantenLaenge / 2), paint);
+//            } else {
+//                throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
+//            }
         }
     }    
 }

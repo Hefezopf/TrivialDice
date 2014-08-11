@@ -30,6 +30,8 @@ public class StartDelegate implements Data {
     private Integer number2;
     private Integer number3;
     private Integer number4;
+    private Integer number5;
+    private Integer number6;
     private int counter;
     protected Boolean bInterrupted = Boolean.FALSE;
     private Boolean bRoll = Boolean.FALSE;
@@ -193,6 +195,26 @@ public class StartDelegate implements Data {
         this.number4 = number4;
     }
     
+    @Override
+    public Integer getNumber5() {
+        return number5;
+    }
+
+    @Override
+    public void setNumber5(Integer number5) {
+        this.number5 = number5;
+    }
+    
+    @Override
+    public Integer getNumber6() {
+        return number6;
+    }
+
+    @Override
+    public void setNumber6(Integer number6) {
+        this.number6 = number6;
+    }
+        
     @Override
     public Boolean hasInterrupted() {
         return bInterrupted;

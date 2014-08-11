@@ -20,7 +20,7 @@ public abstract class StartBase extends Activity implements Data {
         DisplayMetrics metrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        kantenLaenge = metrics.widthPixels / 2;
+        kantenLaenge = metrics.widthPixels / 3;
         linkerWuerfelRand = (metrics.widthPixels - kantenLaenge) / 2;
         obererWürfelRand = (metrics.heightPixels - kantenLaenge) / 2;
         
@@ -77,6 +77,26 @@ public abstract class StartBase extends Activity implements Data {
     @Override
     public void setNumber4(Integer number4) {
         startDelegate.setNumber4(number4);
+    }
+
+    @Override
+    public Integer getNumber5() {
+        return startDelegate.getNumber5();
+    }
+
+    @Override
+    public void setNumber5(Integer number5) {
+        startDelegate.setNumber5(number5);
+    }
+
+    @Override
+    public Integer getNumber6() {
+        return startDelegate.getNumber6();
+    }
+
+    @Override
+    public void setNumber6(Integer number6) {
+        startDelegate.setNumber6(number6);
     }
 
     @Override

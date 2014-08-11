@@ -18,13 +18,13 @@ public abstract class BaseDrawable implements Drawable {
     
     protected int kantenLaenge;
     protected int linkerWuerfelRand;
-    protected int obererWürfelRand;
+    protected int obererWuerfelRand;
   
     public BaseDrawable(int kantenLaenge, int linkerWuerfelRand, int obererWürfelRand) {
         super();
         this.kantenLaenge = kantenLaenge;
         this.linkerWuerfelRand = linkerWuerfelRand;
-        this.obererWürfelRand = obererWürfelRand;
+        this.obererWuerfelRand = obererWürfelRand;
     }
     
     protected void initDice(ItemAmountType amountType) {
@@ -39,6 +39,19 @@ public abstract class BaseDrawable implements Drawable {
             pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
         } else if (amountType == ItemAmountType.FOUR) {
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+        } else if (amountType == ItemAmountType.FIVE) {
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
+        } else if (amountType == ItemAmountType.SIX) {
+            pointsDices.add(new ArrayList<List<Point>>()); 
+            pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
             pointsDices.add(new ArrayList<List<Point>>()); 
@@ -67,9 +80,9 @@ public abstract class BaseDrawable implements Drawable {
         float radius;
 
         if (width > height) {
-            radius = height / 4;
+            radius = height / 6;
         } else {
-            radius = width / 4;
+            radius = width / 6;
         }
         paint.setStrokeWidth(2);
         paint.setStyle(Paint.Style.STROKE);
@@ -82,8 +95,7 @@ public abstract class BaseDrawable implements Drawable {
     }
     
     protected void addPoint(int x, int y, List<Point> points) {
-        Point point = new Point(x, y);
-        points.add(point);
+        points.add(new Point(x, y));
     }
     
     protected void drawPoints(Paint paint, Canvas canvas, final int kantenLaenge, List<Point> points, int radius) {
