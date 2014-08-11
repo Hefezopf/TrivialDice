@@ -70,6 +70,16 @@ public abstract class StartBase extends Activity implements Data {
     }
 
     @Override
+    public Integer getNumber4() {
+        return startDelegate.getNumber4();
+    }
+
+    @Override
+    public void setNumber4(Integer number4) {
+        startDelegate.setNumber4(number4);
+    }
+
+    @Override
     public Boolean hasInterrupted() {
         return startDelegate.hasInterrupted();
     }

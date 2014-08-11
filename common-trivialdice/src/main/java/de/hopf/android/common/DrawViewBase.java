@@ -78,6 +78,9 @@ public abstract class DrawViewBase extends View implements OnTouchListener, Seri
             } else if (itemAmountType == ItemAmountType.THREE) {
                 canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
                         + (kantenLaenge / 2), paint);
+            } else if (itemAmountType == ItemAmountType.FOUR) {
+                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+                        + (kantenLaenge / 2), paint);
             } else {
                 throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
             }

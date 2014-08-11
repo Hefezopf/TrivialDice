@@ -8,6 +8,8 @@ public interface Data
     void setNumber2(Integer i2);
     Integer getNumber3();
     void setNumber3(Integer i3);
+    Integer getNumber4();
+    void setNumber4(Integer i4);
 	Boolean hasInterrupted();
 	void setInterrupted(Boolean b);
 	Boolean hasRolled();

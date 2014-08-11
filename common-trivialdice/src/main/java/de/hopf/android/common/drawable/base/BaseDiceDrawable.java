@@ -27,6 +27,11 @@ public abstract class BaseDiceDrawable extends BaseDrawable {
             setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointOne().getY(), pointsDices.get(0));
             setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointTwo().getY(), pointsDices.get(1));
             setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointThree().getY(), pointsDices.get(2));
+        } else if (diceAmountType == ItemAmountType.FOUR) {
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointOne().getY(), pointsDices.get(0));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointTwo().getY(), pointsDices.get(1));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointThree().getY(), pointsDices.get(2));
+            setupDice(kantenLaenge, linkerWuerfelRand, obererWürfelRand, kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointFour().getX(), kantenLaenge / ItemAmountType.getFaktor() * diceAmountType.getPointFour().getY(), pointsDices.get(3));
         } else {
             throw new IllegalArgumentException("Unbekannter DiceAmountType: " + diceAmountType);
         }

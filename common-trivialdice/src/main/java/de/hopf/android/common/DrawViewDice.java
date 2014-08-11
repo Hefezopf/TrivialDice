@@ -69,7 +69,6 @@ public class DrawViewDice extends DrawViewBase {
         return ((Data) this.getContext()).getNumber2();
     }
 
-
     private int calculateNumber3(int maxNum) {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
@@ -84,6 +83,20 @@ public class DrawViewDice extends DrawViewBase {
         return ((Data) this.getContext()).getNumber3();
     }
 
+    private int calculateNumber4(int maxNum) {
+        // Rechnen!
+        if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
+            ((Data) this.getContext()).setNumber4(new Integer((int) (Math.random() * maxNum)));
+        }
+
+        // NPE nach dem Start, manchmal beim drehen!
+        if (((Data) this.getContext()).getNumber4() == null) {
+            ((Data) this.getContext()).setNumber4(0);
+        }
+
+        return ((Data) this.getContext()).getNumber4();
+    }
+
     @Override
     protected void drawItem(Canvas canvas) {
         List<Integer> numberList = new ArrayList<Integer>();
@@ -95,7 +108,12 @@ public class DrawViewDice extends DrawViewBase {
         } else if (itemAmountType == ItemAmountType.THREE) {
             numberList.add(calculateNumber(maxNum)); 
             numberList.add(calculateNumber2(maxNum));
-            numberList.add(calculateNumber3(maxNum));
+            numberList.add(calculateNumber3(maxNum));        
+        } else if (itemAmountType == ItemAmountType.FOUR) {
+                numberList.add(calculateNumber(maxNum)); 
+                numberList.add(calculateNumber2(maxNum));
+                numberList.add(calculateNumber3(maxNum));
+                numberList.add(calculateNumber4(maxNum));
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
@@ -174,6 +192,8 @@ public class DrawViewDice extends DrawViewBase {
             amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_ff);
         } else if (itemAmountType == ItemAmountType.THREE) {
             amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_next);
+        } else if (itemAmountType == ItemAmountType.FOUR) {
+            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_pause);
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
@@ -204,6 +224,8 @@ public class DrawViewDice extends DrawViewBase {
             } else if (itemAmountType == ItemAmountType.TWO) {
                 itemAmountType = ItemAmountType.THREE;
             } else if (itemAmountType == ItemAmountType.THREE) {
+                itemAmountType = ItemAmountType.FOUR;
+            } else if (itemAmountType == ItemAmountType.FOUR) {
                 itemAmountType = ItemAmountType.ONE;
             } else {
                 throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
