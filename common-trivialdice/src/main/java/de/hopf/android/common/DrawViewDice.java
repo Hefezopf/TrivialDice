@@ -199,11 +199,11 @@ public class DrawViewDice extends DrawViewBase {
         } else if (itemAmountType == ItemAmountType.THREE) {
             amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_next);
         } else if (itemAmountType == ItemAmountType.FOUR) {
-            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_pause);
+            amountDiceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_rew);
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
-
+        
         return amountDiceBitmap;
     }
     
