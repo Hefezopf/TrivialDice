@@ -54,7 +54,7 @@ public abstract class DrawViewBase extends View implements OnTouchListener, Seri
     private void drawCopyright(Canvas canvas) {
         if(bLite){
             int kantenLaenge = getWidth() / 2;
-            paint.setTextSize(kantenLaenge / 10);        
+            paint.setTextSize(metrics.widthPixels / 20);        
             paint.setTextAlign(Align.LEFT);
             canvas.drawText("\u00A9" + " hopf-it.de", 10, kantenLaenge / 10, paint);
         }
@@ -68,28 +68,10 @@ public abstract class DrawViewBase extends View implements OnTouchListener, Seri
     
             String hit_text = this.getContext().getString(hitMsgKey);
             paint.setTextAlign(Align.CENTER);
-    
-//            if (itemAmountType == ItemAmountType.ONE) {
-                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-                        + (kantenLaenge / 10), paint);
-//            } else if (itemAmountType == ItemAmountType.TWO) {
-//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-//                        + (kantenLaenge / 2), paint);
-//            } else if (itemAmountType == ItemAmountType.THREE) {
-//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-//                        + (kantenLaenge / 2), paint);
-//            } else if (itemAmountType == ItemAmountType.FOUR) {
-//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-//                        + (kantenLaenge / 2), paint);
-//            } else if (itemAmountType == ItemAmountType.FIVE) {
-//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-//                        + (kantenLaenge / 2), paint);
-//            } else if (itemAmountType == ItemAmountType.SIX) {
-//                canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
-//                        + (kantenLaenge / 2), paint);
-//            } else {
-//                throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
-//            }
+            paint.setTextSize(metrics.widthPixels / 20);
+            
+            canvas.drawText(hit_text, linkesEck + (kantenLaenge / 2), oberesEck + kantenLaenge
+                    + (kantenLaenge / 10), paint);
         }
     }    
 }

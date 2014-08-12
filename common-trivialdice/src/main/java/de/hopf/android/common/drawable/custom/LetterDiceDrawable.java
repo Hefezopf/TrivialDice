@@ -161,6 +161,5 @@ public class LetterDiceDrawable extends BaseDiceDrawable {
                 canvas.drawText(text, point.getX(), point.getY() + (paint.getTextSize() / 3), paint);
             }
         }
-        paint.setTextSize(kantenLaenge / 10);
     }
 }
