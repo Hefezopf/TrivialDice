@@ -245,8 +245,6 @@ public class DrawViewDice extends DrawViewBase {
         } else {
             return BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode);
         }
-
-//        return soundBitmap;
     }
 
     private Bitmap getAmountDiceBitmap() {
@@ -367,7 +365,7 @@ public class DrawViewDice extends DrawViewBase {
     }
 
     private int getTopSoundBitmapPos(int height) {
-        return height - getSoundBitmap().getHeight() * 2 / 10 * 8;
+        return height - getSoundBitmap().getHeight() * 2 / 10 * 10;
     }
 
     private int getLeftSoundBitmapPos(int width) {
@@ -375,7 +373,7 @@ public class DrawViewDice extends DrawViewBase {
     }
 
     private int getTopAmountDiceBitmapPos(int height) {
-        return height - getAmountDiceBitmap().getHeight() * 2 / 10 * 8;
+        return height - getAmountDiceBitmap().getHeight() * 2 / 10 * 10;
     }
 
     private int getLeftAmountDiceBitmapPos(int width) {
