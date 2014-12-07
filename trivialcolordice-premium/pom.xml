@@ -13,7 +13,7 @@
   <name>trivialcolordice-premium</name>
   <url>https://github.com/Hefezopf/TrivialDice.git</url>
   <packaging>apk</packaging>
- 
+
   <organization>
     <name>Markus Hopf</name>
     <url>http://www.hopf-it.de</url>
@@ -39,7 +39,6 @@
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
     </dependency>
-
   </dependencies>
 
   <scm>

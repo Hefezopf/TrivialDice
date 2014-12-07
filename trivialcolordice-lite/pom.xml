@@ -13,7 +13,7 @@
   <name>trivialcolordice-lite</name>
   <url>https://github.com/Hefezopf/TrivialDice.git</url>
   <packaging>apk</packaging>
- 
+
   <organization>
     <name>Markus Hopf</name>
     <url>http://www.hopf-it.de</url>
@@ -39,7 +39,6 @@
       <version>1.36</version>
       <type>jar</type>
     </dependency>
-
   </dependencies>
 
   <scm>
@@ -147,7 +146,7 @@
         </plugins>
       </build>
     </profile>
-    
+
   </profiles>
 
 </project>
