@@ -9,11 +9,10 @@ import org.junit.Test;
 
 import de.hopf.android.common.ItemAmountType;
 import de.hopf.android.common.Point;
-import de.hopf.android.common.drawable.custom.NormalDiceDrawable;
 
 public class NormalDiceDrawableTest {
 
-    NormalDiceDrawable drawable;
+    private NormalDiceDrawable drawable;
 
     @Before
     public void setup(){

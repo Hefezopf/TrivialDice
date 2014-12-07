@@ -13,7 +13,7 @@ import de.hopf.android.common.drawable.Drawable;
 
 public class StartDelegateTest {
 
-    StartDelegate delegate;
+    private StartDelegate delegate;
 
     @Before
     public void setup(){

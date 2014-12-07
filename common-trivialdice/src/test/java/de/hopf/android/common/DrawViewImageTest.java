@@ -8,7 +8,7 @@ import de.hopf.android.common.drawable.Drawable;
 
 public class DrawViewImageTest {
 
-    DrawViewImage view;
+    private DrawViewImage view;
 
     @Before
     public void setup(){

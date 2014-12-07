@@ -9,7 +9,7 @@ import de.hopf.android.common.drawable.Drawable;
 
 public class DrawViewDiceTest {
 
-    DrawViewDice view;
+    private DrawViewDice view;
 
     @Before
     public void setup(){
