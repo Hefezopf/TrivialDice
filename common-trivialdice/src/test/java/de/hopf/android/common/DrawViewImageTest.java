@@ -23,7 +23,6 @@ public class DrawViewImageTest {
     @Before
     public void setup(){
 //        Activity activity = Robolectric.buildActivity(Mockito.mock(Activity.class)).create().get();
-
 //        Activity activity = Robolectric.buildActivity(LoginActivity.class).create().get();
 
         Context context = Mockito.mock(Context.class);
