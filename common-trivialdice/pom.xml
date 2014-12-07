@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <parent>
     <groupId>de.hopf.mobile</groupId>
     <artifactId>trivialdice-parent</artifactId>
@@ -13,7 +13,7 @@
   <name>common-trivialdice</name>
   <url>https://github.com/Hefezopf/TrivialDice.git</url>
   <packaging>jar</packaging>
-   
+
   <dependencies>
     <dependency>
       <groupId>com.google.android</groupId>
@@ -21,20 +21,27 @@
       <version>${android.version}</version>
       <scope>provided</scope>
     </dependency>
- 
+
     <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>android-test</artifactId>
       <version>${android-test.version}</version>
       <scope>provided</scope>
     </dependency>
-      
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>${mockito.version}</version>
+</dependency>
+
   </dependencies>
-    
+
 </project>

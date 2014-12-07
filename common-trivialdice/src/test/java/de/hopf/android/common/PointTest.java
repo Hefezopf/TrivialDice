@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class PointTest
 {
-    float x, y;
+    private float x, y;
 
     @Test
     public void testToString() {
@@ -19,5 +19,4 @@ public class PointTest
         Assert.assertEquals(p.getX(), 1);
         Assert.assertEquals(p.getY(), 2);
     }
-
 }
