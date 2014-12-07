@@ -5,8 +5,6 @@ import org.junit.Test;
 
 public class PointTest
 {
-    private float x, y;
-
     @Test
     public void testToString() {
         Point p = new Point(1 ,2);

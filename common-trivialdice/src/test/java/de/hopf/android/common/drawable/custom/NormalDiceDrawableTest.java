@@ -1,4 +1,4 @@
-package de.hopf.android.common.drawable;
+package de.hopf.android.common.drawable.custom;
 
 import java.util.ArrayList;
 import java.util.List;
