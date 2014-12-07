@@ -10,7 +10,7 @@ Komplette Schritte zum bauen und ausliefern:
 start emulator -avd A8 -gpu on -wipe-data -scale 96dpi -dpi-device 160
 mvn clean install -DskipTests
 evtl.: mvn android:undeploy
-mvn android:deploy 
+mvn android:deploy (Tests werden nicht deployed - Fehler im mvn erscheint -> OK)
 mvn integration-test
 Erst zum Schluss signen!
 mvn package -Psign (-> target/xxx-zipaligned.apk)
@@ -80,6 +80,8 @@ Jenkins:
 --------
 Jenkins ist als lokaler Dienst unter Windows installiert.
 Nach jedem Checkin läuft er los!
-Evtl. ist dieser Dienst auageschaltet.
+Evtl. ist dieser Dienst ausgeschaltet.
+http://localhost:8080/
+
 
  
