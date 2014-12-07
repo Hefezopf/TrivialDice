@@ -22,12 +22,12 @@
       <scope>provided</scope>
     </dependency>
 
-    <dependency>
-      <groupId>com.google.android</groupId>
-      <artifactId>android-test</artifactId>
-      <version>${android-test.version}</version>
-      <scope>provided</scope>
-    </dependency>
+<!--     <dependency> -->
+<!--       <groupId>com.google.android</groupId> -->
+<!--       <artifactId>android-test</artifactId> -->
+<!--       <version>${android-test.version}</version> -->
+<!--       <scope>provided</scope> -->
+<!--     </dependency> -->
 
     <dependency>
       <groupId>junit</groupId>
@@ -40,6 +40,14 @@
     <groupId>org.mockito</groupId>
     <artifactId>mockito-core</artifactId>
     <version>${mockito.version}</version>
+     <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>org.robolectric</groupId>
+    <artifactId>robolectric</artifactId>
+    <version>${robolectric.version}</version>
+    <scope>test</scope>
 </dependency>
 
   </dependencies>
