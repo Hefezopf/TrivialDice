@@ -15,7 +15,8 @@ public class StartImageDelegateTest {
     public void testPremium() {
         Activity activity = Mockito.mock(Activity.class);
         Drawable drawable = Mockito.mock(Drawable.class);
-        StartImageDelegate d = new StartImageDelegate(activity, 1, 2, drawable);
+        DrawViewImage drawViewImage = new DrawViewImage(activity, activity.getWindowManager(), 1, drawable, false);
+        StartImageDelegate d = new StartImageDelegate(activity, 1, 2, drawable, drawViewImage);
         Assert.assertNotNull(d);
         d.setNumber(1);
     }
