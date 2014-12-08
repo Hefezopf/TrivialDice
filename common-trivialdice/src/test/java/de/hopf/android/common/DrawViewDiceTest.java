@@ -39,6 +39,7 @@ public class DrawViewDiceTest {
         MotionEvent motionEvent = Mockito.mock(MotionEvent.class);
         view.onTouch(v, motionEvent);
 
+        // TODO Koordinaten so einstellen, das die Bitmap getroffen wird
         Mockito.when(motionEvent.getRawX()).thenReturn(new Float(2.2));
         view.onTouch(v, motionEvent);
     }
