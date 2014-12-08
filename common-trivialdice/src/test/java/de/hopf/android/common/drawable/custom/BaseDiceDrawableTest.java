@@ -48,4 +48,21 @@ public abstract class BaseDiceDrawableTest {
 		Canvas canvas = Mockito.mock(Canvas.class);
 		drawable.drawContent(list, paint, canvas, 20);
 	}
+	
+	@Test
+	public void testDrawShape() {
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(0);
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+
+		Paint paint = Mockito.mock(Paint.class);
+		Canvas canvas = Mockito.mock(Canvas.class);
+		DrawViewBase drawViewBase = Mockito.mock(DrawViewBase.class);
+		DisplayMetrics displayMetrics = Mockito.mock(DisplayMetrics.class);
+		drawable.drawShape(drawViewBase, paint, canvas, displayMetrics, 0 , 0);			   		
+	}
 }
