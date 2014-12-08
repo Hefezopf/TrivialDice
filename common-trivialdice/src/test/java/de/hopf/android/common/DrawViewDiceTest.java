@@ -32,6 +32,13 @@ public class DrawViewDiceTest {
     }
 
     @Test
+    public void testOnTouch() {
+    	View v = Mockito.mock(View.class);
+    	MotionEvent motionEvent = Mockito.mock(MotionEvent.class);
+        view.onTouch(v, motionEvent);
+    }
+    
+    @Test
     public void testOnDraw() {
     	Canvas canvas = Mockito.mock(Canvas.class);
         view.onDraw(canvas);
