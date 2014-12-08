@@ -9,7 +9,6 @@
   <packaging>pom</packaging>
   <name>trivialdice-parent</name>
 
-
   <properties>
     <android.manifest.versionCode>36</android.manifest.versionCode>
     <android.manifest.versionName>1.36</android.manifest.versionName>
@@ -23,7 +22,7 @@
     <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
     <junit.version>4.8.1</junit.version>
     <mockito.version>1.10.8</mockito.version>
-	<robolectric.version>2.4</robolectric.version>
+    <robolectric.version>2.4</robolectric.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <android.device>emulator-5554</android.device>
@@ -81,6 +80,7 @@
           <configuration>
             <release>true</release>
             <sdk>
+    <!--           <platform>20</platform> -->
               <platform>5</platform>
             </sdk>
             <undeployBeforeDeploy>true</undeployBeforeDeploy>
@@ -93,6 +93,7 @@
           <configuration>
             <verbose>true</verbose>
             <fork>true</fork>
+            <!-- <executable>C:\Program Files\Java\jdk1.7.0_60\bin\javac</executable> -->
             <executable>C:\Program Files\Java\jdk1.8.0_05\bin\javac</executable>
             <compilerVersion>${jdk.version}</compilerVersion>
             <source>${jdk.version}</source>
