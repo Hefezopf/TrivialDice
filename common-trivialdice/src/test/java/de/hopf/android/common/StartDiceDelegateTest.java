@@ -15,6 +15,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import de.hopf.android.common.drawable.Drawable;
 import de.hopf.android.common.drawable.base.BaseDiceDrawable;
 
@@ -26,6 +27,7 @@ public class StartDiceDelegateTest {
     @Before
     public void setup(){
         Activity activity = Mockito.mock(Activity.class);
+        Mockito.when(activity.findViewById(Mockito.anyInt())).thenReturn(Mockito.mock(Button.class));
         Mockito.when(activity.getWindow()).thenReturn(Mockito.mock(Window.class));
         Resources resources = Mockito.mock(Resources.class);
         Mockito.when(resources.getDisplayMetrics()).thenReturn(Mockito.mock(DisplayMetrics.class));
@@ -45,11 +47,31 @@ public class StartDiceDelegateTest {
     }
 
     @Test
+    public void testNumberLite() {
+        Activity activity = Mockito.mock(Activity.class);  
+        Mockito.when(activity.findViewById(Mockito.anyInt())).thenReturn(Mockito.mock(Button.class));
+        Mockito.when(activity.getWindow()).thenReturn(Mockito.mock(Window.class));
+        Resources resources = Mockito.mock(Resources.class);
+        Mockito.when(resources.getDisplayMetrics()).thenReturn(Mockito.mock(DisplayMetrics.class));
+        Mockito.when(activity.getResources()).thenReturn(resources);
+        WindowManager windowManager = Mockito.mock(WindowManager.class);
+        Mockito.when(windowManager.getDefaultDisplay()).thenReturn(Mockito.mock(Display.class));        
+        Mockito.when(activity.getWindowManager()).thenReturn(windowManager);
+        BaseDiceDrawable drawable = Mockito.mock(BaseDiceDrawable.class);
+
+        delegate = new StartDiceDelegate(activity, 1, 2, 3, 4,5,6,7,drawable, 8);    
+        
+        for (int i = 0; i < 11; i++) {
+        	delegate.setNumber(5);
+		}
+        Assert.assertEquals(delegate.getNumber().longValue(), 5);
+    }
+
+    @Test
     public void testOnCreate() {
         delegate.onCreate(new Bundle());
     }
 
-    @Ignore
     @Test
     public void testShowSplashScreen() {
         delegate.showSplashScreen();
