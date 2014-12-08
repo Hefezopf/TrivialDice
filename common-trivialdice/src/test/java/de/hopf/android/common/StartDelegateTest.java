@@ -2,7 +2,6 @@ package de.hopf.android.common;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -13,7 +12,6 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
 import de.hopf.android.common.drawable.Drawable;
-import de.hopf.android.common.drawable.base.BaseDiceDrawable;
 
 @RunWith(RobolectricTestRunner.class)
 public class StartDelegateTest {
@@ -82,5 +80,5 @@ public class StartDelegateTest {
         Assert.assertEquals(5, delegate.getNumber5().intValue());
         delegate.setNumber6(6);
         Assert.assertEquals(6, delegate.getNumber6().intValue());
-    }  
+    }
  }

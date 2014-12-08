@@ -2,7 +2,6 @@ package de.hopf.android.common;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -33,7 +32,7 @@ public class StartDiceDelegateTest {
         Mockito.when(resources.getDisplayMetrics()).thenReturn(Mockito.mock(DisplayMetrics.class));
         Mockito.when(activity.getResources()).thenReturn(resources);
         WindowManager windowManager = Mockito.mock(WindowManager.class);
-        Mockito.when(windowManager.getDefaultDisplay()).thenReturn(Mockito.mock(Display.class));        
+        Mockito.when(windowManager.getDefaultDisplay()).thenReturn(Mockito.mock(Display.class));
         Mockito.when(activity.getWindowManager()).thenReturn(windowManager);
         BaseDiceDrawable drawable = Mockito.mock(BaseDiceDrawable.class);
 
@@ -48,22 +47,22 @@ public class StartDiceDelegateTest {
 
     @Test
     public void testNumberLite() {
-        Activity activity = Mockito.mock(Activity.class);  
+        Activity activity = Mockito.mock(Activity.class);
         Mockito.when(activity.findViewById(Mockito.anyInt())).thenReturn(Mockito.mock(Button.class));
         Mockito.when(activity.getWindow()).thenReturn(Mockito.mock(Window.class));
         Resources resources = Mockito.mock(Resources.class);
         Mockito.when(resources.getDisplayMetrics()).thenReturn(Mockito.mock(DisplayMetrics.class));
         Mockito.when(activity.getResources()).thenReturn(resources);
         WindowManager windowManager = Mockito.mock(WindowManager.class);
-        Mockito.when(windowManager.getDefaultDisplay()).thenReturn(Mockito.mock(Display.class));        
+        Mockito.when(windowManager.getDefaultDisplay()).thenReturn(Mockito.mock(Display.class));
         Mockito.when(activity.getWindowManager()).thenReturn(windowManager);
         BaseDiceDrawable drawable = Mockito.mock(BaseDiceDrawable.class);
 
-        delegate = new StartDiceDelegate(activity, 1, 2, 3, 4,5,6,7,drawable, 8);    
-        
+        delegate = new StartDiceDelegate(activity, 1, 2, 3, 4,5,6,7,drawable, 8);
+
         for (int i = 0; i < 11; i++) {
-        	delegate.setNumber(5);
-		}
+            delegate.setNumber(5);
+        }
         Assert.assertEquals(delegate.getNumber().longValue(), 5);
     }
 
@@ -112,5 +111,5 @@ public class StartDiceDelegateTest {
         Assert.assertEquals(5, delegate.getNumber5().intValue());
         delegate.setNumber6(6);
         Assert.assertEquals(6, delegate.getNumber6().intValue());
-    }  
+    }
  }
