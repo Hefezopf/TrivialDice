@@ -22,14 +22,12 @@ public class DrawViewDice extends DrawViewBase {
     private MediaPlayer mediaPlayer;
     private final int diceSoundKey;
     private final int maxNum;
-    
+
     public DrawViewDice(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, boolean bLite) {
         super(context, windowManager, hitMsgKey, drawable, bLite);
-        
-        
+
 //        this.setOnLongClickListener(this);
-        
-        
+
         this.diceSoundKey = diceSoundKey;
         this.maxNum = maxNum;
         mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
@@ -40,7 +38,7 @@ public class DrawViewDice extends DrawViewBase {
         super.onDraw(canvas);
         drawSpeakerBitmap(canvas);
         drawAmountDiceBitmap(canvas);
-        playSound();     
+        playSound();
     }
 
     private int calculateNumber(int maxNum) {
@@ -131,62 +129,62 @@ public class DrawViewDice extends DrawViewBase {
     protected void drawItem(Canvas canvas) {
         List<Integer> numberList = new ArrayList<Integer>();
         if (itemAmountType == ItemAmountType.ONE) {
-            numberList.add(calculateNumber(maxNum)); 
+            numberList.add(calculateNumber(maxNum));
         } else if (itemAmountType == ItemAmountType.TWO) {
-            numberList.add(calculateNumber(maxNum)); 
+            numberList.add(calculateNumber(maxNum));
             numberList.add(calculateNumber2(maxNum));
         } else if (itemAmountType == ItemAmountType.THREE) {
-            numberList.add(calculateNumber(maxNum)); 
+            numberList.add(calculateNumber(maxNum));
             numberList.add(calculateNumber2(maxNum));
-            numberList.add(calculateNumber3(maxNum));        
+            numberList.add(calculateNumber3(maxNum));
         } else if (itemAmountType == ItemAmountType.FOUR) {
-            numberList.add(calculateNumber(maxNum)); 
+            numberList.add(calculateNumber(maxNum));
             numberList.add(calculateNumber2(maxNum));
             numberList.add(calculateNumber3(maxNum));
             numberList.add(calculateNumber4(maxNum));
         } else if (itemAmountType == ItemAmountType.FIVE) {
-            numberList.add(calculateNumber(maxNum)); 
+            numberList.add(calculateNumber(maxNum));
             numberList.add(calculateNumber2(maxNum));
             numberList.add(calculateNumber3(maxNum));
             numberList.add(calculateNumber4(maxNum));
             numberList.add(calculateNumber5(maxNum));
         } else if (itemAmountType == ItemAmountType.SIX) {
-            numberList.add(calculateNumber(maxNum)); 
+            numberList.add(calculateNumber(maxNum));
             numberList.add(calculateNumber2(maxNum));
             numberList.add(calculateNumber3(maxNum));
             numberList.add(calculateNumber4(maxNum));
             numberList.add(calculateNumber5(maxNum));
-            numberList.add(calculateNumber6(maxNum));         
+            numberList.add(calculateNumber6(maxNum));
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
-        
+
         final int kantenLaenge = getWidth() / 3;
         if (itemAmountType == ItemAmountType.ONE) {
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, itemAmountType.getPointOne().getX(), itemAmountType.getPointOne().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);
         } else if (itemAmountType == ItemAmountType.TWO) {
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);
         } else if (itemAmountType == ItemAmountType.THREE) {
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);
         } else if (itemAmountType == ItemAmountType.FOUR) {
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFour().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFour().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);
         } else if (itemAmountType == ItemAmountType.FIVE) {
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointThree().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFour().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFour().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFive().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFive().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);
         } else if (itemAmountType == ItemAmountType.SIX) {
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointOne().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointTwo().getY());
@@ -194,7 +192,7 @@ public class DrawViewDice extends DrawViewBase {
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFour().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFour().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFive().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointFive().getY());
             ((BaseDiceDrawable)drawable).drawShape(this, paint, canvas, metrics, kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointSix().getX(), kantenLaenge / ItemAmountType.getFaktor() * itemAmountType.getPointSix().getY());
-            drawable.drawContent(numberList, paint, canvas, kantenLaenge);        
+            drawable.drawContent(numberList, paint, canvas, kantenLaenge);
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
@@ -250,7 +248,7 @@ public class DrawViewDice extends DrawViewBase {
     private Bitmap getAmountDiceBitmap() {
         return BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_play);
     }
-    
+
 //    @Override
 //    public boolean onLongClick(View v) {
 //        switch (v.getId()) {
@@ -270,32 +268,32 @@ public class DrawViewDice extends DrawViewBase {
 
     @Override
     public boolean onTouch(View view, MotionEvent event) {
-        
+
      // to dispatch click / long click event,
         // you must pass the event to it's default callback View.onTouchEvent
 //        boolean defaultResult = view.onTouchEvent(event);
-        
+
 //        Log.println(1,"event.getAction()","event.getAction()=" + event.getAction());
-        
+
 //        view.setOnLongClickListener(new View.OnLongClickListener(){
 //            @Override
 //             public boolean onLongClick(View v) {
 //                return false;
 //            }
-//        }); 
-//                
+//        });
+//
 //        view.setOnLongClickListener(new OnLongClickListener() {
-//            
+//
 //            @Override
 //            public boolean onLongClick(View v) {
 //                // TODO Auto-generated method stub
 //                return false;
 //            }
 //        });
-        
-        
+
+
 //        System.currentTimeMillis() in the MotionEvent.ACTION_DOWN and MotionEvent.ACTION_UP
-        
+
         if (event.getAction() != MotionEvent.ACTION_DOWN) {
             return false;
         }
@@ -306,7 +304,7 @@ public class DrawViewDice extends DrawViewBase {
             ((Data) this.getContext()).setRolled(Boolean.FALSE);
             ((Data) this.getContext()).setInterrupted(Boolean.TRUE);
             invalidate();
-            
+
             return true;
         }
 

@@ -38,6 +38,9 @@ public class DrawViewDiceTest {
         View v = Mockito.mock(View.class);
         MotionEvent motionEvent = Mockito.mock(MotionEvent.class);
         view.onTouch(v, motionEvent);
+
+        Mockito.when(motionEvent.getRawX()).thenReturn(new Float(2.2));
+        view.onTouch(v, motionEvent);
     }
 
     @Test
