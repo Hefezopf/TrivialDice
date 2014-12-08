@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -19,6 +20,7 @@ import de.hopf.android.common.drawable.Drawable;
 import de.hopf.android.common.drawable.base.BaseDiceDrawable;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(manifest=Config.NONE)
 public class StartDiceDelegateTest {
 
     private StartDiceDelegate delegate;

@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -15,6 +16,7 @@ import de.hopf.android.common.DrawViewImage;
 import de.hopf.android.common.ItemAmountType;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(manifest=Config.NONE)
 public class BottleSpinDiceDrawableTest extends BaseDiceDrawableTest {
 
     @Before
@@ -35,8 +37,9 @@ public class BottleSpinDiceDrawableTest extends BaseDiceDrawableTest {
 
         ((BottleSpinDrawable) drawable).drawShape(drawView, paint, canvas, metrics, 1, 2);
 
-        context.setNumber(1);
-
-        ((BottleSpinDrawable) drawable).drawShape(drawView, paint, canvas, metrics, 1, 2);
+        Mockito.when(context.getCounter()).thenReturn(2);
+        for (int i = 0; i < 61; i++) {
+            ((BottleSpinDrawable) drawable).drawShape(drawView, paint, canvas, metrics, 1, 2);
+        }
     }
 }

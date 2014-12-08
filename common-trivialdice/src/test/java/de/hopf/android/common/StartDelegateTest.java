@@ -6,14 +6,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import android.app.Activity;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
 import de.hopf.android.common.drawable.Drawable;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(manifest=Config.NONE)
 public class StartDelegateTest {
 
     private StartDelegate delegate;
@@ -25,6 +28,10 @@ public class StartDelegateTest {
         Mockito.when(activity.findViewById(Mockito.anyInt())).thenReturn(Mockito.mock(Button.class));
         Drawable drawable = Mockito.mock(Drawable.class);
         DrawViewBase drawView = Mockito.mock(DrawViewBase.class);
+        ContextData context = Mockito.mock(ContextData.class);
+        Mockito.when(drawView.getContext()).thenReturn(context);
+        Mockito.when(context.getNumber()).thenReturn(null);
+        drawView.onDraw(new Canvas());
 
         delegate = new StartDelegate(activity, 1, 2, 3, drawable, 8, drawView);
     }

@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import de.hopf.android.common.drawable.base.BaseDrawable;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(manifest=Config.NONE)
 public class DrawViewImageTest {
 
     private DrawViewImage view;

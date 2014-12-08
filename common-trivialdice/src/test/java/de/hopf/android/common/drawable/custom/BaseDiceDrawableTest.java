@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -16,6 +17,7 @@ import de.hopf.android.common.Point;
 import de.hopf.android.common.drawable.base.BaseDrawable;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(manifest=Config.NONE)
 public abstract class BaseDiceDrawableTest {
 
     protected BaseDrawable drawable;
