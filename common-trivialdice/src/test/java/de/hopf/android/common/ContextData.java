@@ -34,6 +34,10 @@ import android.os.Looper;
 
 public class ContextData extends Context implements Data {
 
+    public ContextData(){
+     // TODO Auto-generated method stub
+    }
+
     @Override
     public Integer getNumber() {
         // TODO Auto-generated method stub
