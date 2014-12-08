@@ -25,22 +25,22 @@ public class StartBaseTest {
     @Ignore
     @Test
     public void testOnCreate() {
-    	base.onCreate(new Bundle());
+        base.onCreate(new Bundle());
     }
 
     @Test
     public void testOnSaveInstanceState() {
-    	base.onSaveInstanceState(new Bundle());
+        base.onSaveInstanceState(new Bundle());
     }
-    
+
     @Test
     public void testOnPause() {
-    	base.onPause();
+        base.onPause();
     }
-    
+
     @Test
     public void testSetterGetter() {
-    	base.setInterrupted(true);
+        base.setInterrupted(true);
         Assert.assertEquals(true, base.hasInterrupted());
         base.setRolled(true);
         Assert.assertEquals(true, base.hasRolled());
@@ -57,17 +57,16 @@ public class StartBaseTest {
         Assert.assertEquals(5, base.getNumber5().intValue());
         base.setNumber6(6);
         Assert.assertEquals(6, base.getNumber6().intValue());
-    }  
-    
+    }
+
     class StartBaseTemp extends StartBase {
 
-		@Override
-		public void initDelegate() {
-	        Drawable drawable = Mockito.mock(Drawable.class);
-	        DrawViewImage drawViewImage = Mockito.mock(DrawViewImage.class);
-	        this.startDelegate = new StartImageDelegate(this, 1, 2,
-	                3, 4, 5, 6, drawable, drawViewImage);
-		}
+        @Override
+        public void initDelegate() {
+            Drawable drawable = Mockito.mock(Drawable.class);
+            DrawViewImage drawViewImage = Mockito.mock(DrawViewImage.class);
+            this.startDelegate = new StartImageDelegate(this, 1, 2, 3, 4, 5, 6, drawable, drawViewImage);
+        }
     }
  }
 
