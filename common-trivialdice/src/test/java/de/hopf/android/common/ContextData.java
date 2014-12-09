@@ -35,7 +35,7 @@ import android.os.Looper;
 public class ContextData extends Context implements Data {
 
     public ContextData(){
-     // TODO Auto-generated method stub
+      // TODO Auto-generated method stub
     }
 
     @Override
@@ -47,7 +47,6 @@ public class ContextData extends Context implements Data {
     @Override
     public void setNumber(Integer i1) {
         // TODO Auto-generated method stub
-
     }
 
     @Override
@@ -59,7 +58,6 @@ public class ContextData extends Context implements Data {
     @Override
     public void setNumber2(Integer i2) {
         // TODO Auto-generated method stub
-
     }
 
     @Override
