@@ -74,6 +74,7 @@ Rechte Maus auf Projekt und Maven biuld... -> android:deploy
 Android JUnit Tests:
 Eclipse rechte Maus auf Test Projekt und 'run as Anrdoid JUnit Test'
 
+
 Eclipse Git:
 ------------
 secure PW:*
