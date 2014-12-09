@@ -8,6 +8,7 @@ git clone https://github.com/Hefezopf/TrivialDice.git
 Komplette Schritte zum bauen und ausliefern (Konsole):
 ------------------------------------------------------
 start emulator -avd A8 -gpu on -wipe-data -scale 96dpi -dpi-device 160
+(Zur Sicherheit nachschauen: Command: 'adb devices')
 mvn clean install -DskipTests
 evtl.: mvn android:undeploy
 mvn android:deploy (Tests werden nicht deployed - Fehler im mvn erscheint -> OK)

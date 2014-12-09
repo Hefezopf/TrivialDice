@@ -25,7 +25,9 @@
     <robolectric.version>2.4</robolectric.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <android.device>emulator-5554</android.device>
+ <!-- Zur Sicherheit nachschauen: Command: 'adb devices' -->
+   <!--  <android.device>emulator-5554</android.device>-->
+
   </properties>
 
   <modules>
