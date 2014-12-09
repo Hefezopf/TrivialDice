@@ -18,15 +18,14 @@ import de.hopf.android.common.drawable.base.BaseDiceDrawable;
 public class DrawViewDice extends DrawViewBase {
     private static final long serialVersionUID = 1L;
 
-    private boolean soundOn = true;
     private boolean fakeOn = false;
+    private boolean soundOn = true;
     private MediaPlayer mediaPlayer;
     private final int diceSoundKey;
     private final int maxNum;
 
     public DrawViewDice(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, boolean bLite) {
         super(context, windowManager, hitMsgKey, drawable, bLite);
-
         this.diceSoundKey = diceSoundKey;
         this.maxNum = maxNum;
         mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
@@ -51,6 +50,10 @@ public class DrawViewDice extends DrawViewBase {
             ((Data) this.getContext()).setNumber(0);
         }
 
+        if(fakeOn ){
+            ((Data) this.getContext()).setNumber(new Integer(5));
+
+        }
         return ((Data) this.getContext()).getNumber();
     }
 
@@ -195,6 +198,7 @@ public class DrawViewDice extends DrawViewBase {
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
+        fakeOn = false;
     }
 
     private void playSound() {
@@ -236,14 +240,6 @@ public class DrawViewDice extends DrawViewBase {
                 getTopAmountDiceBitmapPos(metrics.heightPixels), paint);
     }
 
-    private Bitmap getFakeBitmap() {
-        if (fakeOn) {
-            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_dialog_email);
-        } else {
-            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_dialog_dialer);
-        }
-    }
-
     private Bitmap getSoundBitmap() {
         if (soundOn) {
             return BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
@@ -264,9 +260,10 @@ public class DrawViewDice extends DrawViewBase {
 
         // Toggle Fake
         if (isFakeBitmapTouched(event)) {
-            fakeOn = !fakeOn;
-            ((Data) this.getContext()).setRolled(Boolean.FALSE);
-            ((Data) this.getContext()).setInterrupted(Boolean.TRUE);
+            fakeOn = true;
+            ((Data) this.getContext()).setRolled(Boolean.TRUE);
+            ((Data) this.getContext()).setInterrupted(Boolean.FALSE);
+            System.out.println("FAKE!!!!!!!!!!!!!!!!!!!");
             invalidate();
 
             return true;
@@ -318,9 +315,9 @@ public class DrawViewDice extends DrawViewBase {
 
     private boolean isFakeBitmapTouched(MotionEvent event) {
         if (event.getRawX() >= getLeftFakeBitmapPos(metrics.widthPixels)
-                && event.getRawX() < (getLeftFakeBitmapPos(metrics.widthPixels) + getFakeBitmap().getWidth())
+                && event.getRawX() < (getLeftFakeBitmapPos(metrics.widthPixels) + /*getFakeBitmap().getWidth()*/ 30)
                 && event.getRawY() >= getTopFakeBitmapPos(metrics.heightPixels)
-                && event.getRawY() < (getTopFakeBitmapPos(metrics.heightPixels) + getFakeBitmap().getHeight())) {
+                && event.getRawY() < (getTopFakeBitmapPos(metrics.heightPixels) + /*getFakeBitmap().getHeight()*/ 30)) {
             return true;
         }
         return false;
@@ -347,11 +344,11 @@ public class DrawViewDice extends DrawViewBase {
     }
 
     private int getTopFakeBitmapPos(int height) {
-        return height - getFakeBitmap().getHeight() * 2 / 10 * 10;
+        return height - /*getFakeBitmap().getHeight()*/ 30 * 2 / 10 * 10;
     }
 
     private int getLeftFakeBitmapPos(int width) {
-        return width / 2 - getFakeBitmap().getWidth() / 2 -  /* Offset */getFakeBitmap().getWidth() * 3;
+        return width / 2 - /*getFakeBitmap().getWidth()*/ 30 / 2 -  /* Offset *//*getFakeBitmap().getWidth()*/ 30 * 3;
     }
 
     private int getTopSoundBitmapPos(int height) {
