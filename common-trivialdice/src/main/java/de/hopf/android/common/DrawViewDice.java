@@ -19,6 +19,7 @@ public class DrawViewDice extends DrawViewBase {
     private static final long serialVersionUID = 1L;
 
     private boolean soundOn = true;
+    private boolean fakeOn = false;
     private MediaPlayer mediaPlayer;
     private final int diceSoundKey;
     private final int maxNum;
@@ -235,6 +236,14 @@ public class DrawViewDice extends DrawViewBase {
                 getTopAmountDiceBitmapPos(metrics.heightPixels), paint);
     }
 
+    private Bitmap getFakeBitmap() {
+        if (fakeOn) {
+            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
+        } else {
+            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode);
+        }
+    }
+
     private Bitmap getSoundBitmap() {
         if (soundOn) {
             return BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
@@ -251,6 +260,16 @@ public class DrawViewDice extends DrawViewBase {
     public boolean onTouch(View view, MotionEvent event) {
         if (event.getAction() != MotionEvent.ACTION_DOWN) {
             return false;
+        }
+
+        // Toggle Fake
+        if (isFakeBitmapTouched(event)) {
+            fakeOn = !fakeOn;
+            ((Data) this.getContext()).setRolled(Boolean.FALSE);
+            ((Data) this.getContext()).setInterrupted(Boolean.TRUE);
+            invalidate();
+
+            return true;
         }
 
         // Toggle Sound
@@ -297,6 +316,16 @@ public class DrawViewDice extends DrawViewBase {
         return true;
     }
 
+    private boolean isFakeBitmapTouched(MotionEvent event) {
+        if (event.getRawX() >= getLeftFakeBitmapPos(metrics.widthPixels)
+                && event.getRawX() < (getLeftFakeBitmapPos(metrics.widthPixels) + getFakeBitmap().getWidth())
+                && event.getRawY() >= getTopFakeBitmapPos(metrics.heightPixels)
+                && event.getRawY() < (getTopFakeBitmapPos(metrics.heightPixels) + getFakeBitmap().getHeight())) {
+            return true;
+        }
+        return false;
+    }
+
     private boolean isSoundOnBitmapTouched(MotionEvent event) {
         if (event.getRawX() >= getLeftSoundBitmapPos(metrics.widthPixels)
                 && event.getRawX() < (getLeftSoundBitmapPos(metrics.widthPixels) + getSoundBitmap().getWidth())
@@ -315,6 +344,14 @@ public class DrawViewDice extends DrawViewBase {
             return true;
         }
         return false;
+    }
+
+    private int getTopFakeBitmapPos(int height) {
+        return height - getFakeBitmap().getHeight() * 2 / 10 * 10;
+    }
+
+    private int getLeftFakeBitmapPos(int width) {
+        return width / 2 - getFakeBitmap().getWidth() / 2 -  /* Offset */getFakeBitmap().getWidth() * 3;
     }
 
     private int getTopSoundBitmapPos(int height) {
