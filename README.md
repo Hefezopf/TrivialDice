@@ -1,12 +1,12 @@
 TrivialDice
 ============
 
-A trivial dice app for android
+Trivial dice app for android
 
 git clone https://github.com/Hefezopf/TrivialDice.git
 
-Komplette Schritte zum bauen und ausliefern:
---------------------------------------------
+Komplette Schritte zum bauen und ausliefern (Konsole):
+------------------------------------------------------
 start emulator -avd A8 -gpu on -wipe-data -scale 96dpi -dpi-device 160
 mvn clean install -DskipTests
 evtl.: mvn android:undeploy
@@ -69,6 +69,8 @@ Auf der Console 'android' eingeben.
 Dann im Menu den AVD Manager starten.
 AVD A8 mit Android 2.2 starten
 Dann aus Eclipse rechte Maus auf Projekt und 'run as Anrdoid Application'
+oder installieren und am Simulator starten:
+Rechte Maus auf Projekt und Maven biuld... -> android:deploy 
 Android JUnit Tests:
 Eclipse rechte Maus auf Test Projekt und 'run as Anrdoid JUnit Test'
 

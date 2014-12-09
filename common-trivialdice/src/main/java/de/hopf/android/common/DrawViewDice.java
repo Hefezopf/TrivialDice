@@ -26,8 +26,6 @@ public class DrawViewDice extends DrawViewBase {
     public DrawViewDice(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, boolean bLite) {
         super(context, windowManager, hitMsgKey, drawable, bLite);
 
-//        this.setOnLongClickListener(this);
-
         this.diceSoundKey = diceSoundKey;
         this.maxNum = maxNum;
         mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
@@ -249,51 +247,8 @@ public class DrawViewDice extends DrawViewBase {
         return BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_play);
     }
 
-//    @Override
-//    public boolean onLongClick(View v) {
-//        switch (v.getId()) {
-//        case R.id.title:
-////            Toast.makeText(getApplicationContext(), "Long click enabled",
-////                    Toast.LENGTH_LONG).show();
-//            // OR
-//            // Something();
-//            break;
-//
-//        default:
-//            break;
-//        }
-//
-//        return false;
-//    }
-
     @Override
     public boolean onTouch(View view, MotionEvent event) {
-
-     // to dispatch click / long click event,
-        // you must pass the event to it's default callback View.onTouchEvent
-//        boolean defaultResult = view.onTouchEvent(event);
-
-//        Log.println(1,"event.getAction()","event.getAction()=" + event.getAction());
-
-//        view.setOnLongClickListener(new View.OnLongClickListener(){
-//            @Override
-//             public boolean onLongClick(View v) {
-//                return false;
-//            }
-//        });
-//
-//        view.setOnLongClickListener(new OnLongClickListener() {
-//
-//            @Override
-//            public boolean onLongClick(View v) {
-//                // TODO Auto-generated method stub
-//                return false;
-//            }
-//        });
-
-
-//        System.currentTimeMillis() in the MotionEvent.ACTION_DOWN and MotionEvent.ACTION_UP
-
         if (event.getAction() != MotionEvent.ACTION_DOWN) {
             return false;
         }
