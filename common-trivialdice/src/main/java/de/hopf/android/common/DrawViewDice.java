@@ -238,9 +238,9 @@ public class DrawViewDice extends DrawViewBase {
 
     private Bitmap getFakeBitmap() {
         if (fakeOn) {
-            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
+            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_dialog_email);
         } else {
-            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode);
+            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_dialog_dialer);
         }
     }
 
