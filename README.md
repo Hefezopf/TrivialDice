@@ -23,14 +23,21 @@ mvn package -Psign (-> target/xxx-zipaligned.apk)
 
 APK's (xxx-zipaligned.apk) von Hand in der Webseite hochladen:
 
-https://play.google.com/apps/publish/?dev_acc=12007078229515208860#ApkPlace:p=de.hopf.mobile -> Button KONFIGURATION DER PRODUKTIONSVERSION Neue APK-Datei in Produktionsphase hochladen
+https://play.google.com/apps/publish/?dev_acc=12007078229515208860#ApkPlace:p=de.hopf.mobile
+
+-> Button KONFIGURATION DER PRODUKTIONSVERSION Neue APK-Datei in Produktionsphase hochladen
 
 dann:
+
 mvn versions:set -DnewVersion=1.30
 
-2 Properties in der Parent POM einstellen. Nur wenn Version im Appstore hochgezählt werden soll!
-    <android.manifest.versionCode>30</android.manifest.versionCode>
-    <android.manifest.versionName>1.30</android.manifest.versionName>
+2 Properties in der Parent POM einstellen. 
+Nur wenn Version im Appstore hochgezählt werden soll!
+
+<android.manifest.versionCode>30</android.manifest.versionCode>
+
+<android.manifest.versionName>1.30</android.manifest.versionName>
+
 mvn android:manifest-update
 
 mvn versions:commit (löscht pom.xml.versionsBackup Files)
@@ -38,6 +45,7 @@ mvn versions:commit (löscht pom.xml.versionsBackup Files)
 Build:
 ------
 vom Parent Dir:
+
 mvn clean package android:delpoy -> /target/<trivialdice-xxx>.apk  -> mit Tests auf dem Emulator!
 
 mvn clean install -DskipTests android:delpoy -> /target/<trivialdice-xxx>.apk  -> mit Tests auf dem Emulator!
@@ -77,6 +85,7 @@ mvn clean install -DskipTests
 Upload:
 -------
 https://play.google.com/apps/publish/?dev_acc=12007078229515208860#ApkPlace:p=de.hopf.mobile
+
 Button KONFIGURATION DER PRODUKTIONSVERSION Neue APK-Datei in Produktionsphase hochladen
  
 Run Emulator:
