@@ -1,15 +1,16 @@
 TrivialDice
 ============
 
-Trivial dice app for android
+A trivial dice app for android
 
 git clone https://github.com/Hefezopf/TrivialDice.git
 
-Komplette Schritte zum bauen und ausliefern (Konsole):
-------------------------------------------------------
+Komplette Schritte zum bauen und ausliefern:
+--------------------------------------------
 start emulator -avd A8 -gpu on -wipe-data -scale 96dpi -dpi-device 160
-(Zur Sicherheit nachschauen: Command: 'adb devices')
+
 mvn clean install -DskipTests
+
 evtl.: mvn android:undeploy
 mvn android:deploy (Tests werden nicht deployed - Fehler im mvn erscheint -> OK)
 mvn integration-test
@@ -70,11 +71,8 @@ Auf der Console 'android' eingeben.
 Dann im Menu den AVD Manager starten.
 AVD A8 mit Android 2.2 starten
 Dann aus Eclipse rechte Maus auf Projekt und 'run as Anrdoid Application'
-oder installieren und am Simulator starten:
-Rechte Maus auf Projekt und Maven biuld... -> android:deploy 
 Android JUnit Tests:
 Eclipse rechte Maus auf Test Projekt und 'run as Anrdoid JUnit Test'
-
 
 Eclipse Git:
 ------------
@@ -86,6 +84,3 @@ Jenkins ist als lokaler Dienst unter Windows installiert.
 Nach jedem Checkin läuft er los!
 Evtl. ist dieser Dienst ausgeschaltet.
 http://localhost:8080/
-
-
- 
