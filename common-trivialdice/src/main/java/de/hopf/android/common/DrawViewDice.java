@@ -51,6 +51,7 @@ public class DrawViewDice extends DrawViewBase {
         }
 
         if(fakeOn ){
+//            ((Data) this.getContext()).setNumber(new Integer(maxNum-1));
             ((Data) this.getContext()).setNumber(new Integer(5));
 
         }
