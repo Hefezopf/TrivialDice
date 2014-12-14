@@ -10,6 +10,6 @@ public class StartDice extends StartBase {
     @Override
     public void initDelegate() {
         Drawable drawable = new DoublingDiceDrawable(kantenLaenge, linkerWuerfelRand, obererWuerfelRand);
-        this.startDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, drawable, 6);
+        this.startDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, drawable, 6, 6-1);
     }
 }

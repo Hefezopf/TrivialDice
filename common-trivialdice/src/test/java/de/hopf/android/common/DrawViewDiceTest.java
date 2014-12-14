@@ -32,7 +32,7 @@ public class DrawViewDiceTest {
         Mockito.when(windowManager.getDefaultDisplay()).thenReturn(Mockito.mock(Display.class));
         BaseDiceDrawable drawable = Mockito.mock(BaseDiceDrawable.class);
 
-        view = new DrawViewDice(context, windowManager, 1, 2, drawable, 8, true);
+        view = new DrawViewDice(context, windowManager, 1, 2, drawable, 8, 8-1, true);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class DrawViewDiceTest {
         Mockito.when(windowManager.getDefaultDisplay()).thenReturn(Mockito.mock(Display.class));
         BaseDiceDrawable drawable = Mockito.mock(BaseDiceDrawable.class);
 
-        view = new DrawViewDice(context, windowManager, 1, 2, drawable, 8, false);
+        view = new DrawViewDice(context, windowManager, 1, 2, drawable, 8, 8-1, false);
         view.onDraw(canvas);
         view.itemAmountType = ItemAmountType.TWO;
         view.onDraw(canvas);
