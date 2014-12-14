@@ -38,7 +38,7 @@ public class StartDiceDelegateTest {
         Mockito.when(activity.getWindowManager()).thenReturn(windowManager);
         BaseDiceDrawable drawable = Mockito.mock(BaseDiceDrawable.class);
 
-        delegate = new StartDiceDelegate(activity, 1, 2, 3, drawable, 8);
+        delegate = new StartDiceDelegate(activity, 1, 2, 3, drawable, 8, 8-1);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class StartDiceDelegateTest {
         Mockito.when(activity.getWindowManager()).thenReturn(windowManager);
         BaseDiceDrawable drawable = Mockito.mock(BaseDiceDrawable.class);
 
-        delegate = new StartDiceDelegate(activity, 1, 2, 3, 4,5,6,7,drawable, 8);
+        delegate = new StartDiceDelegate(activity, 1, 2, 3, 4,5,6,7,drawable, 8, 8-1);
 
         for (int i = 0; i < 11; i++) {
             delegate.setNumber(5);
@@ -83,7 +83,7 @@ public class StartDiceDelegateTest {
     public void testLite() {
         Activity activity = Mockito.mock(Activity.class);
         Drawable drawable = Mockito.mock(Drawable.class);
-        StartDelegate d = new StartDelegate(activity, 1, 2, 3, 4, 5, 6, 7, drawable, 8, null);
+        StartDelegate d = new StartDelegate(activity, 1, 2, 3, 4, 5, 6, 7, drawable, null);
         Assert.assertNotNull(d);
     }
 

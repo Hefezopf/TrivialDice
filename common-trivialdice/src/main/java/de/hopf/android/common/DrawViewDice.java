@@ -18,16 +18,18 @@ import de.hopf.android.common.drawable.base.BaseDiceDrawable;
 public class DrawViewDice extends DrawViewBase {
     private static final long serialVersionUID = 1L;
 
+    private boolean fakeOn = false;
     private boolean soundOn = true;
     private MediaPlayer mediaPlayer;
     private final int diceSoundKey;
     private final int maxNum;
+    private final int fakeNumber;
 
-    public DrawViewDice(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, boolean bLite) {
+    public DrawViewDice(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, int fakeNumber, boolean bLite) {
         super(context, windowManager, hitMsgKey, drawable, bLite);
-
         this.diceSoundKey = diceSoundKey;
         this.maxNum = maxNum;
+        this.fakeNumber = fakeNumber;
         mediaPlayer = MediaPlayer.create(this.getContext(), diceSoundKey);
     }
 
@@ -39,7 +41,7 @@ public class DrawViewDice extends DrawViewBase {
         playSound();
     }
 
-    private int calculateNumber(int maxNum) {
+    private int calculateNumber() {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
             ((Data) this.getContext()).setNumber(new Integer((int) (Math.random() * maxNum)));
@@ -50,10 +52,16 @@ public class DrawViewDice extends DrawViewBase {
             ((Data) this.getContext()).setNumber(0);
         }
 
+        if(fakeOn){
+            ((Data) this.getContext()).setNumber(new Integer(fakeNumber));
+//            ((Data) this.getContext()).setNumber(new Integer(5));
+//            setFakeNumber((Data) this.getContext());
+
+        }
         return ((Data) this.getContext()).getNumber();
     }
 
-    private int calculateNumber2(int maxNum) {
+    private int calculateNumber2() {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
             ((Data) this.getContext()).setNumber2(new Integer((int) (Math.random() * maxNum)));
@@ -67,7 +75,7 @@ public class DrawViewDice extends DrawViewBase {
         return ((Data) this.getContext()).getNumber2();
     }
 
-    private int calculateNumber3(int maxNum) {
+    private int calculateNumber3() {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
             ((Data) this.getContext()).setNumber3(new Integer((int) (Math.random() * maxNum)));
@@ -81,7 +89,7 @@ public class DrawViewDice extends DrawViewBase {
         return ((Data) this.getContext()).getNumber3();
     }
 
-    private int calculateNumber4(int maxNum) {
+    private int calculateNumber4() {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
             ((Data) this.getContext()).setNumber4(new Integer((int) (Math.random() * maxNum)));
@@ -95,7 +103,7 @@ public class DrawViewDice extends DrawViewBase {
         return ((Data) this.getContext()).getNumber4();
     }
 
-    private int calculateNumber5(int maxNum) {
+    private int calculateNumber5() {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
             ((Data) this.getContext()).setNumber5(new Integer((int) (Math.random() * maxNum)));
@@ -109,7 +117,7 @@ public class DrawViewDice extends DrawViewBase {
         return ((Data) this.getContext()).getNumber5();
     }
 
-    private int calculateNumber6(int maxNum) {
+    private int calculateNumber6() {
         // Rechnen!
         if (!((Data) this.getContext()).hasInterrupted().booleanValue()) {
             ((Data) this.getContext()).setNumber6(new Integer((int) (Math.random() * maxNum)));
@@ -127,32 +135,32 @@ public class DrawViewDice extends DrawViewBase {
     protected void drawItem(Canvas canvas) {
         List<Integer> numberList = new ArrayList<Integer>();
         if (itemAmountType == ItemAmountType.ONE) {
-            numberList.add(calculateNumber(maxNum));
+            numberList.add(calculateNumber());
         } else if (itemAmountType == ItemAmountType.TWO) {
-            numberList.add(calculateNumber(maxNum));
-            numberList.add(calculateNumber2(maxNum));
+            numberList.add(calculateNumber());
+            numberList.add(calculateNumber2());
         } else if (itemAmountType == ItemAmountType.THREE) {
-            numberList.add(calculateNumber(maxNum));
-            numberList.add(calculateNumber2(maxNum));
-            numberList.add(calculateNumber3(maxNum));
+            numberList.add(calculateNumber());
+            numberList.add(calculateNumber2());
+            numberList.add(calculateNumber3());
         } else if (itemAmountType == ItemAmountType.FOUR) {
-            numberList.add(calculateNumber(maxNum));
-            numberList.add(calculateNumber2(maxNum));
-            numberList.add(calculateNumber3(maxNum));
-            numberList.add(calculateNumber4(maxNum));
+            numberList.add(calculateNumber());
+            numberList.add(calculateNumber2());
+            numberList.add(calculateNumber3());
+            numberList.add(calculateNumber4());
         } else if (itemAmountType == ItemAmountType.FIVE) {
-            numberList.add(calculateNumber(maxNum));
-            numberList.add(calculateNumber2(maxNum));
-            numberList.add(calculateNumber3(maxNum));
-            numberList.add(calculateNumber4(maxNum));
-            numberList.add(calculateNumber5(maxNum));
+            numberList.add(calculateNumber());
+            numberList.add(calculateNumber2());
+            numberList.add(calculateNumber3());
+            numberList.add(calculateNumber4());
+            numberList.add(calculateNumber5());
         } else if (itemAmountType == ItemAmountType.SIX) {
-            numberList.add(calculateNumber(maxNum));
-            numberList.add(calculateNumber2(maxNum));
-            numberList.add(calculateNumber3(maxNum));
-            numberList.add(calculateNumber4(maxNum));
-            numberList.add(calculateNumber5(maxNum));
-            numberList.add(calculateNumber6(maxNum));
+            numberList.add(calculateNumber());
+            numberList.add(calculateNumber2());
+            numberList.add(calculateNumber3());
+            numberList.add(calculateNumber4());
+            numberList.add(calculateNumber5());
+            numberList.add(calculateNumber6());
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
@@ -194,6 +202,7 @@ public class DrawViewDice extends DrawViewBase {
         } else {
             throw new IllegalArgumentException("Unbekannter ItemAmountType: " + itemAmountType);
         }
+        fakeOn = false;
     }
 
     private void playSound() {
@@ -235,6 +244,10 @@ public class DrawViewDice extends DrawViewBase {
                 getTopAmountDiceBitmapPos(metrics.heightPixels), paint);
     }
 
+    private Bitmap getFakeBitmap() {
+        return BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_play);
+    }
+
     private Bitmap getSoundBitmap() {
         if (soundOn) {
             return BitmapFactory.decodeResource(getResources(), R.drawable.ic_lock_silent_mode_off);
@@ -251,6 +264,16 @@ public class DrawViewDice extends DrawViewBase {
     public boolean onTouch(View view, MotionEvent event) {
         if (event.getAction() != MotionEvent.ACTION_DOWN) {
             return false;
+        }
+
+        // Toggle Fake
+        if (isFakeBitmapTouched(event)) {
+            fakeOn = true;
+            ((Data) this.getContext()).setRolled(Boolean.TRUE);
+            ((Data) this.getContext()).setInterrupted(Boolean.FALSE);
+            invalidate();
+
+            return true;
         }
 
         // Toggle Sound
@@ -297,6 +320,16 @@ public class DrawViewDice extends DrawViewBase {
         return true;
     }
 
+    private boolean isFakeBitmapTouched(MotionEvent event) {
+        if (event.getRawX() >= getLeftFakeBitmapPos(metrics.widthPixels)
+                && event.getRawX() < (getLeftFakeBitmapPos(metrics.widthPixels) + getFakeBitmap().getWidth())
+                && event.getRawY() >= getTopFakeBitmapPos(metrics.heightPixels)
+                && event.getRawY() < (getTopFakeBitmapPos(metrics.heightPixels) + getFakeBitmap().getHeight())) {
+            return true;
+        }
+        return false;
+    }
+
     private boolean isSoundOnBitmapTouched(MotionEvent event) {
         if (event.getRawX() >= getLeftSoundBitmapPos(metrics.widthPixels)
                 && event.getRawX() < (getLeftSoundBitmapPos(metrics.widthPixels) + getSoundBitmap().getWidth())
@@ -315,6 +348,14 @@ public class DrawViewDice extends DrawViewBase {
             return true;
         }
         return false;
+    }
+
+    private int getTopFakeBitmapPos(int height) {
+        return height - getFakeBitmap().getHeight() * 2 / 10 * 10;
+    }
+
+    private int getLeftFakeBitmapPos(int width) {
+        return width / 2 - getFakeBitmap().getWidth() / 2 -  /* Offset */getFakeBitmap().getWidth() * 3;
     }
 
     private int getTopSoundBitmapPos(int height) {

@@ -107,7 +107,7 @@ Auf der Console 'android' eingeben.
 
 Dann im Menu den AVD Manager starten.
 
-AVD A8 mit Android 2.2 starten
+AVD A8 oder Nexus 10 mit Android 2.2 starten (evtl 'wipe user data' an checken)
 
 Dann aus Eclipse rechte Maus auf Projekt und 'run as Anrdoid Application'
 

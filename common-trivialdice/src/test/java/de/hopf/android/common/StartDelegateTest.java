@@ -33,7 +33,7 @@ public class StartDelegateTest {
         Mockito.when(context.getNumber()).thenReturn(null);
         drawView.onDraw(new Canvas());
 
-        delegate = new StartDelegate(activity, 1, 2, 3, drawable, 8, drawView);
+        delegate = new StartDelegate(activity, 1, 2, 3, drawable, drawView);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class StartDelegateTest {
     public void testLite() {
         Activity activity = Mockito.mock(Activity.class);
         Drawable drawable = Mockito.mock(Drawable.class);
-        StartDelegate d = new StartDelegate(activity, 1, 2, 3, 4, 5, 6, 7, drawable, 8, null);
+        StartDelegate d = new StartDelegate(activity, 1, 2, 3, 4, 5, 6, 7, drawable, null);
         Assert.assertNotNull(d);
     }
 

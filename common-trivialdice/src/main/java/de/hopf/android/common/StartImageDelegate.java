@@ -7,14 +7,14 @@ public class StartImageDelegate extends StartDelegate {
 
     // Premium
     public StartImageDelegate(Activity activity, int hitMsgKey, int mainMsgKey, Drawable drawable, DrawViewImage drawViewBase) {
-        super(activity, 0, hitMsgKey, mainMsgKey, drawable, 0, drawViewBase);
+        super(activity, 0, hitMsgKey, mainMsgKey, drawable, drawViewBase);
     }
 
     // Lite
     public StartImageDelegate(Activity activity, int hitMsgKey, int mainMsgKey, int linkMsgKey,
             int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, DrawViewImage drawViewBase) {
         super(activity, 0, hitMsgKey, mainMsgKey, linkMsgKey, titleMsgKey, startMsgKey, fullVersionLinkKey,
-                drawable, 0, drawViewBase);
+                drawable, drawViewBase);
     }
 
     @Override

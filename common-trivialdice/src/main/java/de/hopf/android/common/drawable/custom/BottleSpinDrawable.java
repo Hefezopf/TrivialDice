@@ -63,10 +63,6 @@ public class BottleSpinDrawable extends BaseDrawable {
         matrix.postTranslate(-bitmap.getWidth()/2, -bitmap.getHeight()/2);
         matrix.postRotate(angle);
         Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-
-        // ?? nicht auf nexus7 
-//        matrix.postTranslate(rect.exactCenterX()+(bitmap.getWidth()/3), rect.exactCenterY()+(bitmap.getHeight()/2));        
-        
         matrix.postTranslate(rect.exactCenterX()+(kantenLaenge*14/20), rect.exactCenterY()+(kantenLaenge*16/14));        
         canvas.drawBitmap(bitmap, matrix, null);
     }

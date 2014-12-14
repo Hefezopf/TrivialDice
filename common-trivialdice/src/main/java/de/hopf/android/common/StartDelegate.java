@@ -39,10 +39,9 @@ public class StartDelegate implements Data {
     protected static final String INTERRUPTED_KEY = "INTERRUPTED_KEY";
     
     protected final Drawable drawable;
-    protected final int maxNum;
     
     // Premium
-    protected StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, int maxNum, DrawViewBase drawView) {
+    protected StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, Drawable drawable, DrawViewBase drawView) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -51,13 +50,12 @@ public class StartDelegate implements Data {
         this.startMsgKey = 0;
         this.bLite = false;
         this.drawable = drawable;
-        this.maxNum = maxNum;        
         this.drawView = drawView;
     }
 
     // Lite
     protected StartDelegate(Activity activity, int diceSoundKey, int hitMsgKey, int mainMsgKey, int linkMsgKey,
-            int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, int maxNum, DrawViewBase drawView) {
+            int titleMsgKey, int startMsgKey, int fullVersionLinkKey, Drawable drawable, DrawViewBase drawView) {
         this.activity = activity;
         this.diceSoundKey = diceSoundKey;
         this.hitMsgKey = hitMsgKey;
@@ -67,7 +65,6 @@ public class StartDelegate implements Data {
         this.fullVersionLinkKey = fullVersionLinkKey;        
         this.bLite = true;
         this.drawable = drawable;
-        this.maxNum = maxNum;      
         this.drawView = drawView;
     }
 

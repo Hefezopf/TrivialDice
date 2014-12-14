@@ -3,6 +3,7 @@
 **/bin/*
 **/gen/*
 Trivial*/bin/*
+EclipseJUnitTests/*
 
 
 # Windows image file caches
