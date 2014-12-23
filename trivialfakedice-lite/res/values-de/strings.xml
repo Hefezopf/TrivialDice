@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Einfacher Schwindel W&#252;rfel Lite</string>
+    <string name="hit">Ber&#252;hren um zu w&#252;rfeln</string>    
+    
+    <string name="link">http://play.google.com/store/apps/details?id=de.hopf.mobile.trivialfakedice</string>
+    <string name="link_text">Hole Vollversion hier!</string>
+    <string name="start">Weiter&#8230;</string>
+</resources>

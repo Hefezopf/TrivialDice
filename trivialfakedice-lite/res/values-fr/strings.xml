@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Cube Fake Lite</string>
+    <string name="hit">Toucher</string>    
+    
+    <string name="link">http://play.google.com/store/apps/details?id=de.hopf.mobile.trivialfakedice</string>
+    <string name="link_text">Chercher comble version ici!</string>
+    <string name="start">Autre&#8230;</string>
+</resources>

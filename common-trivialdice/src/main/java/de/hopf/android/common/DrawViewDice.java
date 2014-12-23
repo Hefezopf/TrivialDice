@@ -23,9 +23,9 @@ public class DrawViewDice extends DrawViewBase {
     private MediaPlayer mediaPlayer;
     private final int diceSoundKey;
     private final int maxNum;
-    private final int fakeNumber;
+    private final Integer fakeNumber;
 
-    public DrawViewDice(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, int fakeNumber, boolean bLite) {
+    public DrawViewDice(Context context, WindowManager windowManager, int diceSoundKey, int hitMsgKey, Drawable drawable, int maxNum, Integer fakeNumber, boolean bLite) {
         super(context, windowManager, hitMsgKey, drawable, bLite);
         this.diceSoundKey = diceSoundKey;
         this.maxNum = maxNum;
@@ -52,7 +52,7 @@ public class DrawViewDice extends DrawViewBase {
             ((Data) this.getContext()).setNumber(0);
         }
 
-        if(fakeOn){
+        if(fakeOn && fakeNumber != null){
             ((Data) this.getContext()).setNumber(new Integer(fakeNumber));
 //            ((Data) this.getContext()).setNumber(new Integer(5));
 //            setFakeNumber((Data) this.getContext());
@@ -267,7 +267,7 @@ public class DrawViewDice extends DrawViewBase {
         }
 
         // Toggle Fake
-        if (isFakeBitmapTouched(event)) {
+        if (fakeNumber != null && isFakeBitmapTouched(event)) {
             fakeOn = true;
             ((Data) this.getContext()).setRolled(Boolean.TRUE);
             ((Data) this.getContext()).setInterrupted(Boolean.FALSE);

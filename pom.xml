@@ -31,14 +31,19 @@
   </properties>
 
   <modules>
+    <!-- Common -->
     <module>common-trivialdice</module>
 	  
+	<!-- Common Test -->
     <module>test-trivialdice</module>	
 
+	<!-- Speziell -->
     <module>trivialbottlespin-lite</module>
     <module>trivialbottlespin-premium</module>
     <module>trivialletterdice-lite</module>
     <module>trivialletterdice-premium</module>
+    <module>trivialfakedice-lite</module>
+    <module>trivialfakedice-premium</module>
     <module>trivialdice-lite</module>
     <module>trivialdice-premium</module>
     <module>trivialcolordice-lite</module>
@@ -46,10 +51,13 @@
     <module>trivialdoublingdice-lite</module>
     <module>trivialdoublingdice-premium</module>
 
+	<!-- Speziell Test -->
     <module>trivialbottlespin-lite-test</module>
     <module>trivialbottlespin-premium-test</module>
     <module>trivialletterdice-lite-test</module>
     <module>trivialletterdice-premium-test</module>
+    <module>trivialfakedice-lite-test</module>
+    <module>trivialfakedice-premium-test</module>
     <module>trivialdice-lite-test</module>
     <module>trivialdice-premium-test</module>
     <module>trivialcolordice-lite-test</module>

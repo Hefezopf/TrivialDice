@@ -6,12 +6,10 @@ import de.hopf.android.common.drawable.Drawable;
 import de.hopf.android.common.drawable.custom.LetterDiceDrawable;
 
 public class StartDice extends StartBase {
-    
-    final private int E = 4;
 
     @Override
     public void initDelegate() {
         Drawable drawable = new LetterDiceDrawable(kantenLaenge, linkerWuerfelRand, obererWuerfelRand);
-        this.startDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, drawable, 26, E);
+        this.startDelegate = new StartDiceDelegate(this, R.raw.dice_sound, R.string.hit, R.layout.main, drawable, 26, null);
     }    
 }
