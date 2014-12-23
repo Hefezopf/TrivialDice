@@ -84,6 +84,3 @@ Jenkins ist als lokaler Dienst unter Windows installiert.
 Nach jedem Checkin läuft er los!
 Evtl. ist dieser Dienst ausgeschaltet.
 http://localhost:8080/
-
-
- 
