@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">사소한 색상 주사위 라이트</string>
+    <string name="title">\n사소한 색상 주사위 라이트\n</string>
+    <string name="link_text">구멍 <b><a href="http://market.android.com/details?id=de.hopf.android.trivialdice.color">정식 버전</a></b> 여기에!\n</string>
+    <string name="start">더</string>
+    <string name="hit">롤 스크린을 명중</string>    
+</resources>
