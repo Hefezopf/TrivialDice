@@ -5,6 +5,40 @@ A trivial dice app for android
 
 git clone https://github.com/Hefezopf/TrivialDice.git
 
+
+Ubuntu Setup:
+-------------
+checken
+sudo dpkg --list | grep maven
+
+JDK 6 installieren
+sudo apt-get install openjdk-6-jdk
+
+ANDROID installieren von www als *.gz nach /opt/android-sdk-linux
+In PATH aufnehmen
+export PATH=$PATH:/opt/android-sdk-linux/tools
+/opt/android-sdk-linux/tools/android update sdk --no-ui --obsolete --force
+ANDROID_HOME setzen
+export ANDROID_HOME=/opt/android-sdk-linux
+
+Maven 3.0.4+ installieren:
+sudo apt-get install maven
+Maven testen
+mvn -version
+
+JAVA_HOME setzen
+export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk-i386
+
+PATH setzen
+export PATH=/usr/lib/jvm/java-1.6.0-openjdk-i386/bin:$PATH
+
+Java testen
+java -version
+javac -version
+
+mvn clean install -DskipTests
+
+
 Komplette Schritte zum bauen und ausliefern:
 --------------------------------------------
 start emulator -avd A8 -gpu on -wipe-data -scale 96dpi -dpi-device 160
