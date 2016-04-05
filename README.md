@@ -9,7 +9,7 @@ git clone https://github.com/Hefezopf/TrivialDice.git
 Ubuntu Setup:
 -------------
 checken
-sudo dpkg --list | grep maven
+sudo dpkg --list | sudo grep maven
 
 JDK 6 installieren
 sudo apt-get install openjdk-6-jdk
